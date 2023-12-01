@@ -136,3 +136,4 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = "user.User"
+AUTHENTICATION_BACKENDS = ["user.backends.EmailOrUsernameModelBackend"]
