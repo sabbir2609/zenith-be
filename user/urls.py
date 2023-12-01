@@ -3,9 +3,9 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import UserViewSet
 
-router = DefaultRouter()
-router.register(r"user", UserViewSet, basename="user")
+app_name = "user"
 
-urlpatterns = [
-    path("", include(router.urls)),
-]
+router = DefaultRouter()
+router.register(r"users", UserViewSet, basename="user")
+
+urlpatterns = router.urls
