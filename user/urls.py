@@ -7,4 +7,7 @@ app_name = "user"
 
 router = DefaultRouter()
 
-urlpatterns = router.urls
+urlpatterns = [
+    path("", include("djoser.urls")),
+    path("", include("djoser.urls.jwt")),
+] + router.urls

@@ -8,7 +8,7 @@ class EmailOrUsernameModelBackend(ModelBackend):
         UserModel = get_user_model()
 
         # Check if the provided username is an email
-        is_email = "@" in username
+        is_email = "@" in (username or "")
 
         # Authenticate based on username or email
         if is_email:
