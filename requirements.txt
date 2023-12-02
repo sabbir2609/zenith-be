@@ -15,6 +15,7 @@ djoser==2.2.2
 idna==3.6
 Markdown==3.5.1
 oauthlib==3.2.2
+psycopg2-binary==2.9.9
 pycparser==2.21
 PyJWT==2.8.0
 python-dotenv==1.0.0
