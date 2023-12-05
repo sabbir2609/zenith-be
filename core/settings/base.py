@@ -102,6 +102,9 @@ SIMPLE_JWT = {
     "UPDATE_LAST_LOGIN": False,
 }
 
+DOMAIN = "http://localhost:3000"
+SITE_NAME = "Zenith System"
+
 DJOSER = {
     "LOGIN_FIELD": "email",
     "USER_CREATE_PASSWORD_RETYPE": True,
