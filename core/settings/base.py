@@ -102,13 +102,10 @@ SIMPLE_JWT = {
     "UPDATE_LAST_LOGIN": False,
 }
 
-DOMAIN = "http://localhost:3000"
-SITE_NAME = "Zenith System"
-
 DJOSER = {
     "LOGIN_FIELD": "email",
     "USER_CREATE_PASSWORD_RETYPE": True,
-    "ACTIVATION_URL": "auth/activate/{uid}/{token}",
+    "ACTIVATION_URL": "auth/activation/{uid}/{token}",
     "SEND_ACTIVATION_EMAIL": True,
     "SEND_CONFIRMATION_EMAIL": True,
     "PASSWORD_CHANGED_EMAIL_CONFIRMATION": True,
