@@ -23,10 +23,6 @@ DATABASES = {
     "default": dj_database_url.parse(os.environ.get("DATABASE_URL"), conn_max_age=600),
 }
 
-SITE_NAME = "Zenith System"
-DOMAIN = os.environ["DOMAIN"]
-
-
 # Email configurations
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
