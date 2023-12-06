@@ -98,7 +98,7 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=10),
     "ROTATE_REFRESH_TOKENS": True,
-    # "BLACKLIST_AFTER_ROTATION": True,
+    "BLACKLIST_AFTER_ROTATION": True,
     "UPDATE_LAST_LOGIN": False,
 }
 
@@ -112,7 +112,7 @@ DJOSER = {
     "PASSWORD_RESET_CONFIRM_URL": "auth/password-reset/{uid}/{token}",
     "SET_PASSWORD_RETYPE": True,
     "PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND": True,
-    "TOKEN_MODEL": None,  # to delete user must set it to None
+    "TOKEN_MODEL": None,
     "SERIALIZERS": {
         "user_create": "user.serializers.UserCreateSerializer",
         "user": "user.serializers.UserCreateSerializer",
