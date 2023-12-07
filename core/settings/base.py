@@ -96,7 +96,7 @@ AUTH_USER_MODEL = "user.User"
 # AUTHENTICATION_BACKENDS = ["user.backends.EmailOrUsernameModelBackend"]
 
 SIMPLE_JWT = {
-    "AUTH_HEADER_TYPES": ("JWT",),
+    # "AUTH_HEADER_TYPES": ("JWT",),
     "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=10),
     "ROTATE_REFRESH_TOKENS": True,
