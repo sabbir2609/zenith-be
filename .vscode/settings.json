@@ -1,7 +1,9 @@
 {
     "cSpell.words": [
+        "corsheaders",
         "DJOSER",
         "dotenv",
         "simplejwt"
-    ]
+    ],
+    "python.analysis.typeCheckingMode": "off"
 }
