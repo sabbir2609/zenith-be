@@ -15,7 +15,6 @@ class UserCreationForm(forms.ModelForm):
         model = User
         fields = [
             "email",
-            "username",
         ]
 
     def clean_password2(self):
@@ -43,6 +42,5 @@ class UserChangeForm(forms.ModelForm):
         fields = [
             "email",
             "password",
-            "username",
             "is_active",
         ]
