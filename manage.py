@@ -3,11 +3,6 @@ import sys
 
 
 def main():
-    if "WEBSITE_HOSTNAME" in os.environ:
-        print("file:manage.py WEBSITE_HOSTNAME available")
-    else:
-        print("file:manage.py WEBSITE_HOSTNAME not available")
-
     settings_module = (
         "core.settings.prod"
         if "WEBSITE_HOSTNAME" in os.environ
