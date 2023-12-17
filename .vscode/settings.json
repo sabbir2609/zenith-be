@@ -3,7 +3,9 @@
         "corsheaders",
         "DJOSER",
         "dotenv",
-        "simplejwt"
+        "roomtype",
+        "simplejwt",
+        "viewsets"
     ],
     "python.analysis.typeCheckingMode": "off"
 }
