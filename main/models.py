@@ -262,7 +262,6 @@ class Payment(models.Model):
 
 
 class Review(models.Model):
-    guest = models.ForeignKey(Guest, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     rating = models.IntegerField(
         validators=[
@@ -272,6 +271,7 @@ class Review(models.Model):
     )
     comment = models.TextField(blank=True, null=True)
     images = models.ImageField(upload_to="room/review/", blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(self.room)

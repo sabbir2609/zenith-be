@@ -64,5 +64,10 @@ class PaymentViewSet(viewsets.ModelViewSet):
 
 
 class ReviewViewSet(viewsets.ModelViewSet):
-    queryset = Review.objects.all()
     serializer_class = ReviewSerializer
+
+    def get_queryset(self):
+        return Review.objects.filter(room_id=self.kwargs["room_pk"])
+
+    def get_serializer_context(self):
+        return {"room_id": self.kwargs["room_pk"]}
