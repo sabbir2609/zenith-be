@@ -1,4 +1,6 @@
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
+from main.permissions import IsGuest
 from .models import (
     Guest,
     Floor,
@@ -51,6 +53,10 @@ class AmenityViewSet(viewsets.ModelViewSet):
 class ReservationViewSet(viewsets.ModelViewSet):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
+    permission_classes = [IsAuthenticated, IsGuest]
+
+    def get_serializer_context(self):
+        return {"user": self.request.user}
 
 
 class InstallmentViewSet(viewsets.ModelViewSet):

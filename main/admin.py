@@ -14,8 +14,8 @@ from .models import (
 
 @admin.register(Guest)
 class GuestAdmin(admin.ModelAdmin):
-    list_display = ("name", "contact_info", "preferences")
-    search_fields = ("name", "contact_info")
+    list_display = ("user", "contact_info", "nid")
+    search_fields = ("user", "contact_info")
 
 
 @admin.register(Floor)
@@ -113,7 +113,7 @@ class ReservationAdmin(admin.ModelAdmin):
             "Reservation Information",
             {
                 "fields": [
-                    ("room", "guest"),
+                    ("room"),
                     ("start_date", "end_date"),
                 ],
             },

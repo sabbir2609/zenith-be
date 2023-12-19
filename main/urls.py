@@ -18,6 +18,11 @@ app_name = "main"
 router = routers.DefaultRouter()
 
 router.register("guests", GuestViewSet)
+reservation_router = routers.NestedDefaultRouter(router, "guests", lookup="guest")
+reservation_router.register(
+    "reservations", ReservationViewSet, basename="guest-reservations"
+)
+
 router.register("floors", FloorViewSet)
 
 
@@ -30,4 +35,8 @@ router.register("room-types", RoomTypeViewSet)
 room_type_router = routers.NestedDefaultRouter(router, "room-types", lookup="room_type")
 room_type_router.register("rooms", RoomViewSet, basename="room-type-rooms")
 
-urlpatterns = router.urls + room_router.urls + room_type_router.urls
+router.register("reservations", ReservationViewSet)
+
+urlpatterns = (
+    router.urls + room_router.urls + room_type_router.urls + reservation_router.urls
+)

@@ -2,21 +2,22 @@ import uuid
 from django.db import models
 from django.db.models import Sum
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from django.conf import settings
 from django.forms import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 
 class Guest(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     contact_info = models.CharField(max_length=100)
-    preferences = models.CharField(max_length=100)
+    nid = models.CharField(max_length=100, unique=True)
+    preferences = models.CharField(max_length=100, blank=True, null=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.name
+        return self.user.email
 
     class Meta:
         verbose_name_plural = "Guest"
@@ -148,8 +149,9 @@ class Reservation(models.Model):
         PARTIAL = "Partial", "Partial"
         PAID = "Paid", "Paid"
 
-    guest = models.ForeignKey("Guest", on_delete=models.CASCADE)
-    room = models.ForeignKey("Room", on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    guest = models.ForeignKey(Guest, on_delete=models.CASCADE, null=True, blank=True)
+    room = models.ForeignKey(Room, on_delete=models.CASCADE)
     start_date = models.DateField()
     end_date = models.DateField()
     reservation_status = models.CharField(
@@ -158,6 +160,9 @@ class Reservation(models.Model):
         default=ReservationStatusChoices.RESERVED,
     )
     payment_status = models.CharField(max_length=20)
+
+    contact_info = models.CharField(max_length=100, blank=True, null=True)
+    nid = models.CharField(max_length=100, blank=True, null=True)
 
     def get_total_amount(self):
         total_amount = (
@@ -206,7 +211,7 @@ class Reservation(models.Model):
         get_latest_by = "start_date"
 
     def __str__(self):
-        return f"{self.room}-{self.guest}-{self.start_date}"
+        return f"{self.room}-{self.start_date}"
 
 
 class Installment(models.Model):

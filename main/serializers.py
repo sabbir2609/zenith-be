@@ -15,7 +15,7 @@ from .models import (
 class GuestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Guest
-        fields = ["id", "user", "name", "contact_info", "preferences"]
+        fields = "__all__"
 
 
 class FloorSerializer(serializers.ModelSerializer):
@@ -48,7 +48,13 @@ class RoomSerializer(serializers.ModelSerializer):
 class AmenitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Amenity
-        fields = ["id", "room", "title", "description", "availability"]
+        fields = [
+            "id",
+            "room",
+            "title",
+            "description",
+            "availability",
+        ]
 
 
 class ReservationSerializer(serializers.ModelSerializer):
@@ -56,13 +62,17 @@ class ReservationSerializer(serializers.ModelSerializer):
         model = Reservation
         fields = [
             "id",
-            "guest",
             "room",
             "start_date",
             "end_date",
             "reservation_status",
-            "payment_status",
+            "nid",
+            "contact_info",
         ]
+
+    def create(self, validated_data):
+        user = self.context["user"]
+        return Reservation.objects.create(user=user, **validated_data)
 
 
 class InstallmentSerializer(serializers.ModelSerializer):
