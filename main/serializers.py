@@ -94,8 +94,11 @@ class PaymentSerializer(serializers.ModelSerializer):
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
-        fields = ["id", "rating", "comment", "images"]
+        fields = ["id", "guest_id", "rating", "comment", "images"]
 
     def create(self, validated_data):
         room_id = self.context["room_id"]
-        return Review.objects.create(room_id=room_id, **validated_data)
+        guest_id = self.context["guest_id"]
+        return Review.objects.create(
+            room_id=room_id, guest_id=guest_id, **validated_data
+        )

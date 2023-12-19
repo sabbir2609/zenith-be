@@ -263,6 +263,7 @@ class Payment(models.Model):
 
 class Review(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    guest = models.ForeignKey(Guest, on_delete=models.CASCADE)
     rating = models.IntegerField(
         validators=[
             MinValueValidator(1, message="Rating must be at least 1."),

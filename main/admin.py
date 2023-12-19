@@ -139,7 +139,7 @@ class PaymentAdmin(admin.ModelAdmin):
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ("room", "rating", "comment", "created_at")
+    list_display = ("room", "guest", "rating", "comment", "created_at")
     search_fields = ["room__room_id"]
 
     readonly_fields = ["created_at"]
