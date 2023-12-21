@@ -12,12 +12,6 @@ from .models import (
 )
 
 
-@admin.register(Guest)
-class GuestAdmin(admin.ModelAdmin):
-    list_display = ("user", "contact_info", "nid")
-    search_fields = ("user", "contact_info")
-
-
 @admin.register(Floor)
 class FloorAdmin(admin.ModelAdmin):
     list_display = ("level", "description")
@@ -45,101 +39,13 @@ class RoomAdmin(admin.ModelAdmin):
         verbose_name_plural = "Rooms"
 
 
-class InstallmentInline(admin.TabularInline):
-    model = Installment
-    extra = 0
-    help_texts = "First Save The Reservation Than Add Installment(s)"
-    readonly_fields = ["installment_date"]
-
-
-@admin.register(Installment)
-class InstallmentAdmin(admin.ModelAdmin):
-    list_display = ("reservation", "installment_date", "installment_amount")
-    search_fields = ("reservation__room__room_id", "reservation__guest__name")
-    list_filter = (
-        "reservation__reservation_status",
-        "reservation__payment_status",
-    )
-    readonly_fields = ["installment_date"]
-    fieldsets = (
-        (
-            "Reservation Information",
-            {
-                "fields": [
-                    ("reservation", "installment_date"),
-                ],
-            },
-        ),
-        (
-            "Installment Information",
-            {
-                "fields": [
-                    ("installment_amount"),
-                ],
-            },
-        ),
-    )
-
-
-@admin.register(Reservation)
-class ReservationAdmin(admin.ModelAdmin):
-    def total_amount(self, obj):
-        return obj.get_total_amount()
-
-    total_amount.short_description = "Total Amount"
-
-    def paid_amount(self, obj):
-        return obj.get_paid_amount()
-
-    paid_amount.short_description = "Paid Amount"
-
-    def due_amount(self, obj):
-        return obj.get_total_amount() - obj.get_paid_amount()
-
-    due_amount.short_description = "Due Amount"
-
-    list_display = (
-        "room",
-        "guest",
-        "reservation_status",
-        "total_amount",
-        "paid_amount",
-        "due_amount",
-        "payment_status",
-    )
-
-    fieldsets = (
-        (
-            "Reservation Information",
-            {
-                "fields": [
-                    ("room"),
-                    ("start_date", "end_date"),
-                ],
-            },
-        ),
-        (
-            "Status",
-            {
-                "fields": [
-                    ("reservation_status", "payment_status"),
-                ],
-            },
-        ),
-    )
-
-    inlines = [InstallmentInline]
-    readonly_fields = ["payment_status"]
-
-
-@admin.register(Payment)
-class PaymentAdmin(admin.ModelAdmin):
-    list_display = ("installment", "amount", "payment_date")
-
-
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ("room", "guest", "rating", "comment", "created_at")
     search_fields = ["room__room_id"]
-
     readonly_fields = ["created_at"]
+
+
+admin.site.register(Reservation)
+admin.site.register(Installment)
+admin.site.register(Payment)

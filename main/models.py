@@ -7,20 +7,27 @@ from django.forms import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    is_guest = models.BooleanField(default=False)
+    is_stuff = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.user.first_name
+
+    class Meta:
+        verbose_name_plural = "User Profiles"
+        ordering = ["user__created_at"]
+
+
 class Guest(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    user_profile = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
     contact_info = models.CharField(max_length=100)
     nid = models.CharField(max_length=100, unique=True)
     preferences = models.CharField(max_length=100, blank=True, null=True)
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
     def __str__(self):
-        return self.user.email
-
-    class Meta:
-        verbose_name_plural = "Guest"
+        return self.user_profile.user.username
 
 
 class Floor(models.Model):
@@ -137,6 +144,26 @@ class Amenity(models.Model):
         verbose_name_plural = "Amenities"
 
 
+class Review(models.Model):
+    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    guest = models.ForeignKey(Guest, on_delete=models.CASCADE)
+    rating = models.IntegerField(
+        validators=[
+            MinValueValidator(1, message="Rating must be at least 1."),
+            MaxValueValidator(10, message="Rating must be at most 10."),
+        ]
+    )
+    comment = models.TextField(blank=True, null=True)
+    images = models.ImageField(upload_to="room/review/", blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.room)
+
+    class Meta:
+        verbose_name_plural = "Reviews"
+
+
 class Reservation(models.Model):
     class ReservationStatusChoices(models.TextChoices):
         RESERVED = "Reserved", "Reserved"
@@ -144,12 +171,6 @@ class Reservation(models.Model):
         CHECKED_OUT = "Checked-Out", "Checked-Out"
         CANCELED = "Canceled", "Canceled"
 
-    class PaymentStatusChoices(models.TextChoices):
-        PENDING = "Pending", "Pending"
-        PARTIAL = "Partial", "Partial"
-        PAID = "Paid", "Paid"
-
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     guest = models.ForeignKey(Guest, on_delete=models.CASCADE, null=True, blank=True)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     start_date = models.DateField()
@@ -159,51 +180,6 @@ class Reservation(models.Model):
         choices=ReservationStatusChoices.choices,
         default=ReservationStatusChoices.RESERVED,
     )
-    payment_status = models.CharField(max_length=20)
-
-    contact_info = models.CharField(max_length=100, blank=True, null=True)
-    nid = models.CharField(max_length=100, blank=True, null=True)
-
-    def get_total_amount(self):
-        total_amount = (
-            self.room.room_type.price * (self.end_date - self.start_date).days
-        )
-        return total_amount
-
-    def get_paid_amount(self):
-        if not self.pk:
-            return 0
-
-        paid_amount = self.installment_set.aggregate(Sum("installment_amount"))[
-            "installment_amount__sum"
-        ]
-        if paid_amount is None:
-            paid_amount = 0
-            return paid_amount
-        return paid_amount
-
-    @property
-    def get_payment_status(self):
-        total_amount = self.get_total_amount()
-        paid_amount = self.get_paid_amount()
-
-        if total_amount == paid_amount:
-            self.payment_status = self.PaymentStatusChoices.PAID
-            return self.payment_status
-        elif total_amount >= paid_amount > 0:
-            self.payment_status = self.PaymentStatusChoices.PARTIAL
-            return self.payment_status
-        elif paid_amount == 0:
-            self.payment_status = self.PaymentStatusChoices.PENDING
-            return self.payment_status
-        else:
-            raise ValueError(
-                "Invalid payment status: Total amount and paid amount conditions not met"
-            )
-
-    def save(self, *args, **kwargs):
-        self.payment_status = self.get_payment_status
-        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name_plural = "Reservations"
@@ -231,16 +207,6 @@ class Installment(models.Model):
     installment_date = models.DateField(auto_now_add=True)
     installment_amount = models.DecimalField(max_digits=10, decimal_places=2)
 
-    def reservation_installment_count(self):
-        return Installment.objects.filter(reservation=self.reservation).count()
-
-    def save(self, *args, **kwargs):
-        if self.reservation_installment_count() >= 3:
-            raise ValidationError(
-                "Cannot add more than three installments for a reservation."
-            )
-        super().save(*args, **kwargs)
-
     class Meta:
         verbose_name_plural = "Installments"
         ordering = ["installment_date"]
@@ -264,23 +230,3 @@ class Payment(models.Model):
 
     def __str__(self):
         return str(self.payment_id)
-
-
-class Review(models.Model):
-    room = models.ForeignKey(Room, on_delete=models.CASCADE)
-    guest = models.ForeignKey(Guest, on_delete=models.CASCADE)
-    rating = models.IntegerField(
-        validators=[
-            MinValueValidator(1, message="Rating must be at least 1."),
-            MaxValueValidator(10, message="Rating must be at most 10."),
-        ]
-    )
-    comment = models.TextField(blank=True, null=True)
-    images = models.ImageField(upload_to="room/review/", blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return str(self.room)
-
-    class Meta:
-        verbose_name_plural = "Reviews"

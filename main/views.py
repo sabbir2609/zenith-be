@@ -76,4 +76,7 @@ class ReviewViewSet(viewsets.ModelViewSet):
         return Review.objects.filter(room_id=self.kwargs["room_pk"])
 
     def get_serializer_context(self):
-        return {"room_id": self.kwargs["room_pk"], "guest_id": self.request.user.id}
+        user = self.request.user
+        guest = Guest.objects.filter(user=user).first()
+
+        return {"room_id": self.kwargs.get("room_pk"), "guest": guest}
