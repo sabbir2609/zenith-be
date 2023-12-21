@@ -51,9 +51,42 @@ class ReviewAdmin(admin.ModelAdmin):
     readonly_fields = ["created_at"]
 
 
+class InstallmentInline(admin.TabularInline):
+    model = Installment
+    extra = 0
+    max_num = 3
+    min_num = 1
+    readonly_fields = [
+        "installment_type",
+        "installment_amount",
+        "installment_status",
+        "installment_date",
+    ]
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+
 @admin.register(Reservation)
 class ReservationAdmin(admin.ModelAdmin):
-    list_display = ("room", "user", "reservation_status")
+    def paid_amount(self, obj):
+        # Calculate the total paid amount for the reservation
+        payments = Payment.objects.filter(installment__reservation=obj)
+        return sum(payment.payment_amount for payment in payments)
+
+    list_display = (
+        "room",
+        "user",
+        "reservation_status",
+        "total_amount",
+        "paid_amount",
+        "payment_status",
+    )
+    inlines = [InstallmentInline]
+
     fieldsets = (
         (
             None,
@@ -63,7 +96,44 @@ class ReservationAdmin(admin.ModelAdmin):
                     "user",
                     "start_date",
                     "end_date",
+                    "total_amount",
+                    "payment_status",
                     "reservation_status",
+                )
+            },
+        ),
+    )
+
+    readonly_fields = ["total_amount", "payment_status"]
+
+
+@admin.register(Installment)
+class InstallmentAdmin(admin.ModelAdmin):
+    list_display = (
+        "reservation",
+        "installment_type",
+        "installment_amount",
+        "installment_status",
+    )
+
+    readonly_fields = ["installment_status"]
+
+
+@admin.register(Payment)
+class PaymentAdmin(admin.ModelAdmin):
+    list_display = ("installment", "payment_date", "payment_amount", "payment_method")
+    search_fields = []
+    readonly_fields = ["payment_id", "payment_date", "payment_amount"]
+    fieldsets = (
+        (
+            None,
+            {
+                "fields": (
+                    "payment_id",
+                    "installment",
+                    "payment_date",
+                    "payment_amount",
+                    "payment_method",
                 )
             },
         ),

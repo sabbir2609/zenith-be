@@ -22,7 +22,7 @@ class Guest(models.Model):
         return str(self.user)
 
     class Meta:
-        ordering = ["-created_at"]
+        ordering = ["-updated_at"]
         verbose_name_plural = "Guests"
 
 
@@ -178,6 +178,16 @@ class Reservation(models.Model):
         choices=ReservationStatusChoices.choices,
         default=ReservationStatusChoices.RESERVED,
     )
+    payment_status = models.CharField(max_length=20, default="Pending")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    total_amount = models.DecimalField(
+        max_digits=10, decimal_places=2, null=True, blank=True
+    )
+
+    @property
+    def total_amount(self):
+        return self.room.room_type.price * (self.end_date - self.start_date).days
 
     class Meta:
         verbose_name_plural = "Reservations"
@@ -185,7 +195,7 @@ class Reservation(models.Model):
         get_latest_by = "start_date"
 
     def __str__(self):
-        return f"{self.room}-{self.start_date}"
+        return f"{self.room}-{self.start_date}-{self.total_amount}"
 
 
 class Installment(models.Model):
@@ -193,16 +203,17 @@ class Installment(models.Model):
         FIRST = "First", "First"
         SECOND = "Second", "Second"
         THIRD = "Third", "Third"
+        FULL = "Full", "Full"
 
     installment_type = models.CharField(
         max_length=20,
         choices=InstallmentChoices.choices,
         default=InstallmentChoices.FIRST,
-        unique=True,
     )
     reservation = models.ForeignKey(Reservation, on_delete=models.CASCADE)
     installment_date = models.DateField(auto_now_add=True)
     installment_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    installment_status = models.CharField(max_length=20, default="Pending")
 
     class Meta:
         verbose_name_plural = "Installments"
@@ -217,9 +228,13 @@ class Installment(models.Model):
 class Payment(models.Model):
     payment_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     installment = models.OneToOneField(Installment, on_delete=models.CASCADE)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    payment_amount = models.DecimalField(max_digits=10, decimal_places=2)
     payment_date = models.DateField(auto_now_add=True)
     payment_method = models.CharField(max_length=100)
+
+    def save(self, *args, **kwargs):
+        self.payment_amount = self.installment.installment_amount
+        super(Payment, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name_plural = "Payments"

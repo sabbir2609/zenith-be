@@ -31,6 +31,10 @@ room_router.register("amenities", AmenityViewSet, basename="room-amenities")
 
 # reservations
 router.register("reservations", ReservationViewSet)
+# installments
+router.register("installments", InstallmentViewSet)
+# payments
+router.register("payments", PaymentViewSet)
 
 
 urlpatterns = router.urls + room_router.urls + floor_router.urls
