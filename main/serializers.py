@@ -74,7 +74,6 @@ class InstallmentSerializer(serializers.ModelSerializer):
         model = Installment
         fields = [
             "id",
-            "installment_id",
             "installment_type",
             "reservation",
             "installment_date",
@@ -89,7 +88,7 @@ class PaymentSerializer(serializers.ModelSerializer):
             "id",
             "payment_id",
             "installment",
-            "amount",
+            "payment_amount",
             "payment_date",
             "payment_method",
         ]
