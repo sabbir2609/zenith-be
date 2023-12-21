@@ -66,13 +66,7 @@ class ReservationSerializer(serializers.ModelSerializer):
             "start_date",
             "end_date",
             "reservation_status",
-            "nid",
-            "contact_info",
         ]
-
-    def create(self, validated_data):
-        user = self.context["user"]
-        return Reservation.objects.create(user=user, **validated_data)
 
 
 class InstallmentSerializer(serializers.ModelSerializer):

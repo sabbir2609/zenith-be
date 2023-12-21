@@ -29,5 +29,8 @@ room_router = routers.NestedDefaultRouter(router, "room", lookup="room")
 room_router.register("reviews", ReviewViewSet, basename="room-reviews")
 room_router.register("amenities", AmenityViewSet, basename="room-amenities")
 
+# reservations
+router.register("reservations", ReservationViewSet)
+
 
 urlpatterns = router.urls + room_router.urls + floor_router.urls

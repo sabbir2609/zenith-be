@@ -53,7 +53,6 @@ class AmenityViewSet(viewsets.ModelViewSet):
 class ReservationViewSet(viewsets.ModelViewSet):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
-    permission_classes = [IsAuthenticated, IsGuest]
 
     def get_serializer_context(self):
         return {"user": self.request.user}

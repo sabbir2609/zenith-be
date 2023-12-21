@@ -12,6 +12,11 @@ from .models import (
 )
 
 
+@admin.register(Guest)
+class GuestAdmin(admin.ModelAdmin):
+    list_display = ("user", "status", "contact_info")
+
+
 @admin.register(Floor)
 class FloorAdmin(admin.ModelAdmin):
     list_display = ("level", "description")
@@ -46,6 +51,20 @@ class ReviewAdmin(admin.ModelAdmin):
     readonly_fields = ["created_at"]
 
 
-admin.site.register(Reservation)
-admin.site.register(Installment)
-admin.site.register(Payment)
+@admin.register(Reservation)
+class ReservationAdmin(admin.ModelAdmin):
+    list_display = ("room", "user", "reservation_status")
+    fieldsets = (
+        (
+            None,
+            {
+                "fields": (
+                    "room",
+                    "user",
+                    "start_date",
+                    "end_date",
+                    "reservation_status",
+                )
+            },
+        ),
+    )

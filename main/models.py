@@ -7,27 +7,23 @@ from django.forms import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 
-class UserProfile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    is_guest = models.BooleanField(default=False)
-    is_stuff = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.user.first_name
-
-    class Meta:
-        verbose_name_plural = "User Profiles"
-        ordering = ["user__created_at"]
-
-
 class Guest(models.Model):
-    user_profile = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
-    contact_info = models.CharField(max_length=100)
-    nid = models.CharField(max_length=100, unique=True)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+
+    contact_info = models.CharField(max_length=100, null=True, blank=True)
+    nid = models.CharField(max_length=100, unique=True, null=True, blank=True)
     preferences = models.CharField(max_length=100, blank=True, null=True)
 
+    status = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
     def __str__(self):
-        return self.user_profile.user.username
+        return str(self.user)
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name_plural = "Guests"
 
 
 class Floor(models.Model):
@@ -171,7 +167,9 @@ class Reservation(models.Model):
         CHECKED_OUT = "Checked-Out", "Checked-Out"
         CANCELED = "Canceled", "Canceled"
 
-    guest = models.ForeignKey(Guest, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    guest = models.ForeignKey(Guest, on_delete=models.PROTECT, null=True, blank=True)
+
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     start_date = models.DateField()
     end_date = models.DateField()
@@ -196,7 +194,6 @@ class Installment(models.Model):
         SECOND = "Second", "Second"
         THIRD = "Third", "Third"
 
-    installment_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     installment_type = models.CharField(
         max_length=20,
         choices=InstallmentChoices.choices,
