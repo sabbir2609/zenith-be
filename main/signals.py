@@ -2,7 +2,7 @@ from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
-from main.models import Installment, Payment, Reservation, Guest
+from main.models import Installment, Payment, Refund, Reservation, Guest
 
 
 @receiver(post_save, sender=Reservation)
@@ -55,3 +55,32 @@ def update_reservation_payment_status(sender, instance, **kwargs):
         reservation.payment_status = "Pending"
 
     reservation.save()
+
+
+# change availability for room when reservation_status is changed
+@receiver(post_save, sender=Reservation)
+def update_room_availability(sender, instance, **kwargs):
+    not_available_status = [
+        Reservation.ReservationStatusChoices.CHECKED_IN,
+        Reservation.ReservationStatusChoices.RESERVED,
+    ]
+
+    if instance.reservation_status in not_available_status:
+        instance.room.availability = False
+    else:
+        instance.room.availability = True
+
+    instance.room.save()
+
+
+# change is_refunded status if refund is created
+@receiver(post_save, sender=Refund)
+def update_payment_refunded_status(sender, instance, created, **kwargs):
+    if created:
+        # Set the is_refunded status of the associated Payment to True
+        instance.payment.is_refunded = True
+        instance.payment.save()
+
+
+# Connect the signal
+post_save.connect(update_payment_refunded_status, sender=Refund)

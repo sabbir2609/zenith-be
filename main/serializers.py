@@ -8,6 +8,7 @@ from .models import (
     Reservation,
     Installment,
     Payment,
+    Refund,
     Review,
 )
 
@@ -91,6 +92,18 @@ class PaymentSerializer(serializers.ModelSerializer):
             "payment_amount",
             "payment_date",
             "payment_method",
+        ]
+
+
+class RefundSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Refund
+        fields = [
+            "id",
+            "payment",
+            "refund_amount",
+            "refund_date",
+            "refund_method",
         ]
 
 

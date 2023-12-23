@@ -10,6 +10,7 @@ from .models import (
     Reservation,
     Installment,
     Payment,
+    Refund,
     Review,
 )
 from .serializers import (
@@ -22,6 +23,7 @@ from .serializers import (
     InstallmentSerializer,
     PaymentSerializer,
     ReviewSerializer,
+    RefundSerializer,
 )
 
 
@@ -66,6 +68,11 @@ class InstallmentViewSet(viewsets.ModelViewSet):
 class PaymentViewSet(viewsets.ModelViewSet):
     queryset = Payment.objects.all()
     serializer_class = PaymentSerializer
+
+
+class RefundViewSet(viewsets.ModelViewSet):
+    queryset = Refund.objects.all()
+    serializer_class = RefundSerializer
 
 
 class ReviewViewSet(viewsets.ModelViewSet):

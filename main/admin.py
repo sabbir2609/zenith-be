@@ -8,6 +8,7 @@ from .models import (
     Reservation,
     Installment,
     Payment,
+    Refund,
     Review,
 )
 
@@ -122,8 +123,8 @@ class InstallmentAdmin(admin.ModelAdmin):
 @admin.register(Payment)
 class PaymentAdmin(admin.ModelAdmin):
     list_display = ("installment", "payment_date", "payment_amount", "payment_method")
-    search_fields = []
-    readonly_fields = ["payment_id", "payment_date", "payment_amount"]
+    search_fields = ["installment"]
+    readonly_fields = ["payment_id", "payment_date", "payment_amount", "is_refunded"]
     fieldsets = (
         (
             None,
@@ -134,7 +135,29 @@ class PaymentAdmin(admin.ModelAdmin):
                     "payment_date",
                     "payment_amount",
                     "payment_method",
+                    "is_refunded",
                 )
             },
         ),
     )
+
+
+@admin.register(Refund)
+class RefundAdmin(admin.ModelAdmin):
+    list_display = ("payment", "refund_amount", "refund_date", "refund_method")
+    search_fields = ["payment"]
+    readonly_fields = ["refund_date"]
+    fieldsets = (
+        (
+            None,
+            {
+                "fields": (
+                    "payment",
+                    "refund_amount",
+                    "refund_date",
+                    "refund_method",
+                )
+            },
+        ),
+    )
+    autocomplete_fields = ["payment"]

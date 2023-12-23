@@ -9,6 +9,7 @@ from .views import (
     ReservationViewSet,
     InstallmentViewSet,
     PaymentViewSet,
+    RefundViewSet,
     ReviewViewSet,
 )
 
@@ -41,6 +42,8 @@ router.register("reservations", ReservationViewSet)
 router.register("installments", InstallmentViewSet)
 # payments
 router.register("payments", PaymentViewSet)
+# refunds
+router.register("refunds", RefundViewSet)
 
 # reservations/<id>/installments/<id>/payments/<id>
 # http://127.0.0.1:8000/api/reservations/66/installments/32/payments/7/
@@ -58,6 +61,7 @@ payment_router = routers.NestedDefaultRouter(
     installment_router, "installments", lookup="installment"
 )
 payment_router.register("payments", PaymentViewSet, basename="installment-payments")
+
 
 urlpatterns = (
     router.urls

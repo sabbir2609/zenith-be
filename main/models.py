@@ -110,6 +110,7 @@ class Room(models.Model):
 
     class Meta:
         verbose_name_plural = "Rooms"
+        ordering = ["floor", "room_label"]
 
 
 class Amenity(models.Model):
@@ -157,6 +158,7 @@ class Review(models.Model):
         return str(self.room)
 
     class Meta:
+        ordering = ["-created_at"]
         verbose_name_plural = "Reviews"
 
 
@@ -191,7 +193,7 @@ class Reservation(models.Model):
 
     class Meta:
         verbose_name_plural = "Reservations"
-        ordering = ["start_date"]
+        ordering = ["-created_at"]
         get_latest_by = "start_date"
 
     def __str__(self):
@@ -217,7 +219,7 @@ class Installment(models.Model):
 
     class Meta:
         verbose_name_plural = "Installments"
-        ordering = ["installment_date"]
+        ordering = ["-installment_date"]
 
     def __str__(self):
         return (
@@ -232,13 +234,29 @@ class Payment(models.Model):
     payment_date = models.DateField(auto_now_add=True)
     payment_method = models.CharField(max_length=100)
 
+    is_refunded = models.BooleanField(default=False)
+
     def save(self, *args, **kwargs):
         self.payment_amount = self.installment.installment_amount
         super(Payment, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name_plural = "Payments"
-        ordering = ["payment_date"]
+        ordering = ["-payment_date"]
 
     def __str__(self):
-        return str(self.payment_id)
+        return f"{self.installment}-{self.installment.installment_status}-{self.payment_amount}"
+
+
+class Refund(models.Model):
+    payment = models.OneToOneField(Payment, on_delete=models.CASCADE)
+    refund_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    refund_date = models.DateField(auto_now_add=True)
+    refund_method = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name_plural = "Refunds"
+        ordering = ["-refund_date"]
+
+    def __str__(self):
+        return str(self.payment.payment_id)
