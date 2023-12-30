@@ -21,7 +21,6 @@ def create_task_on_checked_out(sender, instance, **kwargs):
             Task.objects.create(assigned_room=instance.room, staff=available_staff)
         else:
             logger.warning("No available staff found for reservation %s", instance)
-            Task.objects.create(assigned_room=instance.room, staff=None)
 
 
 @receiver(post_save, sender=Task)
