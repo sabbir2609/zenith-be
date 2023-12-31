@@ -8,39 +8,14 @@ from main.models import Room
 
 
 class Role(models.Model):
-    role = models.CharField(max_length=200, help_text="Type or category of the staff")
+    name = models.CharField(max_length=200, help_text="Type or category of the staff")
 
     def __str__(self):
-        return self.role
+        return self.name
 
     class Meta:
         verbose_name = "Role"
         verbose_name_plural = "Role"
-
-
-class Permission(models.Model):
-    permission = models.CharField(
-        max_length=200, help_text="Type or category of the permission"
-    )
-
-    def __str__(self):
-        return self.permission
-
-    class Meta:
-        verbose_name = "Permission"
-        verbose_name_plural = "Permissions"
-
-
-class RolePermission(models.Model):
-    role = models.ForeignKey(Role, on_delete=models.CASCADE)
-    permission = models.ForeignKey(Permission, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.role} - {self.permission}"
-
-    class Meta:
-        verbose_name = "Role Permission"
-        verbose_name_plural = "Role Permissions"
 
 
 class Staff(models.Model):

@@ -4,7 +4,7 @@ from .models import Task, Staff, Role, TaskCheckList
 
 @admin.register(Role)
 class RoleAdmin(admin.ModelAdmin):
-    search_fields = ("role",)
+    search_fields = ("name",)
 
 
 @admin.register(Staff)
