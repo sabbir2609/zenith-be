@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from .models import (
     Guest,
     Floor,
@@ -29,6 +29,7 @@ from .serializers import (
 class GuestViewSet(viewsets.ModelViewSet):
     queryset = Guest.objects.all()
     serializer_class = GuestSerializer
+    permission_classes = [IsAdminUser]
 
 
 class FloorViewSet(viewsets.ModelViewSet):
@@ -54,6 +55,7 @@ class AmenityViewSet(viewsets.ModelViewSet):
 class ReservationViewSet(viewsets.ModelViewSet):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_serializer_context(self):
         return {"user": self.request.user}
@@ -62,16 +64,19 @@ class ReservationViewSet(viewsets.ModelViewSet):
 class InstallmentViewSet(viewsets.ModelViewSet):
     queryset = Installment.objects.all()
     serializer_class = InstallmentSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class PaymentViewSet(viewsets.ModelViewSet):
     queryset = Payment.objects.all()
     serializer_class = PaymentSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class RefundViewSet(viewsets.ModelViewSet):
     queryset = Refund.objects.all()
     serializer_class = RefundSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class ReviewViewSet(viewsets.ModelViewSet):

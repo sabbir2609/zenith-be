@@ -14,9 +14,14 @@ from .models import (
 
 
 class GuestSerializer(serializers.ModelSerializer):
+    user = serializers.SerializerMethodField()
+
     class Meta:
         model = Guest
-        fields = "__all__"
+        fields = ["id", "user", "contact_info", "nid", "preferences", "status"]
+
+    def get_user(self, obj):
+        return obj.user.username if obj.user else None
 
 
 class FloorSerializer(serializers.ModelSerializer):
@@ -108,11 +113,16 @@ class RefundSerializer(serializers.ModelSerializer):
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    guest = serializers.SerializerMethodField()
+
     class Meta:
         model = Review
-        fields = ["id", "rating", "comment", "images"]
+        fields = ["id", "guest", "rating", "comment", "images", "likes"]
 
     def create(self, validated_data):
         room_id = self.context["room_id"]
         guest = self.context["guest"]
         return Review.objects.create(room_id=room_id, guest=guest, **validated_data)
+
+    def get_guest(self, obj):
+        return obj.guest.user.username

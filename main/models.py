@@ -13,6 +13,7 @@ class Guest(models.Model):
     contact_info = models.CharField(max_length=100, null=True, blank=True)
     nid = models.CharField(max_length=100, unique=True, null=True, blank=True)
     preferences = models.CharField(max_length=100, blank=True, null=True)
+    image = models.ImageField(upload_to="guests", null=True, blank=True)
 
     status = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -152,7 +153,9 @@ class Review(models.Model):
     )
     comment = models.TextField(blank=True, null=True)
     images = models.ImageField(upload_to="room/review/", blank=True, null=True)
+    likes = models.ManyToManyField(Guest, blank=True, related_name="review_likes")
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return str(self.room)
