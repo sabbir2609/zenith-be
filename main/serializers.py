@@ -12,16 +12,15 @@ from .models import (
     Review,
 )
 
+from user.serializers import UserSerializer
+
 
 class GuestSerializer(serializers.ModelSerializer):
-    user = serializers.SerializerMethodField()
+    user = UserSerializer(read_only=True, required=False)
 
     class Meta:
         model = Guest
-        fields = ["id", "user", "contact_info", "nid", "preferences", "status"]
-
-    def get_user(self, obj):
-        return obj.user.username if obj.user else None
+        fields = ["id", "user", "image", "contact_info", "nid", "preferences", "status"]
 
 
 class FloorSerializer(serializers.ModelSerializer):
