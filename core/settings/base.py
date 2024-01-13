@@ -15,12 +15,14 @@ INSTALLED_APPS = [
     "user",
     "main",
     "management",
+    "notification",
     # 3rd party apps
     "rest_framework",
     "rest_framework_simplejwt",
     "djoser",
     "corsheaders",
     "social_django",
+    "channels",
 ]
 
 MIDDLEWARE = [
@@ -152,3 +154,10 @@ SOCIAL_AUTH_FACEBOOK_SECRET = getenv("FACEBOOK_AUTH_SECRET_KEY")
 
 SOCIAL_AUTH_FACEBOOK_SCOPE = ["email"]
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {"fields": "email, first_name, last_name"}
+
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    }
+}

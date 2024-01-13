@@ -7,3 +7,8 @@ CREATE DATABASE zenith;
 \q
 sudo -u postgres psql zenith
 ALTER USER postgres with encrypted password 'your_password';
+
+
+Using uivcorn 
+
+uvicorn core.asgi:application --port 8000 --workers 4 --log-level debug --reload

@@ -17,6 +17,7 @@ urlpatterns = [
     path("auth/", include("user.urls"), name="user"),
     path("api/", include("main.urls"), name="main"),
     path("api/tasks/", include("management.urls"), name="management"),
+    path("", include("notification.urls"), name="notification"),
 ]
 
 if settings.DEBUG:

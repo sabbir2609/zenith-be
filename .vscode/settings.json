@@ -1,10 +1,12 @@
 {
     "cSpell.words": [
+        "asgi",
         "corsheaders",
         "DJOSER",
         "dotenv",
         "roomtype",
         "simplejwt",
+        "uvicorn",
         "viewsets"
     ],
     "python.analysis.typeCheckingMode": "off"
