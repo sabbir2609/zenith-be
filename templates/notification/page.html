@@ -5,4 +5,29 @@
 
 <h1>{{ title }} Test Page</h1>
 
+<script>
+    // WebSocket connection example using JavaScript
+    const socket = new WebSocket("ws://127.0.0.1:8000/ws/notifications/");
+
+    socket.onopen = (event) => {
+        console.log("WebSocket connection opened!");
+    };
+
+    socket.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        // Handle incoming notifications (update UI, show notifications, etc.)
+        console.log("Received notification:", data.notification);
+    };
+
+    socket.onclose = (event) => {
+        console.log("WebSocket connection closed:", event);
+    };
+
+    // Send a message to the server (if needed)
+    function sendMessage() {
+        const message = "Hello, server!";
+        socket.send(JSON.stringify({ message }));
+    }
+</script>
+
 {% endblock %}

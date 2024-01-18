@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
         "asgi",
+        "asgiref",
         "corsheaders",
         "DJOSER",
         "dotenv",
