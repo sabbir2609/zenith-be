@@ -53,11 +53,19 @@ def assign_staff_to_pending_tasks(sender, instance, **kwargs):
         if pending_tasks.exists():
             oldest_task = pending_tasks.order_by("created_at").first()
             oldest_task.staff = instance
-
-            channel_layer = get_channel_layer()
-            async_to_sync(channel_layer.group_send)(
-                "notifications",
-                {"type": "send_notification", "message": "New task assigned."},
-            )
-
             oldest_task.save()
+
+
+@receiver(post_save, sender=Task)
+def send_notification_on_save(sender, instance, **kwargs):
+    from asgiref.sync import async_to_sync
+    from channels.layers import get_channel_layer
+
+    channel_layer = get_channel_layer()
+    async_to_sync(channel_layer.group_send)(
+        "notification_group",
+        {
+            "type": "send_notification",
+            "message": f"A new Task Created! - {instance.task_description}",
+        },
+    )

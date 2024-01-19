@@ -32,4 +32,4 @@ class TaskAdmin(admin.ModelAdmin):
     autocomplete_fields = ("staff",)
     list_filter = ("task_status",)
     inlines = [InlineTaskCheckList]
-    paginated_by = 10
+    list_per_page = 10
