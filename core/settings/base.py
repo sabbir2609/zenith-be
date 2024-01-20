@@ -15,7 +15,9 @@ INSTALLED_APPS = [
     "user",
     "main",
     "management",
+    "facility",
     "notification",
+    "iot",
     # 3rd party apps
     "rest_framework",
     "rest_framework_simplejwt",
@@ -84,6 +86,7 @@ USE_TZ = True
 
 
 STATIC_URL = "static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"

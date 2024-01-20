@@ -18,7 +18,7 @@ urlpatterns = [
     path("api/", include("main.urls"), name="main"),
     path("api/tasks/", include("management.urls"), name="management"),
     path("", include("notification.urls"), name="notification"),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
