@@ -18,6 +18,10 @@ COPY requirements.txt /app/
 RUN pip install --upgrade pip \
     && pip install -r requirements.txt
 
+# Copy the .env file and set environment variables
+COPY .env /app/
+ENV $(cat .env | grep -v ^# | xargs)
+
 # Copy the current directory contents into the container at /app
 COPY . /app/
 
@@ -28,4 +32,4 @@ RUN python manage.py collectstatic --noinput
 EXPOSE 8000
 
 # Command to run the application using Uvicorn
-CMD ["sh", "-c", "source .env && uvicorn core.asgi:application --host 0.0.0.0 --port 8000 --workers 4 --log-level debug --reload"]
+CMD ["uvicorn", "core.asgi:application", "--host", "0.0.0.0", "--port", "8000", "--workers", "4", "--log-level", "debug", "--reload"]
