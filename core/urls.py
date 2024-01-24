@@ -17,11 +17,12 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api-auth/", include("rest_framework.urls")),
     path("auth/", include("user.urls"), name="user"),
-    path("api/", include("main.urls"), name="main"),
+    path("api/main/", include("main.urls"), name="main"),
     path("api/tasks/", include("management.urls"), name="management"),
-    path("notification/", include("notification.urls"), name="notification"),
-    path("iot/", include("iot.urls"), name="iot"),
+    path("api/iot/", include("iot.urls"), name="iot"),
+    # test pages
     path("", Homepage.as_view(), name="homepage"),
+    path("notifications/", include("notification.urls"), name="notification"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:

@@ -13,29 +13,37 @@ class DeviceAdmin(admin.ModelAdmin):
     list_display = (
         "name",
         "device_type",
-        "device_id",
+        "client_id",
         "status",
         "created_at",
         "updated_at",
     )
-    search_fields = ("name", "device_id", "description")
+    search_fields = ("name", "client_id", "description")
     list_filter = ("device_type", "status")
     ordering = ["-created_at"]
 
 
 @admin.register(RoomDevice)
 class RoomDeviceAdmin(admin.ModelAdmin):
-    list_display = ("room", "device", "installation_date", "is_active")
-    list_filter = ("room__room_label", "device__name", "is_active")
+    list_display = (
+        "room",
+        "device",
+    )
+    list_filter = (
+        "room__room_label",
+        "device__name",
+    )
     search_fields = ("room__room_label", "device__name")
-    ordering = ["-installation_date"]
-    date_hierarchy = "installation_date"
 
 
 @admin.register(FacilityDevice)
 class FacilityDeviceAdmin(admin.ModelAdmin):
-    list_display = ("facility", "device", "installation_date", "is_active")
-    list_filter = ("facility__name", "device__name", "is_active")
+    list_display = (
+        "facility",
+        "device",
+    )
+    list_filter = (
+        "facility__name",
+        "device__name",
+    )
     search_fields = ("facility__name", "device__name")
-    ordering = ["-installation_date"]
-    date_hierarchy = "installation_date"

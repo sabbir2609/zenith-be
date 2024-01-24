@@ -10,6 +10,6 @@ class NotificationConsumer(AsyncWebsocketConsumer):
     async def disconnect(self, close_code):
         await self.channel_layer.group_discard("notification_group", self.channel_name)
 
-    async def send_notification(self, event):
+    async def on_message(self, event):
         message = event["message"]
         await self.send(text_data=json.dumps({"message": message}))

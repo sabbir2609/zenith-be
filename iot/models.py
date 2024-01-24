@@ -29,18 +29,38 @@ class DeviceType(models.Model):
 
 
 class Device(BaseModel):
+    class QosChoices(models.IntegerChoices):
+        QOS0 = 0, _("QoS 0")
+        QOS1 = 1, _("QoS 1")
+        QOS2 = 2, _("QoS 2")
+        QOS_AUTO = 3, _("QoS Auto")
+
     name = models.CharField(max_length=100, help_text=_("Name of the device"))
     device_type = models.ForeignKey(
         DeviceType, on_delete=models.CASCADE, help_text=_("Type of the device")
     )
-    device_id = models.CharField(
-        max_length=100, help_text=_("Unique identifier for the device")
+    client_id = models.CharField(
+        max_length=100, unique=True, help_text=_("Unique identifier for the device")
+    )
+    topic = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True,
+        help_text=_("MQTT topic for the device"),
+    )
+    qos = models.IntegerField(
+        choices=QosChoices.choices,
+        default=QosChoices.QOS0,
+        help_text=_("Quality of Service for the device"),
+    )
+    status = models.BooleanField(
+        default=False, help_text=_("Status of the device (active/inactive)")
     )
     description = models.TextField(
         null=True, blank=True, help_text=_("Description of the device")
     )
-    status = models.BooleanField(
-        default=False, help_text=_("Status of the device (active/inactive)")
+    installation_date = models.DateField(
+        help_text=_("Date when the device was installed")
     )
 
     def __str__(self):
@@ -52,19 +72,7 @@ class Device(BaseModel):
         ordering = ["-created_at"]
 
 
-class BaseDeviceInstallation(BaseModel):
-    installation_date = models.DateField(
-        help_text=_("Date when the device was installed")
-    )
-    is_active = models.BooleanField(
-        default=True, help_text=_("Indicates whether the device is currently active")
-    )
-
-    class Meta:
-        abstract = True
-
-
-class RoomDevice(BaseDeviceInstallation):
+class RoomDevice(models.Model):
     room = models.ForeignKey(
         Room,
         on_delete=models.CASCADE,
@@ -93,7 +101,7 @@ class RoomDevice(BaseDeviceInstallation):
         unique_together = ("room", "device")
 
 
-class FacilityDevice(BaseDeviceInstallation):
+class FacilityDevice(models.Model):
     facility = models.ForeignKey(
         Facility,
         on_delete=models.CASCADE,

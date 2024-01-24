@@ -3,11 +3,11 @@
 
 {% block content %}
 
-<h1>{{ title }} Test Page</h1>
+<h1>{{ title }} Page</h1>
 
 <script>
     // WebSocket connection example using JavaScript
-    const socket = new WebSocket("ws://127.0.0.1:8000/ws/iot/");
+    const socket = new WebSocket(`ws://127.0.0.1:8000/ws/device/{{device_id}}/`);
 
     socket.onopen = (event) => {
         console.log("WebSocket connection opened! for IoT");
@@ -16,11 +16,11 @@
     socket.onmessage = (event) => {
         const data = JSON.parse(event.data);
         // Handle incoming notifications (update UI, show notifications, etc.)
-        console.log("Received IoT notification:", data.notification);
+        console.log("Received IoT notification:", data.message);
     };
 
     socket.onclose = (event) => {
-        console.log("WebSocket connection closed for IoT:", event);
+        console.log("WebSocket connection closed for IoT:");
     };
 
     // Send a message to the server (if needed)

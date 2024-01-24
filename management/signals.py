@@ -65,7 +65,7 @@ def send_notification_on_save(sender, instance, **kwargs):
     async_to_sync(channel_layer.group_send)(
         "notification_group",
         {
-            "type": "send_notification",
+            "type": "on_message",
             "message": f"A new Task Created! - {instance.task_description}",
         },
     )
