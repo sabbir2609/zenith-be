@@ -174,3 +174,12 @@ CHANNEL_LAYERS = {
         "BACKEND": "channels.layers.InMemoryChannelLayer",
     }
 }
+
+# MQTT SETTINGS
+MQTT_HOST = getenv("MQTT_HOST", "localhost")
+MQTT_PORT = getenv("MQTT_PORT", 1883)
+MQTT_USERNAME = getenv("MQTT_USERNAME", "")
+MQTT_PASSWORD = getenv("MQTT_PASSWORD", "")
+MQTT_KEEPALIVE = getenv("MQTT_KEEPALIVE", 60)
+MQTT_TLS_ENABLED = False
+MQTT_TLS_CA_FILE = None

@@ -8,7 +8,7 @@ settings_module = (
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", settings_module)
 
-from notification.routing import websocket_urlpatterns  # noqa isort:skip
+from core.routing import websocket_urlpatterns  # noqa isort:skip
 
 
 application = ProtocolTypeRouter(

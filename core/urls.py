@@ -4,6 +4,8 @@ from django.contrib import admin
 from django.db import router
 from django.urls import path, include
 
+from .views import Homepage
+
 
 # Admin Site Config
 admin.site.site_header = "Zenith System"
@@ -17,7 +19,9 @@ urlpatterns = [
     path("auth/", include("user.urls"), name="user"),
     path("api/", include("main.urls"), name="main"),
     path("api/tasks/", include("management.urls"), name="management"),
-    path("", include("notification.urls"), name="notification"),
+    path("notification/", include("notification.urls"), name="notification"),
+    path("iot/", include("iot.urls"), name="iot"),
+    path("", Homepage.as_view(), name="homepage"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
