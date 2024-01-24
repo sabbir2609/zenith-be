@@ -7,6 +7,14 @@ from django.conf import settings
 from main.models import Room
 
 
+class BaseModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
+
 class Role(models.Model):
     name = models.CharField(max_length=200, help_text="Type or category of the staff")
 
@@ -18,7 +26,7 @@ class Role(models.Model):
         verbose_name_plural = "Role"
 
 
-class Staff(models.Model):
+class Staff(BaseModel):
     class StuffStatusChoices(models.TextChoices):
         AVAILABLE = "available", "Available"
         BUSY = "busy", "Busy "
@@ -35,12 +43,6 @@ class Staff(models.Model):
         default=StuffStatusChoices.AVAILABLE,
         help_text="Current status of the staff",
     )
-    created_at = models.DateTimeField(
-        auto_now_add=True, help_text="Date and time of creation"
-    )
-    updated_at = models.DateTimeField(
-        auto_now=True, help_text="Date and time of the last update"
-    )
 
     def __str__(self):
         return f"{self.user} - {self.role}"
@@ -51,7 +53,7 @@ class Staff(models.Model):
         verbose_name_plural = "Staffs"
 
 
-class Task(models.Model):
+class Task(BaseModel):
     class TaskStatusChoices(models.TextChoices):
         PENDING = "pending", "Pending"
         IN_PROGRESS = "in_progress", "In Progress"
@@ -82,12 +84,6 @@ class Task(models.Model):
         choices=TaskStatusChoices.choices,
         default=TaskStatusChoices.PENDING,
         help_text="Current status of the task",
-    )
-    created_at = models.DateTimeField(
-        auto_now_add=True, help_text="Date and time of task creation"
-    )
-    updated_at = models.DateTimeField(
-        auto_now=True, help_text="Date and time of the last update"
     )
 
     def save(self, *args, **kwargs):

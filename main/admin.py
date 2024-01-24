@@ -61,7 +61,7 @@ class InstallmentInline(admin.TabularInline):
         "installment_type",
         "installment_amount",
         "installment_status",
-        "installment_date",
+        "created_at",
     ]
 
     def has_add_permission(self, request, obj=None):
@@ -122,9 +122,9 @@ class InstallmentAdmin(admin.ModelAdmin):
 
 @admin.register(Payment)
 class PaymentAdmin(admin.ModelAdmin):
-    list_display = ("installment", "payment_date", "payment_amount", "payment_method")
+    list_display = ("installment", "payment_amount", "payment_method")
     search_fields = ["installment"]
-    readonly_fields = ["payment_id", "payment_date", "payment_amount", "is_refunded"]
+    readonly_fields = ["payment_id", "payment_amount", "is_refunded"]
     fieldsets = (
         (
             None,
@@ -132,7 +132,7 @@ class PaymentAdmin(admin.ModelAdmin):
                 "fields": (
                     "payment_id",
                     "installment",
-                    "payment_date",
+                    "created_at",
                     "payment_amount",
                     "payment_method",
                     "is_refunded",
@@ -144,9 +144,8 @@ class PaymentAdmin(admin.ModelAdmin):
 
 @admin.register(Refund)
 class RefundAdmin(admin.ModelAdmin):
-    list_display = ("payment", "refund_amount", "refund_date", "refund_method")
+    list_display = ("payment", "refund_amount", "refund_method")
     search_fields = ["payment"]
-    readonly_fields = ["refund_date"]
     fieldsets = (
         (
             None,
@@ -154,7 +153,7 @@ class RefundAdmin(admin.ModelAdmin):
                 "fields": (
                     "payment",
                     "refund_amount",
-                    "refund_date",
+                    "created_at",
                     "refund_method",
                 )
             },

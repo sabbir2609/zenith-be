@@ -7,7 +7,15 @@ from django.forms import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 
-class Guest(models.Model):
+class BaseModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
+
+class Guest(BaseModel):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
 
     contact_info = models.CharField(max_length=100, null=True, blank=True)
@@ -16,8 +24,6 @@ class Guest(models.Model):
     image = models.ImageField(upload_to="guests", null=True, blank=True)
 
     status = models.BooleanField(default=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return str(self.user)
@@ -142,7 +148,7 @@ class Amenity(models.Model):
         verbose_name_plural = "Amenities"
 
 
-class Review(models.Model):
+class Review(BaseModel):
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     guest = models.ForeignKey(Guest, on_delete=models.CASCADE)
     rating = models.IntegerField(
@@ -154,8 +160,6 @@ class Review(models.Model):
     comment = models.TextField(blank=True, null=True)
     images = models.ImageField(upload_to="room/review/", blank=True, null=True)
     likes = models.ManyToManyField(Guest, blank=True, related_name="review_likes")
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return str(self.room)
@@ -203,7 +207,7 @@ class Reservation(models.Model):
         return f"{self.room}-{self.start_date}-{self.total_amount}"
 
 
-class Installment(models.Model):
+class Installment(BaseModel):
     class InstallmentChoices(models.TextChoices):
         FIRST = "First", "First"
         SECOND = "Second", "Second"
@@ -216,13 +220,12 @@ class Installment(models.Model):
         default=InstallmentChoices.FIRST,
     )
     reservation = models.ForeignKey(Reservation, on_delete=models.CASCADE)
-    installment_date = models.DateField(auto_now_add=True)
     installment_amount = models.DecimalField(max_digits=10, decimal_places=2)
     installment_status = models.CharField(max_length=20, default="Pending")
 
     class Meta:
         verbose_name_plural = "Installments"
-        ordering = ["-installment_date"]
+        ordering = ["-created_at"]
 
     def __str__(self):
         return (
@@ -230,11 +233,10 @@ class Installment(models.Model):
         )
 
 
-class Payment(models.Model):
+class Payment(BaseModel):
     payment_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     installment = models.OneToOneField(Installment, on_delete=models.CASCADE)
     payment_amount = models.DecimalField(max_digits=10, decimal_places=2)
-    payment_date = models.DateField(auto_now_add=True)
     payment_method = models.CharField(max_length=100)
 
     is_refunded = models.BooleanField(default=False)
@@ -245,21 +247,20 @@ class Payment(models.Model):
 
     class Meta:
         verbose_name_plural = "Payments"
-        ordering = ["-payment_date"]
+        ordering = ["-created_at"]
 
     def __str__(self):
         return f"{self.installment}-{self.installment.installment_status}-{self.payment_amount}"
 
 
-class Refund(models.Model):
+class Refund(BaseModel):
     payment = models.OneToOneField(Payment, on_delete=models.CASCADE)
     refund_amount = models.DecimalField(max_digits=10, decimal_places=2)
-    refund_date = models.DateField(auto_now_add=True)
     refund_method = models.CharField(max_length=100)
 
     class Meta:
         verbose_name_plural = "Refunds"
-        ordering = ["-refund_date"]
+        ordering = ["-created_at"]
 
     def __str__(self):
         return str(self.payment.payment_id)

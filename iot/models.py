@@ -3,16 +3,18 @@ from main.models import Room
 from facility.models import Facility
 
 
+class BaseModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
+
 class DeviceType(models.Model):
     name = models.CharField(max_length=100, help_text="Name of the device type")
     description = models.TextField(
         null=True, blank=True, help_text="Description of the device type"
-    )
-    created_at = models.DateTimeField(
-        auto_now_add=True, help_text="Date and time when the device type was created"
-    )
-    updated_at = models.DateTimeField(
-        auto_now=True, help_text="Date and time when the device type was last updated"
     )
 
     def __str__(self):
@@ -21,10 +23,10 @@ class DeviceType(models.Model):
     class Meta:
         verbose_name = "Device Type"
         verbose_name_plural = "Device Types"
-        ordering = ["-created_at"]
+        ordering = ["id"]
 
 
-class Device(models.Model):
+class Device(BaseModel):
     name = models.CharField(max_length=100, help_text="Name of the device")
     device_type = models.ForeignKey(
         DeviceType, on_delete=models.CASCADE, help_text="Type of the device"
@@ -37,12 +39,6 @@ class Device(models.Model):
     )
     status = models.BooleanField(
         default=False, help_text="Status of the device (active/inactive)"
-    )
-    created_at = models.DateTimeField(
-        auto_now_add=True, help_text="Date and time when the device was created"
-    )
-    updated_at = models.DateTimeField(
-        auto_now=True, help_text="Date and time when the device was last updated"
     )
 
     def __str__(self):

@@ -4,9 +4,8 @@ from .models import DeviceType, Device, RoomDevice, FacilityDevice
 
 @admin.register(DeviceType)
 class DeviceTypeAdmin(admin.ModelAdmin):
-    list_display = ("name", "description", "created_at", "updated_at")
+    list_display = ("name", "description")
     search_fields = ("name", "description")
-    ordering = ["-created_at"]
 
 
 @admin.register(Device)

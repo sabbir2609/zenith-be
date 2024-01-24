@@ -5,6 +5,8 @@
         "corsheaders",
         "DJOSER",
         "dotenv",
+        "mqtt",
+        "paho",
         "roomtype",
         "simplejwt",
         "uvicorn",
