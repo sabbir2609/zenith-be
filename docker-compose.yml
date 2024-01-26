@@ -1,23 +1,29 @@
-version: '3'
-
+version: '3.10'
 services:
   web:
     build: .
-    env_file: .env
+    command: bash ./wait-for-it.sh postgres:5432 -- ./docker-entrypoint.sh
+    container_name: zenith_app
+    env_file:
+      - .env
     ports:
-      - "8000:8000"
+      - 8000:8000
     depends_on:
-      - db
-    command:
-      [
-        "sh",
-        "-c",
-        "source .env && uvicorn core.asgi:application --host 0.0.0.0 --port 8000 --workers 4 --log-level debug --reload"
-      ]
-
-  db:
-    image: postgres:latest
+      - postgres
+    restart: on-failure
+    volumes:
+      - .:/app
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    restart: always
     environment:
-      POSTGRES_DB: zenith
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 2609
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=2609
+      - POSTGRES_DB=zenith
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

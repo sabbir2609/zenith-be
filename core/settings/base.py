@@ -183,3 +183,9 @@ MQTT_PASSWORD = getenv("MQTT_PASSWORD", "")
 MQTT_KEEPALIVE = getenv("MQTT_KEEPALIVE", 60)
 MQTT_TLS_ENABLED = False
 MQTT_TLS_CA_FILE = None
+
+
+# Celery Configuration Options
+# CELERY_TIMEZONE = "Asia/Bangladesh"
+# CELERY_TASK_TRACK_STARTED = True
+# CELERY_TASK_TIME_LIMIT = 30 * 60

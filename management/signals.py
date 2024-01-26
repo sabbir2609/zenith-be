@@ -3,9 +3,6 @@ from django.dispatch import receiver
 from management.models import Staff, Task
 from main.models import Reservation
 
-from channels.layers import get_channel_layer
-from asgiref.sync import async_to_sync
-
 import logging
 
 logger = logging.getLogger(__name__)

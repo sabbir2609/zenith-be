@@ -12,6 +12,8 @@ from iot.serializers import (
     FacilityDeviceSerializer,
 )
 
+from iot.mqtt.client import client as mqtt_client
+
 
 class DeviceTypeViewSet(viewsets.ModelViewSet):
     queryset = DeviceType.objects.all()
@@ -38,6 +40,10 @@ class IoTChannel(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
+        topic = Device.objects.get(pk=self.kwargs["device_id"]).topic
+        mqtt_client.subscribe(topic)
+
         context["title"] = "IoT Devices Websocket Test"
         context["device_id"] = self.kwargs["device_id"]
         return context

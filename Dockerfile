@@ -1,35 +1,31 @@
-# Use an official Python runtime as a parent image
-FROM python:3.10-slim
+FROM python:3.10
 
-# Set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONUNBUFFERED=1
 
-# Set the working directory in the container
 WORKDIR /app
 
-# Install system dependencies
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends gcc libpq-dev \
-    && rm -rf /var/lib/apt/lists/*
+# Install required system packages
+RUN apt-get update && apt-get install -y python3-dev libpq-dev \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies
+# Install pipenv
+RUN pip install --upgrade pip
+
+# Install application dependencies
 COPY requirements.txt /app/
-RUN pip install --upgrade pip \
-    && pip install -r requirements.txt
+RUN pip install -r requirements.txt
 
-# Copy the .env file and set environment variables
-COPY .env /app/
-ENV $(cat .env | grep -v ^# | xargs)
+# Copy wait-for-it.sh and set execute permission
+COPY wait-for-it.sh /app/wait-for-it.sh
+RUN chmod +x /app/wait-for-it.sh
 
-# Copy the current directory contents into the container at /app
-COPY . /app/
+# Copy docker-entrypoint.sh and set execute permission
+COPY docker-entrypoint.sh /app/docker-entrypoint.sh
+RUN chmod +x /app/docker-entrypoint.sh
 
-# Collect static files (if needed)
-RUN python manage.py collectstatic --noinput
+# Copy application files
+COPY . ./app/
 
-# Expose the port that Uvicorn will run on
+
+# Expose port 8000 on the container
 EXPOSE 8000
-
-# Command to run the application using Uvicorn
-CMD ["uvicorn", "core.asgi:application", "--host", "0.0.0.0", "--port", "8000", "--workers", "4", "--log-level", "debug", "--reload"]
