@@ -13,4 +13,4 @@ client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 
-client.connect("b140bce2916a43e7981538899de3b9f3.s2.eu.hivemq.cloud", 8883, 60)
+client.connect("127.0.0.1", 1883, 60)

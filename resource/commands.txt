@@ -12,3 +12,9 @@ ALTER USER postgres with encrypted password 'your_password';
 Using uivcorn 
 
 uvicorn core.asgi:application --port 8000 --workers 4 --log-level debug --reload
+
+
+
+celery -A core worker --loglevel=info
+celery -A core beat
+celery -A core flower

@@ -41,8 +41,20 @@ class IoTChannel(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        topic = Device.objects.get(pk=self.kwargs["device_id"]).topic
+        topic = Device.objects.get(client_id=self.kwargs["device_id"]).topic
         mqtt_client.subscribe(topic)
+
+        from asgiref.sync import async_to_sync
+        from channels.layers import get_channel_layer
+
+        channel_layer = get_channel_layer()
+        async_to_sync(channel_layer.group_send)(
+            f'{context["device_id"]}',
+            {
+                "type": "on_message",
+                "message": f"{mqtt_client.on_message}",
+            },
+        )
 
         context["title"] = "IoT Devices Websocket Test"
         context["device_id"] = self.kwargs["device_id"]

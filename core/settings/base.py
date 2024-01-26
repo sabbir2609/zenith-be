@@ -1,4 +1,5 @@
 from os import getenv
+import os
 from pathlib import Path
 from datetime import timedelta
 
@@ -25,6 +26,8 @@ INSTALLED_APPS = [
     "corsheaders",
     "social_django",
     "channels",
+    "django_celery_results",
+    "django_celery_beat",
 ]
 
 MIDDLEWARE = [
@@ -171,8 +174,11 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {"fields": "email, first_name, last_
 
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer",
-    }
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
 }
 
 # MQTT SETTINGS
@@ -185,7 +191,56 @@ MQTT_TLS_ENABLED = False
 MQTT_TLS_CA_FILE = None
 
 
-# Celery Configuration Options
-# CELERY_TIMEZONE = "Asia/Bangladesh"
-# CELERY_TASK_TRACK_STARTED = True
-# CELERY_TASK_TIME_LIMIT = 30 * 60
+# CELERY SETTINGS
+
+CELERY_TIMEZONE = "Asia/Dhaka"
+
+CELERY_BROKER_URL = "redis://localhost:6379"
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "TIMEOUT": 10 * 60,
+        "LOCATION": "redis://localhost:6379/2",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+    }
+}
+
+CELERY_BEAT_SCHEDULE = {
+    "notify_customers": {
+        "task": "notification.tasks.notify_customers",
+        "schedule": 5,
+        "args": ["Hello World"],
+    }
+}
+
+#####################
+# LOGGING SETTINGS #
+#####################
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {"class": "logging.StreamHandler"},
+        "file": {
+            "class": "logging.FileHandler",
+            "filename": "general.log",
+            "formatter": "verbose",
+        },
+    },
+    "loggers": {
+        "": {
+            "handlers": ["console", "file"],
+            "level": os.environ.get("DJANGO_LOG_LEVEL", "INFO"),
+        }
+    },
+    "formatters": {
+        "verbose": {
+            "format": "{asctime} ({levelname}) - {name} - {message}",
+            "style": "{",
+        }
+    },
+}

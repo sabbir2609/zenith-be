@@ -1,0 +1,173 @@
+2024-01-26 21:38:28,025 (WARNING) - django.request - Not Found: /api/iot/ws/
+2024-01-26 21:38:32,060 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/db/models/fields/__init__.py", line 2053, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'AC118'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 44, in get_context_data
+    topic = Device.objects.get(pk=self.kwargs["device_id"]).topic
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 623, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1545, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1576, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1491, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1318, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/db/models/lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/db/models/lookups.py", line 341, in get_prep_lookup
+    return super().get_prep_lookup()
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/db/models/lookups.py", line 85, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/db/models/fields/__init__.py", line 2055, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' expected a number but got 'AC118'.
+2024-01-26 21:45:07,950 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 46, in get_context_data
+    mqtt_client.on_message = self.on_message
+AttributeError: 'IoTChannel' object has no attribute 'on_message'
+2024-01-26 21:45:50,382 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 46, in get_context_data
+    data = mqtt_client.get_message()
+AttributeError: 'Client' object has no attribute 'get_message'. Did you mean: '_on_message'?
+2024-01-26 21:46:04,973 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 46, in get_context_data
+    data = mqtt_client.on_message()
+TypeError: on_message() missing 3 required positional arguments: 'client', 'userdata', and 'msg'
+2024-01-26 22:04:33,284 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 235, in _get_response_async
+    callback, callback_args, callback_kwargs = self.resolve_request(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 313, in resolve_request
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/urls/resolvers.py", line 663, in resolve
+    for pattern in self.url_patterns:
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/urls/resolvers.py", line 715, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/urls/resolvers.py", line 708, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/sabbir/zenith-sys/zenith/core/urls.py", line 22, in <module>
+    path("api/iot/", include("iot.urls"), name="iot"),
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/urls/conf.py", line 38, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/sabbir/zenith-sys/zenith/iot/urls.py", line 3, in <module>
+    from iot.views import (
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 16, in <module>
+    from iot.mqtt.client import subscribe_to_topic
+  File "/home/sabbir/zenith-sys/zenith/iot/mqtt/__init__.py", line 1, in <module>
+    from iot.mqtt.client import client
+ImportError: cannot import name 'client' from 'iot.mqtt.client' (/home/sabbir/zenith-sys/zenith/iot/mqtt/client.py)
