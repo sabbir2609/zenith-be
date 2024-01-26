@@ -1,4 +1,4 @@
 from iot.mqtt.client import client
 
 
-client.loop_forever()
+# client.loop_forever()
