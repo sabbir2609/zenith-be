@@ -1,5 +1,6 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
+from iot.tasks import run_mqtt_loop
 
 
 class DeviceConsumer(AsyncWebsocketConsumer):
@@ -11,11 +12,14 @@ class DeviceConsumer(AsyncWebsocketConsumer):
 
         await self.accept()
 
-    async def receive(self, text_data):
-        text_data_json = json.loads(text_data)
-        message = text_data_json["message"]
+        self.run_mqtt_loop_result = run_mqtt_loop.delay()
 
+    async def on_message(self, event):
+        message = event["message"]
         await self.send(text_data=json.dumps({"message": message}))
 
     async def disconnect(self, close_code):
         await self.channel_layer.group_discard(self.room_group_name, self.channel_name)
+
+        if hasattr(self, "run_mqtt_loop_result"):
+            self.run_mqtt_loop_result.revoke(terminate=True)

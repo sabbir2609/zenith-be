@@ -1,35 +1,32 @@
 {% extends 'base/base.html' %}
 
-
 {% block content %}
 
 <h1>{{ title }} Page</h1>
-<h1>Device ID: {{device_id}} </h1>
+<h3>Device ID: {{ device_id }}, Topic: {{ topic }} </h3>
+
+<div class="alert alert-info" role="alert" id="mqttMessage"></div>
 
 <script>
-    // WebSocket connection example using JavaScript
-    const socket = new WebSocket(`ws://127.0.0.1:8000/ws/device/{{device_id}}/`);
+    document.addEventListener('DOMContentLoaded', function () {
+        const socket = new WebSocket(`ws://127.0.0.1:8000/ws/device/{{ device_id }}/`);
+        const messageContainer = document.getElementById('mqttMessage');
 
-    socket.onopen = (event) => {
-        console.log("WebSocket connection opened! for IoT");
-    };
+        socket.onopen = (event) => {
+            console.log("WebSocket connection opened! for IoT", event);
+        };
 
-    socket.onmessage = (event) => {
-        const data = JSON.parse(event.data);
-        // Handle incoming notifications (update UI, show notifications, etc.)
-        console.log("Received IoT notification:", data.message);
-    };
+        socket.onclose = (event) => {
+            console.log("WebSocket connection closed for IoT:", event);
+        };
 
-    socket.onclose = (event) => {
-        console.log("WebSocket connection closed for IoT:");
-    };
+        socket.onmessage = function (event) {
+            const data = JSON.parse(event.data);
+            messageContainer.innerHTML = `Received IoT notification: ${data.message}`;
+            console.log(data.message);
+        };
+    });
 
-    // Send a message to the server (if needed)
-    socket.onmessage = function (event) {
-        const data = JSON.parse(event.data);
-        console.log(data.message)
-        alert(data.message);
-    };
 </script>
 
 {% endblock %}

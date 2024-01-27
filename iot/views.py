@@ -12,7 +12,7 @@ from iot.serializers import (
     FacilityDeviceSerializer,
 )
 
-from iot.mqtt.client import client as mqtt_client
+from iot.mqtt.client import client
 
 
 class DeviceTypeViewSet(viewsets.ModelViewSet):
@@ -41,21 +41,10 @@ class IoTChannel(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        topic = Device.objects.get(client_id=self.kwargs["device_id"]).topic
-        mqtt_client.subscribe(topic)
-
-        from asgiref.sync import async_to_sync
-        from channels.layers import get_channel_layer
-
-        channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(
-            f'{context["device_id"]}',
-            {
-                "type": "on_message",
-                "message": f"{mqtt_client.on_message}",
-            },
-        )
+        device_id = self.kwargs["device_id"]
+        topic = Device.objects.get(client_id=device_id).topic
 
         context["title"] = "IoT Devices Websocket Test"
-        context["device_id"] = self.kwargs["device_id"]
+        context["device_id"] = device_id
+        context["topic"] = topic
         return context

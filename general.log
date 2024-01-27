@@ -171,3 +171,797 @@ Traceback (most recent call last):
   File "/home/sabbir/zenith-sys/zenith/iot/mqtt/__init__.py", line 1, in <module>
     from iot.mqtt.client import client
 ImportError: cannot import name 'client' from 'iot.mqtt.client' (/home/sabbir/zenith-sys/zenith/iot/mqtt/client.py)
+2024-01-27 06:47:39,357 (WARNING) - django.request - Not Found: /favicon.ico
+2024-01-27 07:00:25,111 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 55, in get_context_data
+    "message": f"{mqtt_client.on_message()}",
+TypeError: on_message() missing 3 required positional arguments: 'client', 'userdata', and 'msg'
+2024-01-27 07:05:52,739 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 55, in get_context_data
+    "message": f"{mqtt_client.on_message()}",
+TypeError: on_message() missing 3 required positional arguments: 'client', 'userdata', and 'msg'
+2024-01-27 07:34:59,070 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 47, in get_context_data
+    message = mqtt_client.on_message()
+TypeError: on_message() missing 3 required positional arguments: 'client', 'userdata', and 'msg'
+2024-01-27 07:37:57,014 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 47, in get_context_data
+    message = mqtt_client.on_message()
+TypeError: on_message() missing 3 required positional arguments: 'client', 'userdata', and 'msg'
+2024-01-27 07:38:08,871 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 57, in get_context_data
+    "message": f"{message.payload}",
+AttributeError: 'function' object has no attribute 'payload'
+2024-01-27 08:11:23,848 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2024-01-27 08:11:47,680 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2024-01-27 08:11:50,908 (WARNING) - django.request - Not Found: /ws/device/AC118/
+2024-01-27 08:24:02,780 (WARNING) - django.request - Not Found: /api
+2024-01-27 08:31:08,717 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 54, in get_context_data
+    async_to_sync(channel_layer.group_send)(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 277, in __call__
+    return call_result.result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 353, in main_wrap
+    result = await self.awaitable(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 539, in group_send
+    ) = self._map_channel_keys_to_connection(channel_names, message)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 639, in _map_channel_keys_to_connection
+    channel_key_to_message[key] = self.serialize(value)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 659, in serialize
+    value = msgpack.packb(message, use_bin_type=True)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/msgpack/__init__.py", line 36, in packb
+    return Packer(**kwargs).pack(o)
+  File "msgpack/_packer.pyx", line 294, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 300, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 297, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 231, in msgpack._cmsgpack.Packer._pack
+  File "msgpack/_packer.pyx", line 231, in msgpack._cmsgpack.Packer._pack
+  File "msgpack/_packer.pyx", line 291, in msgpack._cmsgpack.Packer._pack
+TypeError: can not serialize 'function' object
+2024-01-27 09:02:43,745 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 55, in get_context_data
+    async_to_sync(channel_layer.group_send)(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 277, in __call__
+    return call_result.result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 353, in main_wrap
+    result = await self.awaitable(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 539, in group_send
+    ) = self._map_channel_keys_to_connection(channel_names, message)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 639, in _map_channel_keys_to_connection
+    channel_key_to_message[key] = self.serialize(value)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 659, in serialize
+    value = msgpack.packb(message, use_bin_type=True)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/msgpack/__init__.py", line 36, in packb
+    return Packer(**kwargs).pack(o)
+  File "msgpack/_packer.pyx", line 294, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 300, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 297, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 231, in msgpack._cmsgpack.Packer._pack
+  File "msgpack/_packer.pyx", line 231, in msgpack._cmsgpack.Packer._pack
+  File "msgpack/_packer.pyx", line 291, in msgpack._cmsgpack.Packer._pack
+TypeError: can not serialize 'function' object
+2024-01-27 09:03:37,089 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 55, in get_context_data
+    async_to_sync(channel_layer.group_send)(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 277, in __call__
+    return call_result.result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 353, in main_wrap
+    result = await self.awaitable(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 539, in group_send
+    ) = self._map_channel_keys_to_connection(channel_names, message)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 639, in _map_channel_keys_to_connection
+    channel_key_to_message[key] = self.serialize(value)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 659, in serialize
+    value = msgpack.packb(message, use_bin_type=True)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/msgpack/__init__.py", line 36, in packb
+    return Packer(**kwargs).pack(o)
+  File "msgpack/_packer.pyx", line 294, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 300, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 297, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 231, in msgpack._cmsgpack.Packer._pack
+  File "msgpack/_packer.pyx", line 231, in msgpack._cmsgpack.Packer._pack
+  File "msgpack/_packer.pyx", line 291, in msgpack._cmsgpack.Packer._pack
+TypeError: can not serialize 'function' object
+2024-01-27 09:04:35,154 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 61, in get_context_data
+    "payload": client.on_message(),
+TypeError: on_message() missing 3 required positional arguments: 'client', 'userdata', and 'msg'
+2024-01-27 09:06:07,799 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 51, in get_context_data
+    async_to_sync(channel_layer.group_send)(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 277, in __call__
+    return call_result.result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 353, in main_wrap
+    result = await self.awaitable(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 539, in group_send
+    ) = self._map_channel_keys_to_connection(channel_names, message)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 639, in _map_channel_keys_to_connection
+    channel_key_to_message[key] = self.serialize(value)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 659, in serialize
+    value = msgpack.packb(message, use_bin_type=True)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/msgpack/__init__.py", line 36, in packb
+    return Packer(**kwargs).pack(o)
+  File "msgpack/_packer.pyx", line 294, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 300, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 297, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 231, in msgpack._cmsgpack.Packer._pack
+  File "msgpack/_packer.pyx", line 231, in msgpack._cmsgpack.Packer._pack
+  File "msgpack/_packer.pyx", line 291, in msgpack._cmsgpack.Packer._pack
+TypeError: can not serialize 'function' object
+2024-01-27 09:07:26,065 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 51, in get_context_data
+    async_to_sync(channel_layer.group_send)(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 277, in __call__
+    return call_result.result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 353, in main_wrap
+    result = await self.awaitable(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 539, in group_send
+    ) = self._map_channel_keys_to_connection(channel_names, message)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 639, in _map_channel_keys_to_connection
+    channel_key_to_message[key] = self.serialize(value)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 659, in serialize
+    value = msgpack.packb(message, use_bin_type=True)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/msgpack/__init__.py", line 36, in packb
+    return Packer(**kwargs).pack(o)
+  File "msgpack/_packer.pyx", line 294, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 300, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 297, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 231, in msgpack._cmsgpack.Packer._pack
+  File "msgpack/_packer.pyx", line 231, in msgpack._cmsgpack.Packer._pack
+  File "msgpack/_packer.pyx", line 291, in msgpack._cmsgpack.Packer._pack
+TypeError: can not serialize 'function' object
+2024-01-27 09:08:39,916 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 51, in get_context_data
+    async_to_sync(channel_layer.group_send)(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 277, in __call__
+    return call_result.result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 353, in main_wrap
+    result = await self.awaitable(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 539, in group_send
+    ) = self._map_channel_keys_to_connection(channel_names, message)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 639, in _map_channel_keys_to_connection
+    channel_key_to_message[key] = self.serialize(value)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 659, in serialize
+    value = msgpack.packb(message, use_bin_type=True)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/msgpack/__init__.py", line 36, in packb
+    return Packer(**kwargs).pack(o)
+  File "msgpack/_packer.pyx", line 294, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 300, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 297, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 231, in msgpack._cmsgpack.Packer._pack
+  File "msgpack/_packer.pyx", line 231, in msgpack._cmsgpack.Packer._pack
+  File "msgpack/_packer.pyx", line 291, in msgpack._cmsgpack.Packer._pack
+TypeError: can not serialize 'function' object
+2024-01-27 09:09:35,483 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 47, in get_context_data
+    topic, payload = client.on_message
+TypeError: cannot unpack non-iterable function object
+2024-01-27 09:11:37,145 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 47, in get_context_data
+    topic, payload = client.on_message
+TypeError: cannot unpack non-iterable function object
+2024-01-27 09:11:56,653 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 53, in get_context_data
+    async_to_sync(channel_layer.group_send)(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 277, in __call__
+    return call_result.result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 353, in main_wrap
+    result = await self.awaitable(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 539, in group_send
+    ) = self._map_channel_keys_to_connection(channel_names, message)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 639, in _map_channel_keys_to_connection
+    channel_key_to_message[key] = self.serialize(value)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 659, in serialize
+    value = msgpack.packb(message, use_bin_type=True)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/msgpack/__init__.py", line 36, in packb
+    return Packer(**kwargs).pack(o)
+  File "msgpack/_packer.pyx", line 294, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 300, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 297, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 231, in msgpack._cmsgpack.Packer._pack
+  File "msgpack/_packer.pyx", line 231, in msgpack._cmsgpack.Packer._pack
+  File "msgpack/_packer.pyx", line 291, in msgpack._cmsgpack.Packer._pack
+TypeError: can not serialize 'function' object
+2024-01-27 09:15:07,687 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 53, in get_context_data
+    async_to_sync(channel_layer.group_send)(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 277, in __call__
+    return call_result.result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 353, in main_wrap
+    result = await self.awaitable(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 539, in group_send
+    ) = self._map_channel_keys_to_connection(channel_names, message)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 639, in _map_channel_keys_to_connection
+    channel_key_to_message[key] = self.serialize(value)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 659, in serialize
+    value = msgpack.packb(message, use_bin_type=True)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/msgpack/__init__.py", line 36, in packb
+    return Packer(**kwargs).pack(o)
+  File "msgpack/_packer.pyx", line 294, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 300, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 297, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 231, in msgpack._cmsgpack.Packer._pack
+  File "msgpack/_packer.pyx", line 291, in msgpack._cmsgpack.Packer._pack
+TypeError: can not serialize 'set' object
+2024-01-27 09:15:30,097 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 53, in get_context_data
+    async_to_sync(channel_layer.group_send)(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 277, in __call__
+    return call_result.result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 353, in main_wrap
+    result = await self.awaitable(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 539, in group_send
+    ) = self._map_channel_keys_to_connection(channel_names, message)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 639, in _map_channel_keys_to_connection
+    channel_key_to_message[key] = self.serialize(value)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 659, in serialize
+    value = msgpack.packb(message, use_bin_type=True)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/msgpack/__init__.py", line 36, in packb
+    return Packer(**kwargs).pack(o)
+  File "msgpack/_packer.pyx", line 294, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 300, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 297, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 231, in msgpack._cmsgpack.Packer._pack
+  File "msgpack/_packer.pyx", line 291, in msgpack._cmsgpack.Packer._pack
+TypeError: can not serialize 'set' object
+2024-01-27 09:15:49,078 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 53, in get_context_data
+    async_to_sync(channel_layer.group_send)(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 277, in __call__
+    return call_result.result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 353, in main_wrap
+    result = await self.awaitable(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 539, in group_send
+    ) = self._map_channel_keys_to_connection(channel_names, message)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 639, in _map_channel_keys_to_connection
+    channel_key_to_message[key] = self.serialize(value)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 659, in serialize
+    value = msgpack.packb(message, use_bin_type=True)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/msgpack/__init__.py", line 36, in packb
+    return Packer(**kwargs).pack(o)
+  File "msgpack/_packer.pyx", line 294, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 300, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 297, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 231, in msgpack._cmsgpack.Packer._pack
+  File "msgpack/_packer.pyx", line 291, in msgpack._cmsgpack.Packer._pack
+TypeError: can not serialize 'set' object
+2024-01-27 09:17:44,597 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 53, in get_context_data
+    async_to_sync(channel_layer.group_send)(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 277, in __call__
+    return call_result.result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 353, in main_wrap
+    result = await self.awaitable(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 539, in group_send
+    ) = self._map_channel_keys_to_connection(channel_names, message)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 639, in _map_channel_keys_to_connection
+    channel_key_to_message[key] = self.serialize(value)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 659, in serialize
+    value = msgpack.packb(message, use_bin_type=True)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/msgpack/__init__.py", line 36, in packb
+    return Packer(**kwargs).pack(o)
+  File "msgpack/_packer.pyx", line 294, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 300, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 297, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 231, in msgpack._cmsgpack.Packer._pack
+  File "msgpack/_packer.pyx", line 291, in msgpack._cmsgpack.Packer._pack
+TypeError: can not serialize 'set' object
+2024-01-27 09:20:16,802 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 51, in get_context_data
+    async_to_sync(channel_layer.group_send)(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 277, in __call__
+    return call_result.result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/usr/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 353, in main_wrap
+    result = await self.awaitable(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 539, in group_send
+    ) = self._map_channel_keys_to_connection(channel_names, message)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 639, in _map_channel_keys_to_connection
+    channel_key_to_message[key] = self.serialize(value)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/channels_redis/core.py", line 659, in serialize
+    value = msgpack.packb(message, use_bin_type=True)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/msgpack/__init__.py", line 36, in packb
+    return Packer(**kwargs).pack(o)
+  File "msgpack/_packer.pyx", line 294, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 300, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 297, in msgpack._cmsgpack.Packer.pack
+  File "msgpack/_packer.pyx", line 231, in msgpack._cmsgpack.Packer._pack
+  File "msgpack/_packer.pyx", line 291, in msgpack._cmsgpack.Packer._pack
+TypeError: can not serialize 'set' object
+2024-01-27 09:22:32,679 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 46, in get_context_data
+    client.on_message = self.on_message
+AttributeError: 'IoTChannel' object has no attribute 'on_message'
+2024-01-27 10:03:30,277 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 45, in get_context_data
+    client.on_connect(lambda client, userdata, flags, rc: client.subscribe(topic))
+TypeError: on_connect() missing 3 required positional arguments: 'userdata', 'flags', and 'rc'
+2024-01-27 10:04:08,120 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC118/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 45, in get_context_data
+    client.on_connect(
+TypeError: on_connect() missing 3 required positional arguments: 'userdata', 'flags', and 'rc'
+2024-01-27 10:16:33,871 (WARNING) - django.request - Not Found: /api/iot/ws/
