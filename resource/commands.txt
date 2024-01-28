@@ -1,6 +1,15 @@
 sudo service postgresql start
-sudo service postgresql stop
 
+
+sudo service postgresql stop
+redis-cli shutdown
+sudo pkill mosquitto
+
+or
+
+ ps -ef | grep mosquitto
+
+ sudo kill pid of mosquitto
 
 sudo -u postgres psql
 CREATE DATABASE zenith;
