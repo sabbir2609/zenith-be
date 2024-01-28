@@ -195,13 +195,15 @@ MQTT_TLS_CA_FILE = None
 
 CELERY_TIMEZONE = "Asia/Dhaka"
 
-CELERY_BROKER_URL = "redis://localhost:6379"
+REDIS_HOST = getenv("REDIS_HOST", "localhost")
+
+CELERY_BROKER_URL = f"redis://{REDIS_HOST}:6379"
 
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "TIMEOUT": 10 * 60,
-        "LOCATION": "redis://localhost:6379/2",
+        "LOCATION": f"redis://{REDIS_HOST}:6379/2",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },

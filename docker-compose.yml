@@ -18,16 +18,10 @@ services:
     ports:
       - "6379:6379"
 
-  # Mosquitto broker service
-  mosquitto:
-    image: eclipse-mosquitto
-    ports:
-      - "1883:1883"
-
   # Django app service
   web:
     build: .
-    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: sh -c "python manage.py migrate && uvicorn core.asgi:application --host 0.0.0.0 --port 8000 --workers 4 --log-level debug"
     volumes:
       - .:/app
     ports:
@@ -35,6 +29,5 @@ services:
     depends_on:
       - postgres
       - redis
-      - mosquitto
     env_file:
       - .env
