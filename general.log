@@ -1688,3 +1688,32 @@ django.db.utils.OperationalError: could not translate host name "postgres" to ad
 2024-02-03 09:36:40,939 (INFO) - iot.channels.consumers - WebSocket connected: specific.bd9865af837b4b21a2e0b99f49dd0e5f!8aea20a2850741c19f6e0bf8fb64ef6a
 2024-02-03 09:36:59,491 (INFO) - iot.channels.consumers - WebSocket connected: specific.6ca34219f05d4e53a9ad6f80d42c26a0!3c05439130a44d3f9a2e5872f1ef0fe1
 2024-02-03 09:38:32,850 (INFO) - iot.channels.consumers - WebSocket connected: specific.ecabede27478485791eec9b7087f39ae!bf50ce21c48841c79c80d33310cc9685
+2024-02-03 15:58:53,394 (ERROR) - django.request - Internal Server Error: /api/iot/ws/AC119/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/generic/base.py", line 226, in get
+    context = self.get_context_data(**kwargs)
+  File "/home/sabbir/zenith-sys/zenith/iot/views.py", line 43, in get_context_data
+    topic = Device.objects.get(client_id=device_id).topic
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 647, in get
+    raise self.model.DoesNotExist(
+iot.models.Device.DoesNotExist: Device matching query does not exist.
+2024-02-03 16:07:57,366 (WARNING) - django.request - Not Found: /api/iot/ws/AC118/l
+2024-02-03 16:14:07,736 (WARNING) - django.request - Not Found: /api/iot/ws/AC118/l

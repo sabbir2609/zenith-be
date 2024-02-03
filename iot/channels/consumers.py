@@ -11,8 +11,8 @@ class DeviceConsumer(AsyncWebsocketConsumer):
         await self.channel_layer.group_add(self.room_group_name, self.channel_name)
         await self.accept()
 
-        client_id = self.device_id
-        self.run_mqtt_task = mqtt_client_task.delay(client_id)
+        device_client_id = self.device_id
+        self.mqtt_client_task_result = mqtt_client_task.delay(device_client_id)
 
     async def on_message(self, event):
         message = event["message"]
