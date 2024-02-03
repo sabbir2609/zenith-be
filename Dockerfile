@@ -22,4 +22,11 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 COPY . /app/
 
 # Expose the port on which your Django app will run
+<<<<<<< Updated upstream
 EXPOSE 8000
+=======
+EXPOSE 8000
+
+# Run wait-for-it.sh to check if the PostgreSQL port is open, then run docker-entrypoint.sh
+CMD ["./wait-for-it.sh", "postgres:5432", "--", "./docker-entrypoint.sh"]
+>>>>>>> Stashed changes
