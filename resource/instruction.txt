@@ -1,0 +1,1 @@
+if you use the postgres and redis inside docker change .env config

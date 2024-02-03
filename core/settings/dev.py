@@ -2,18 +2,20 @@ import os
 from .base import *
 
 import dj_database_url
-from dotenv import load_dotenv, find_dotenv
 
-load_dotenv(find_dotenv())
+import dotenv
+
+dotenv_file = dotenv.find_dotenv()
+dotenv.load_dotenv(dotenv_file, override=True)
 
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = os.getenv("DEBUG")
 
-ALLOWED_HOSTS = getenv("WEBSITE_HOSTNAME", "127.0.0.1,localhost,192.168.133.120").split(
-    ","
-)
+ALLOWED_HOSTS = os.getenv(
+    "WEBSITE_HOSTNAME", "127.0.0.1,localhost,192.168.133.120"
+).split(",")
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",

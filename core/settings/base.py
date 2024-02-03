@@ -1,7 +1,10 @@
-from os import getenv
 import os
 from pathlib import Path
 from datetime import timedelta
+import dotenv
+
+dotenv_file = dotenv.find_dotenv()
+dotenv.load_dotenv(dotenv_file, override=True)
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -144,19 +147,19 @@ DJOSER = {
         "user": "user.serializers.UserCreateSerializer",
         "user_delete": "djoser.serializers.UserDeleteSerializer",
     },
-    "SOCIAL_AUTH_ALLOWED_REDIRECT_URIS": getenv("REDIRECT_URLS", "").split(","),
+    "SOCIAL_AUTH_ALLOWED_REDIRECT_URIS": os.getenv("REDIRECT_URLS", "").split(","),
 }
 
 
 AUTH_COOKIE = "access"
 AUTH_COOKIE_MAX_AGE = 60 * 60 * 24
-AUTH_COOKIE_SECURE = getenv("AUTH_COOKIE_SECURE", "True") == "True"
+AUTH_COOKIE_SECURE = os.getenv("AUTH_COOKIE_SECURE", "True") == "True"
 AUTH_COOKIE_HTTP_ONLY = True
 AUTH_COOKIE_PATH = "/"
 AUTH_COOKIE_SAMESITE = "None"
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = getenv("GOOGLE_AUTH_KEY")
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = getenv("GOOGLE_AUTH_SECRET_KEY")
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv("GOOGLE_AUTH_KEY")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv("GOOGLE_AUTH_SECRET_KEY")
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
     "https://www.googleapis.com/auth/userinfo.email",
     "https://www.googleapis.com/auth/userinfo.profile",
@@ -165,39 +168,40 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA = ["username"]
 
-SOCIAL_AUTH_FACEBOOK_KEY = getenv("FACEBOOK_AUTH_KEY")
-SOCIAL_AUTH_FACEBOOK_SECRET = getenv("FACEBOOK_AUTH_SECRET_KEY")
+SOCIAL_AUTH_FACEBOOK_KEY = os.getenv("FACEBOOK_AUTH_KEY")
+SOCIAL_AUTH_FACEBOOK_SECRET = os.getenv("FACEBOOK_AUTH_SECRET_KEY")
 
 SOCIAL_AUTH_FACEBOOK_SCOPE = ["email"]
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {"fields": "email, first_name, last_name"}
 
+# MQTT SETTINGS
+MQTT_HOST = os.getenv("MQTT_HOST", "localhost")
+MQTT_PORT = int(os.getenv("MQTT_PORT", 1883))
+MQTT_USERNAME = os.getenv("MQTT_USERNAME", "")
+MQTT_PASSWORD = os.getenv("MQTT_PASSWORD", "")
+MQTT_KEEPALIVE = int(os.getenv("MQTT_KEEPALIVE", 60))
+MQTT_TLS_ENABLED = False
+MQTT_TLS_CA_FILE = None
+
+
+REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
+
+# CHANNELS SETTINGS
 
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("127.0.0.1", 6379)],
+            "hosts": [(f"{REDIS_HOST}", 6379)],
         },
     },
 }
-
-# MQTT SETTINGS
-MQTT_HOST = getenv("MQTT_HOST", "localhost")
-MQTT_PORT = int(getenv("MQTT_PORT", 1883))
-MQTT_USERNAME = getenv("MQTT_USERNAME", "")
-MQTT_PASSWORD = getenv("MQTT_PASSWORD", "")
-MQTT_KEEPALIVE = int(getenv("MQTT_KEEPALIVE", 60))
-MQTT_TLS_ENABLED = False
-MQTT_TLS_CA_FILE = None
-
 
 # CELERY SETTINGS
 
 CELERY_TIMEZONE = "Asia/Dhaka"
 
-REDIS_HOST = getenv("REDIS_HOST", "localhost")
-
-CELERY_BROKER_URL = f"redis://{REDIS_HOST}:6379"
+CELERY_BROKER_URL = f"redis://{REDIS_HOST}:6379/1"
 
 CACHES = {
     "default": {
@@ -236,7 +240,7 @@ LOGGING = {
     "loggers": {
         "": {
             "handlers": ["console", "file"],
-            "level": os.environ.get("DJANGO_LOG_LEVEL", "INFO"),
+            "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
         }
     },
     "formatters": {

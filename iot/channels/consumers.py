@@ -1,6 +1,8 @@
 import json
+from django.conf import settings
 from channels.generic.websocket import AsyncWebsocketConsumer
-from iot.tasks import run_mqtt_loop
+
+# from iot.tasks import run_mqtt_loop
 
 
 class DeviceConsumer(AsyncWebsocketConsumer):
@@ -12,7 +14,7 @@ class DeviceConsumer(AsyncWebsocketConsumer):
 
         await self.accept()
 
-        self.run_mqtt_loop_result = run_mqtt_loop.delay()
+        # self.run_mqtt_loop_result = run_mqtt_loop.delay()
 
     async def on_message(self, event):
         message = event["message"]
@@ -20,6 +22,5 @@ class DeviceConsumer(AsyncWebsocketConsumer):
 
     async def disconnect(self, close_code):
         await self.channel_layer.group_discard(self.room_group_name, self.channel_name)
-
-        if hasattr(self, "run_mqtt_loop_result"):
-            self.run_mqtt_loop_result.revoke(terminate=True)
+        # if hasattr(self, "run_mqtt_loop_result"):
+        #     self.run_mqtt_loop_result.revoke(terminate=True)

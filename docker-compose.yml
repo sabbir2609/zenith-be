@@ -1,8 +1,22 @@
 version: '3'
 
 services:
-  # PostgreSQL service
+  django:
+    container_name: django
+    build: .
+    command: bash -c "chmod +x wait-for-it.sh && chmod +x docker-entrypoint.sh && ./wait-for-it.sh postgres:5432 -- ./docker-entrypoint.sh"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+      - redis
+
   postgres:
+    container_name: postgres
     image: postgres:16
     environment:
       POSTGRES_DB: zenith
@@ -11,23 +25,8 @@ services:
     ports:
       - "5432:5432"
 
-  # Redis service 
   redis:
-    image: redis
-    command: redis-server
+    container_name: redis
+    image: redis:7.2-alpine
     ports:
       - "6379:6379"
-
-  # Django app service
-  web:
-    build: .
-    command: sh -c "python manage.py migrate && uvicorn core.asgi:application --host 0.0.0.0 --port 8000 --workers 4 --log-level debug"
-    volumes:
-      - .:/app
-    ports:
-      - "8000:8000"
-    depends_on:
-      - postgres
-      - redis
-    env_file:
-      - .env

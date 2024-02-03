@@ -12,8 +12,6 @@ from iot.serializers import (
     FacilityDeviceSerializer,
 )
 
-from iot.mqtt.client import client
-
 
 class DeviceTypeViewSet(viewsets.ModelViewSet):
     queryset = DeviceType.objects.all()

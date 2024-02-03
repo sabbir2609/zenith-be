@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  # PostgreSQL service
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: zenith
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 2609
+    ports:
+      - "5432:5432"
+
+  # Redis service 
+  redis:
+    image: redis
+    command: redis-server
+    ports:
+      - "6379:6379"
+
+  # Django app service
+  web:
+    build: .
+    command: sh -c "python manage.py migrate && uvicorn core.asgi:application --host 0.0.0.0 --port 8000 --workers 4 --log-level debug"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+    env_file:
+      - .env

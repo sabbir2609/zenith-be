@@ -9,7 +9,7 @@ or
 
  ps -ef | grep mosquitto
 
- sudo kill pid of mosquitto
+ sudo kill 'pid of mosquitto'
 
 sudo -u postgres psql
 CREATE DATABASE zenith;
