@@ -1625,3 +1625,66 @@ Traceback (most recent call last):
     conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
 django.db.utils.OperationalError: could not translate host name "postgres" to address: Name or service not known
 
+2024-02-03 08:57:26,643 (INFO) - iot.channels.consumers - WebSocket connected: specific.7e884df49f0e412e899eed80d5f98abd!7f6106d53384487da83fe0191e3dde50
+2024-02-03 08:57:26,820 (INFO) - iot.channels.consumers - mqtt_client_task initiated for device: AC118
+2024-02-03 08:59:19,394 (INFO) - iot.channels.consumers - WebSocket disconnected: specific.7e884df49f0e412e899eed80d5f98abd!7f6106d53384487da83fe0191e3dde50
+2024-02-03 08:59:24,236 (INFO) - iot.channels.consumers - WebSocket connected: specific.683c1ac431d64d4c9f407608106285b2!149d29ae9ef44afa8ea4795453324fb4
+2024-02-03 08:59:24,357 (INFO) - iot.channels.consumers - mqtt_client_task initiated for device: AC118
+2024-02-03 08:59:56,680 (INFO) - iot.channels.consumers - WebSocket disconnected: specific.683c1ac431d64d4c9f407608106285b2!149d29ae9ef44afa8ea4795453324fb4
+2024-02-03 09:00:01,564 (INFO) - iot.channels.consumers - WebSocket connected: specific.d0eb1abb30dc4de7a02cca6da249c405!1da8b8dfb8a84cbc9a7c83cacd2c507e
+2024-02-03 09:00:01,675 (INFO) - iot.channels.consumers - mqtt_client_task initiated for device: AC118
+2024-02-03 09:00:54,587 (INFO) - iot.channels.consumers - WebSocket disconnected: specific.d0eb1abb30dc4de7a02cca6da249c405!1da8b8dfb8a84cbc9a7c83cacd2c507e
+2024-02-03 09:00:58,368 (INFO) - iot.channels.consumers - WebSocket connected: specific.0670cf432247493cbf3ab37b939ec7d3!aa4d1c12bbaf42ff96c26d9d5eaa0daf
+2024-02-03 09:00:58,505 (INFO) - iot.channels.consumers - mqtt_client_task initiated for device: AC118
+2024-02-03 09:01:14,060 (INFO) - iot.channels.consumers - WebSocket disconnected: specific.0670cf432247493cbf3ab37b939ec7d3!aa4d1c12bbaf42ff96c26d9d5eaa0daf
+2024-02-03 09:01:17,373 (INFO) - iot.channels.consumers - WebSocket connected: specific.d6cb3084e7884d14b02915194c3fd9fe!e12c4af0f1ce4976a87bafae0014461d
+2024-02-03 09:01:17,515 (INFO) - iot.channels.consumers - mqtt_client_task initiated for device: AC118
+2024-02-03 09:03:06,486 (INFO) - iot.channels.consumers - WebSocket disconnected: specific.d6cb3084e7884d14b02915194c3fd9fe!e12c4af0f1ce4976a87bafae0014461d
+2024-02-03 09:03:17,214 (INFO) - iot.channels.consumers - WebSocket connected: specific.5e13a92b0e744a85b5ac4523eb223e96!44e933afbea245909dbcecac6dde15d2
+2024-02-03 09:03:17,428 (INFO) - iot.channels.consumers - mqtt_client_task initiated for device: AC118
+2024-02-03 09:05:21,696 (INFO) - iot.channels.consumers - WebSocket disconnected: specific.5e13a92b0e744a85b5ac4523eb223e96!44e933afbea245909dbcecac6dde15d2
+2024-02-03 09:07:23,235 (INFO) - iot.channels.consumers - WebSocket connected: specific.fa4dccc54596409ba15e0d3f78c40e73!164ca94044ac421db11ca8526ad5e4d5
+2024-02-03 09:07:23,423 (INFO) - iot.channels.consumers - mqtt_client_task initiated for device: AC118
+2024-02-03 09:12:45,154 (INFO) - iot.channels.consumers - WebSocket disconnected: specific.fa4dccc54596409ba15e0d3f78c40e73!164ca94044ac421db11ca8526ad5e4d5
+2024-02-03 09:13:06,344 (INFO) - iot.channels.consumers - WebSocket connected: specific.43d18ac8db334f55a91a983c9e5c04f1!1125571f82ab4aa6a0b421a508e9bb84
+2024-02-03 09:13:06,505 (INFO) - iot.channels.consumers - mqtt_client_task initiated for device: AC118
+2024-02-03 09:13:21,269 (INFO) - iot.channels.consumers - WebSocket disconnected: specific.43d18ac8db334f55a91a983c9e5c04f1!1125571f82ab4aa6a0b421a508e9bb84
+2024-02-03 09:13:21,564 (INFO) - iot.channels.consumers - WebSocket connected: specific.43d18ac8db334f55a91a983c9e5c04f1!67e5289b398a4a03b89153be8029426f
+2024-02-03 09:13:21,615 (INFO) - iot.channels.consumers - mqtt_client_task initiated for device: AC118
+2024-02-03 09:14:28,270 (INFO) - iot.channels.consumers - WebSocket connected: specific.43d18ac8db334f55a91a983c9e5c04f1!2f3468a5d99544d689e587a46cb9c048
+2024-02-03 09:14:28,278 (INFO) - iot.channels.consumers - mqtt_client_task initiated for device: AC118
+2024-02-03 09:14:37,359 (INFO) - iot.channels.consumers - WebSocket disconnected: specific.43d18ac8db334f55a91a983c9e5c04f1!2f3468a5d99544d689e587a46cb9c048
+2024-02-03 09:14:37,783 (INFO) - iot.channels.consumers - WebSocket connected: specific.43d18ac8db334f55a91a983c9e5c04f1!bcefb86346b94dae81258fefddf62d39
+2024-02-03 09:14:37,790 (INFO) - iot.channels.consumers - mqtt_client_task initiated for device: AC118
+2024-02-03 09:15:25,543 (INFO) - iot.channels.consumers - WebSocket connected: specific.43d18ac8db334f55a91a983c9e5c04f1!2a9feccf5d854f0fa5611f2a77d33458
+2024-02-03 09:15:25,549 (INFO) - iot.channels.consumers - mqtt_client_task initiated for device: AC118
+2024-02-03 09:15:46,390 (INFO) - iot.channels.consumers - WebSocket disconnected: specific.43d18ac8db334f55a91a983c9e5c04f1!2a9feccf5d854f0fa5611f2a77d33458
+2024-02-03 09:15:55,800 (INFO) - iot.channels.consumers - WebSocket disconnected: specific.43d18ac8db334f55a91a983c9e5c04f1!bcefb86346b94dae81258fefddf62d39
+2024-02-03 09:15:56,216 (INFO) - iot.channels.consumers - WebSocket connected: specific.43d18ac8db334f55a91a983c9e5c04f1!1d49da18f75e4afd978594cc0429abd9
+2024-02-03 09:15:56,230 (INFO) - iot.channels.consumers - mqtt_client_task initiated for device: AC118
+2024-02-03 09:17:59,815 (INFO) - iot.channels.consumers - WebSocket disconnected: specific.43d18ac8db334f55a91a983c9e5c04f1!1d49da18f75e4afd978594cc0429abd9
+2024-02-03 09:17:59,816 (INFO) - iot.channels.consumers - WebSocket disconnected: specific.43d18ac8db334f55a91a983c9e5c04f1!67e5289b398a4a03b89153be8029426f
+2024-02-03 09:18:59,903 (INFO) - iot.channels.consumers - WebSocket connected: specific.3f3d2c98439b41e68581f05870e093db!ac458fe0c4544ec8a872098c4309373b
+2024-02-03 09:19:00,130 (INFO) - iot.channels.consumers - mqtt_client_task initiated for device: AC118
+2024-02-03 09:20:34,948 (INFO) - iot.channels.consumers - WebSocket disconnected: specific.3f3d2c98439b41e68581f05870e093db!ac458fe0c4544ec8a872098c4309373b
+2024-02-03 09:20:45,493 (INFO) - iot.channels.consumers - WebSocket connected: specific.0a56d27812ed4fe9b5eef70be18f3468!d68a77e4104243ae8d5a3952f3fbb51d
+2024-02-03 09:20:45,643 (INFO) - iot.channels.consumers - mqtt_client_task initiated for device: AC118
+2024-02-03 09:21:09,725 (INFO) - iot.channels.consumers - WebSocket disconnected: specific.0a56d27812ed4fe9b5eef70be18f3468!d68a77e4104243ae8d5a3952f3fbb51d
+2024-02-03 09:21:13,340 (INFO) - iot.channels.consumers - WebSocket connected: specific.05a6e662a65a4a1188e31479e1581d74!b4f4ab83dde64b1485a8fbb452f814cf
+2024-02-03 09:21:13,454 (INFO) - iot.channels.consumers - mqtt_client_task initiated for device: AC118
+2024-02-03 09:21:35,927 (INFO) - iot.channels.consumers - WebSocket disconnected: specific.05a6e662a65a4a1188e31479e1581d74!b4f4ab83dde64b1485a8fbb452f814cf
+2024-02-03 09:24:20,018 (INFO) - iot.channels.consumers - WebSocket connected: specific.adea1e9bdaef4facb6b13feefc8a5cd9!10a531d455aa47d3bae91888b565f621
+2024-02-03 09:24:20,083 (INFO) - iot.channels.consumers - mqtt_client_task initiated for device: AC118
+2024-02-03 09:25:02,058 (INFO) - iot.channels.consumers - WebSocket disconnected: specific.adea1e9bdaef4facb6b13feefc8a5cd9!10a531d455aa47d3bae91888b565f621
+2024-02-03 09:27:09,212 (INFO) - iot.channels.consumers - WebSocket connected: specific.adea1e9bdaef4facb6b13feefc8a5cd9!0d4b8470a5d546bba5b4d0ce93b27ef1
+2024-02-03 09:27:09,230 (INFO) - iot.channels.consumers - mqtt_client_task initiated for device: AC118
+2024-02-03 09:27:33,809 (INFO) - iot.channels.consumers - WebSocket disconnected: specific.adea1e9bdaef4facb6b13feefc8a5cd9!0d4b8470a5d546bba5b4d0ce93b27ef1
+2024-02-03 09:31:14,564 (INFO) - iot.channels.consumers - WebSocket connected: specific.3e22f894859b4c11a793fe0b81e2ff61!f17ae43a99a14ba9b5daed000da65e24
+2024-02-03 09:31:14,660 (INFO) - iot.channels.consumers - mqtt_client_task initiated for device: AC118
+2024-02-03 09:31:43,292 (INFO) - iot.channels.consumers - WebSocket disconnected: specific.3e22f894859b4c11a793fe0b81e2ff61!f17ae43a99a14ba9b5daed000da65e24
+2024-02-03 09:31:54,650 (INFO) - iot.channels.consumers - WebSocket connected: specific.35a1a06b84e944c59fa332a873806dd6!7032552bc01649308469bcbd6e22e86f
+2024-02-03 09:31:54,751 (INFO) - iot.channels.consumers - mqtt_client_task initiated for device: AC118
+2024-02-03 09:35:30,453 (INFO) - iot.channels.consumers - WebSocket disconnected: specific.35a1a06b84e944c59fa332a873806dd6!7032552bc01649308469bcbd6e22e86f
+2024-02-03 09:36:40,939 (INFO) - iot.channels.consumers - WebSocket connected: specific.bd9865af837b4b21a2e0b99f49dd0e5f!8aea20a2850741c19f6e0bf8fb64ef6a
+2024-02-03 09:36:59,491 (INFO) - iot.channels.consumers - WebSocket connected: specific.6ca34219f05d4e53a9ad6f80d42c26a0!3c05439130a44d3f9a2e5872f1ef0fe1
+2024-02-03 09:38:32,850 (INFO) - iot.channels.consumers - WebSocket connected: specific.ecabede27478485791eec9b7087f39ae!bf50ce21c48841c79c80d33310cc9685

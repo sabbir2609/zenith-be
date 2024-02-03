@@ -17,5 +17,6 @@
         "viewsets",
         "whitenoise"
     ],
-    "python.analysis.typeCheckingMode": "off"
+    "python.analysis.typeCheckingMode": "off",
+    "remote.autoForwardPortsFallback": 0
 }
