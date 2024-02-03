@@ -1717,3 +1717,5 @@ Traceback (most recent call last):
 iot.models.Device.DoesNotExist: Device matching query does not exist.
 2024-02-03 16:07:57,366 (WARNING) - django.request - Not Found: /api/iot/ws/AC118/l
 2024-02-03 16:14:07,736 (WARNING) - django.request - Not Found: /api/iot/ws/AC118/l
+2024-02-03 16:20:22,779 (WARNING) - django.request - Not Found: /favicon.ico
+2024-02-03 16:24:00,607 (WARNING) - django.request - Not Found: /api/iot/ws/AC118/l

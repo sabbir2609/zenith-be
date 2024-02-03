@@ -11,12 +11,11 @@ class DeviceTypeAdmin(admin.ModelAdmin):
 @admin.register(Device)
 class DeviceAdmin(admin.ModelAdmin):
     list_display = (
-        "name",
-        "device_type",
         "client_id",
+        "device_type",
+        "topic",
+        "qos",
         "status",
-        "created_at",
-        "updated_at",
     )
     search_fields = ("name", "client_id", "description")
     list_filter = ("device_type", "status")
