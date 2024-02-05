@@ -23,11 +23,12 @@ def mqtt_client_task(self, device_client_id):
         client.subscribe(f"{topic}")
 
     def on_message(client, userdata, msg):
-        print(msg.topic + " " + str(msg.payload))
+        print(msg.payload.decode())
 
         channel_layer = get_channel_layer()
         sync.async_to_sync(channel_layer.group_send)(
-            f"{device.id}", {"type": "on_message", "message": msg.payload.decode()}
+            f"{device_client_id}",
+            {"type": "on_message", "message": msg.payload.decode()},
         )
 
     client = mqtt.Client()

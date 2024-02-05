@@ -1719,3 +1719,77 @@ iot.models.Device.DoesNotExist: Device matching query does not exist.
 2024-02-03 16:14:07,736 (WARNING) - django.request - Not Found: /api/iot/ws/AC118/l
 2024-02-03 16:20:22,779 (WARNING) - django.request - Not Found: /favicon.ico
 2024-02-03 16:24:00,607 (WARNING) - django.request - Not Found: /api/iot/ws/AC118/l
+2024-02-03 17:17:24,297 (WARNING) - django.request - Not Found: /api/iot/ws/AC118/jk
+2024-02-03 17:29:01,377 (WARNING) - django.request - Not Found: /api/iot/ws/AC118/jk
+2024-02-03 17:47:18,298 (WARNING) - django.request - Not Found: /api/iot/ws/AC118//
+2024-02-03 17:47:18,419 (WARNING) - django.request - Not Found: /favicon.ico
+2024-02-03 17:58:57,479 (WARNING) - django.request - Bad Request: /auth/jwt/verify/
+2024-02-03 17:58:57,492 (WARNING) - django.request - Bad Request: /auth/jwt/verify/
+2024-02-03 17:59:04,659 (WARNING) - django.request - Unauthorized: /auth/jwt/create/
+2024-02-03 17:59:04,675 (WARNING) - django.request - Bad Request: /auth/jwt/refresh/
+2024-02-03 18:01:56,406 (WARNING) - django.request - Bad Request: /auth/jwt/verify/
+2024-02-03 18:01:56,429 (WARNING) - django.request - Bad Request: /auth/jwt/verify/
+2024-02-03 18:02:25,933 (WARNING) - django.request - Not Found: /api/guests/
+2024-02-03 18:02:39,618 (WARNING) - django.request - Not Found: /api/guests/
+2024-02-03 18:03:24,691 (WARNING) - django.request - Not Found: /api/guests/
+2024-02-03 18:03:34,247 (WARNING) - django.request - Not Found: /api/guests/
+2024-02-03 18:04:54,477 (WARNING) - django.request - Not Found: /api/
+2024-02-03 18:05:03,120 (WARNING) - django.request - Unauthorized: /api/main/guests/
+2024-02-03 18:05:23,469 (WARNING) - django.request - Forbidden: /api/main/guests/
+2024-02-03 18:05:53,931 (WARNING) - django.request - Forbidden: /api/main/guests/
+2024-02-03 18:05:54,196 (WARNING) - django.request - Not Found: /favicon.ico
+2024-02-03 18:06:06,111 (WARNING) - django.request - Unauthorized: /api/main/guests/
+2024-02-03 18:06:25,527 (WARNING) - django.request - Forbidden: /api/main/guests/
+2024-02-03 18:11:21,293 (ERROR) - django.request - Internal Server Error: /admin/main/payment/add/
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/contrib/admin/options.py", line 835, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/forms/models.py", line 651, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/forms/models.py", line 309, in __new__
+    fields = fields_for_model(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/forms/models.py", line 204, in fields_for_model
+    raise FieldError(
+django.core.exceptions.FieldError: 'created_at' cannot be specified for Payment model form as it is a non-editable field
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/contrib/admin/options.py", line 714, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/utils/decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/utils/decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 240, in inner
+    return view(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1941, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/utils/decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/utils/decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1802, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/contrib/admin/options.py", line 1837, in _changeform_view
+    ModelForm = self.get_form(
+  File "/home/sabbir/zenith-sys/zenith/.venv/lib/python3.10/site-packages/django/contrib/admin/options.py", line 837, in get_form
+    raise FieldError(
+django.core.exceptions.FieldError: 'created_at' cannot be specified for Payment model form as it is a non-editable field. Check fields/fieldsets/exclude attributes of class PaymentAdmin.
+2024-02-04 15:57:35,610 (WARNING) - django.request - Not Found: /favicon.ico

@@ -132,7 +132,6 @@ class PaymentAdmin(admin.ModelAdmin):
                 "fields": (
                     "payment_id",
                     "installment",
-                    "created_at",
                     "payment_amount",
                     "payment_method",
                     "is_refunded",
