@@ -2,15 +2,68 @@
 
 {% block content %}
 
-<h1>{{ title }} Page</h1>
-<h3>Device ID: {{ device_id }}, Topic: {{ topic }} </h3>
+<style>
+    input[type="checkbox"] {
+        position: relative;
+        width: 80px;
+        height: 40px;
+        -webkit-appearance: none;
+        appearance: none;
+        background: red;
+        outline: none;
+        border-radius: 2rem;
+        cursor: pointer;
+        box-shadow: inset 0 0 5px rgb(0 0 0 / 50%);
+    }
 
-<div class="alert alert-info" role="alert" id="mqttMessage"></div>
+    input[type="checkbox"]::before {
+        content: "";
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: 0.5s;
+    }
+
+    input[type="checkbox"]:checked::before {
+        transform: translateX(100%);
+        background: #fff;
+    }
+
+    input[type="checkbox"]:checked {
+        background: #00ed64;
+    }
+</style>
+
+<div class="container">
+    <h1>{{ title }} Page</h1>
+    <h3>Device ID: {{ device_id }}, Topic: {{ topic }} </h3>
+
+    <div class="alert alert-info" role="alert" id="mqttMessage"></div>
+
+    <div class="container">
+        <input type="checkbox" id="toggleInput">
+    </div>
+
+</div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const socket = new WebSocket(`ws://127.0.0.1:8000/ws/device/{{ device_id }}/`);
+
         const messageContainer = document.getElementById('mqttMessage');
+        var toggleInput = document.getElementById('toggleInput');
+
+        toggleInput.addEventListener('change', function () {
+            var state = toggleInput.checked;
+            var message = JSON.stringify({ 'state': state });
+
+            socket.send(message);
+            console.log("State Send !", message)
+        });
 
         socket.onopen = (event) => {
             console.log("WebSocket connection opened! for IoT", event);

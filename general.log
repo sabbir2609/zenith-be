@@ -1793,3 +1793,45 @@ Traceback (most recent call last):
     raise FieldError(
 django.core.exceptions.FieldError: 'created_at' cannot be specified for Payment model form as it is a non-editable field. Check fields/fieldsets/exclude attributes of class PaymentAdmin.
 2024-02-04 15:57:35,610 (WARNING) - django.request - Not Found: /favicon.ico
+2024-02-08 17:21:56,819 (WARNING) - django.request - Not Found: /api/iot/ws/AC118/s
+2024-02-08 17:21:57,441 (WARNING) - django.request - Not Found: /favicon.ico
+2024-02-08 17:35:03,240 (INFO) - flower.command - Visit me at http://0.0.0.0:5555
+2024-02-08 17:35:03,249 (INFO) - flower.command - Broker: redis://localhost:6379/1
+2024-02-08 17:35:03,258 (INFO) - flower.command - Registered tasks: 
+['celery.accumulate',
+ 'celery.backend_cleanup',
+ 'celery.chain',
+ 'celery.chord',
+ 'celery.chord_unlock',
+ 'celery.chunks',
+ 'celery.group',
+ 'celery.map',
+ 'celery.starmap',
+ 'core.celery.debug_task',
+ 'iot.tasks.mqtt_client_task',
+ 'notification.tasks.notify_customers']
+2024-02-08 17:35:03,268 (INFO) - kombu.mixins - Connected to redis://localhost:6379/1
+2024-02-08 17:35:52,897 (WARNING) - tornado.general - 401 POST /api/worker/pool/grow/celery@sabbir-pc (::1): FLOWER_UNAUTHENTICATED_API environment variable is required to enable API without authentication
+2024-02-08 17:35:58,478 (WARNING) - tornado.general - 401 GET /api/workers?workername=celery%40sabbir-pc&refresh=1 (::1): FLOWER_UNAUTHENTICATED_API environment variable is required to enable API without authentication
+2024-02-08 18:31:20,092 (WARNING) - django.request - Not Found: /api/iot/ws/AC118/l
+2024-02-08 19:45:41,602 (ERROR) - iot.channels.consumers - Failed to connect: object AsyncResult can't be used in 'await' expression
+2024-02-08 19:46:13,583 (INFO) - iot.channels.consumers - Received data: True
+2024-02-08 19:46:13,586 (ERROR) - iot.channels.consumers - Failed to process received data: object AsyncResult can't be used in 'await' expression
+2024-02-08 19:46:54,501 (INFO) - iot.channels.consumers - Received data: False
+2024-02-08 19:46:54,504 (ERROR) - iot.channels.consumers - Failed to process received data: object AsyncResult can't be used in 'await' expression
+2024-02-08 19:50:23,063 (ERROR) - iot.channels.consumers - Failed to connect: object AsyncResult can't be used in 'await' expression
+2024-02-08 19:51:13,981 (INFO) - iot.channels.consumers - Received data: True
+2024-02-08 19:51:13,985 (ERROR) - iot.channels.consumers - Failed to process received data: object AsyncResult can't be used in 'await' expression
+2024-02-08 19:51:26,477 (INFO) - iot.channels.consumers - Received data: False
+2024-02-08 19:51:26,480 (ERROR) - iot.channels.consumers - Failed to process received data: object AsyncResult can't be used in 'await' expression
+2024-02-08 19:56:41,119 (WARNING) - django.request - Not Found: /api/iot/ws/AC118/g
+2024-02-08 20:01:49,587 (ERROR) - iot.channels.consumers - Failed to connect: object AsyncResult can't be used in 'await' expression
+2024-02-08 20:01:52,863 (INFO) - iot.channels.consumers - Received data: True
+2024-02-08 20:01:52,866 (ERROR) - iot.channels.consumers - Failed to process received data: object AsyncResult can't be used in 'await' expression
+2024-02-08 20:02:22,732 (WARNING) - django.request - Not Found: /api/iot/ws/AC118/d/
+2024-02-08 20:03:39,308 (ERROR) - iot.channels.consumers - Failed to connect: object AsyncResult can't be used in 'await' expression
+2024-02-08 20:03:51,721 (WARNING) - django.request - Not Found: /api/iot/ws/AC118/d/
+2024-02-08 20:05:09,555 (ERROR) - iot.channels.consumers - Failed to connect: object AsyncResult can't be used in 'await' expression
+2024-02-08 20:05:20,170 (WARNING) - django.request - Not Found: /api/iot/ws/AC118/l
+2024-02-08 20:06:43,370 (ERROR) - iot.channels.consumers - Failed to connect: object AsyncResult can't be used in 'await' expression
+2024-02-08 20:06:45,149 (WARNING) - django.request - Not Found: /api/iot/ws/AC118/l
