@@ -20,6 +20,7 @@ urlpatterns = [
     path("api/main/", include("main.urls"), name="main"),
     path("api/tasks/", include("management.urls"), name="management"),
     path("api/iot/", include("iot.urls"), name="iot"),
+    path("api/payment/", include("payment.urls"), name="payment"),
     # test pages
     path("", Homepage.as_view(), name="homepage"),
     path("notifications/", include("notification.urls"), name="notification"),
