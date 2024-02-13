@@ -2,7 +2,26 @@
 
 
 {% block content %}
+<div class="container mt-4">
+    <h1 class="text-center mb-4">API Documentation</h1>
 
-<h1>{{ title }}</h1>
+    <div class="list-group">
+        <a href="/admin" class="list-group-item list-group-item-action">Admin</a>
+        <a href="api-auth" class="list-group-item list-group-item-action">API Authentication</a>
+        <a href="/auth" class="list-group-item list-group-item-action">Authentication</a>
+        <a href="/api/main" class="list-group-item list-group-item-action">API Main</a>
+        <a href="/api/tasks" class="list-group-item list-group-item-action">API Tasks</a>
+        <a href="/api/iot" class="list-group-item list-group-item-action">API IoT</a>
+        <a href="/notifications" class="list-group-item list-group-item-action">Notifications</a>
+    </div>
+
+    <div class="mt-4">
+        <h2 id="admin">Admin</h2>
+        <p>Documentation for the Admin endpoint goes here...</p>
+    </div>
+
+    <!-- Repeat similar sections for other endpoints -->
+
+</div>
 
 {% endblock %}

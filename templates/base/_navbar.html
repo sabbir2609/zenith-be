@@ -1,39 +1,46 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg"
+    style="background-color: var(--bs-content-bg); border-bottom: var(--bs-border-width) solid var(--bs-content-border-color);">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">Zenith</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar-example"
+            class="btn btn-secondary d-md-none">
+            <i class="fa-solid fa-gear"></i>
+        </button>
+        <a class="navbar-brand d-md-none" href="/">
+            Zenith System
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-collapse-1"
+            aria-controls="navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/api">Api</a>
+                    <a class="nav-link active" aria-current="page" href="#">Docs</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        WS Test
+                        Product
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/api/iot/ws/">IoT</a></li>
-                        <li><a class="dropdown-item" href="/notifications">Notification</a></li>
+                    <ul class="dropdown-menu mt-lg-2 rounded-top-0">
+                        <li><a class="dropdown-item" href="#">Page builder</a></li>
+                        <li><a class="dropdown-item" href="#">Form builder</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" href="#">Plan and pricing</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin">Admin</a>
+                    <a class="nav-link disabled">Blog</a>
                 </li>
             </ul>
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <input class="form-control me-2" type="search" placeholder="Search docs" aria-label="Search">
+                <button class="btn btn-primary" type="submit">Search</button>
             </form>
         </div>
     </div>

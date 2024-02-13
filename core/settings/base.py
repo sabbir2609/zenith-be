@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     "facility",
     "notification",
     "iot",
+    "payment",
     # 3rd party apps
     "rest_framework",
     "rest_framework_simplejwt",
