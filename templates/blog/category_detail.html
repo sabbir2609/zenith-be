@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>{{ object.name }}</h2>
+    <h3>Posts in this category:</h3>
+    <ul class="list-group">
+        {% for post in object.post_set.all %}
+        <li class="list-group-item">
+            <a href="{% url 'blog:post_detail' slug=post.slug %}">{{ post.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

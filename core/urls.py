@@ -18,9 +18,12 @@ urlpatterns = [
     path("api-auth/", include("rest_framework.urls")),
     path("auth/", include("user.urls"), name="user"),
     path("api/main/", include("main.urls"), name="main"),
-    path("api/tasks/", include("management.urls"), name="management"),
+    path("api/management/", include("management.urls"), name="management"),
     path("api/iot/", include("iot.urls"), name="iot"),
     path("api/payment/", include("payment.urls"), name="payment"),
+    # blog
+    path("blog/", include("blog.urls"), name="blog"),
+    path("ckeditor/", include("ckeditor_uploader.urls")),
     # test pages
     path("", Homepage.as_view(), name="homepage"),
     path("notifications/", include("notification.urls"), name="notification"),

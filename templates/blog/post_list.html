@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Posts</h2>
+    <ul class="list-group">
+        {% for post in object_list %}
+        <li class="list-group-item">
+            <a href="{% url 'blog:post_detail' slug=post.slug %}">{{ post.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Categories</h2>
+    <ul class="list-group">
+        {% for category in object_list %}
+        <li class="list-group-item">
+            <a href="{% url 'blog:category_detail' slug=category.slug %}">{{ category.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

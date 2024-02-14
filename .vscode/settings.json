@@ -12,6 +12,7 @@
         "paho",
         "roomtype",
         "simplejwt",
+        "tinymce",
         "userdata",
         "uvicorn",
         "viewsets",

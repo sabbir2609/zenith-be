@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     "notification",
     "iot",
     "payment",
+    "blog",
     # 3rd party apps
     "rest_framework",
     "rest_framework_simplejwt",
@@ -32,6 +33,9 @@ INSTALLED_APPS = [
     "channels",
     "django_celery_results",
     "django_celery_beat",
+    "ckeditor",
+    # dev dependency
+    "django_extensions",
 ]
 
 MIDDLEWARE = [
@@ -258,5 +262,16 @@ LOGGING = {
             "format": "{asctime} ({levelname}) - {name} - {message}",
             "style": "{",
         }
+    },
+}
+
+
+####################
+# CKEditor Settings #
+####################
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_CONFIGS = {
+    "default": {
+        "toolbar": "full",
     },
 }
