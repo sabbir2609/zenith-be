@@ -15,7 +15,7 @@ class StripeCheckoutView(APIView):
             checkout_session = stripe.checkout.Session.create(
                 line_items=[
                     {
-                        "price": "price_1OjRDvCOIAX5MhpCs57pqcKr",
+                        "price": "",
                         "quantity": 1,
                     },
                 ],
@@ -25,7 +25,7 @@ class StripeCheckoutView(APIView):
                 cancel_url=settings.DOMAIN + "/?canceled=true",
             )
 
-            return redirect(checkout_session.url)
+            return Response(checkout_session.url)
         # except:
         #     return Response(
         #         {"error": "Something went wrong when creating stripe checkout session"},

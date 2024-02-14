@@ -5,6 +5,7 @@ from django.db import models
 from django.conf import settings
 
 from main.models import Room
+from facility.models import Facility
 
 
 class BaseModel(models.Model):
@@ -114,3 +115,37 @@ class TaskCheckList(models.Model):
     class Meta:
         verbose_name = "Task Check List"
         verbose_name_plural = "Task Check Lists"
+
+
+class Inventory(BaseModel):
+    item_name = models.CharField(max_length=200, help_text="Name of the inventory item")
+    item_quantity = models.IntegerField(help_text="Quantity of the inventory item")
+    for_room = models.ForeignKey(
+        Room,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        help_text="Room for the inventory item",
+    )
+    for_facility = models.ForeignKey(
+        Facility,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        help_text="Facility for the inventory item",
+    )
+    for_staff = models.ForeignKey(
+        Staff,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        help_text="Staff for the inventory item",
+    )
+
+    def __str__(self):
+        return f"{self.item_name} - {self.item_quantity}"
+
+    class Meta:
+        verbose_name = "Inventory Item"
+        verbose_name_plural = "Inventory Items"
+        ordering = ["-created_at"]

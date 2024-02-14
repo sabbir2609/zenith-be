@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Task, Staff, Role, TaskCheckList
+from .models import Task, Staff, Role, TaskCheckList, Inventory
 
 
 @admin.register(Role)
@@ -32,4 +32,15 @@ class TaskAdmin(admin.ModelAdmin):
     autocomplete_fields = ("staff",)
     list_filter = ("task_status",)
     inlines = [InlineTaskCheckList]
+    list_per_page = 10
+
+
+@admin.register(Inventory)
+class InventoryAdmin(admin.ModelAdmin):
+    list_display = (
+        "item_name",
+        "item_quantity",
+        "created_at",
+    )
+    search_fields = ("item_name",)
     list_per_page = 10
