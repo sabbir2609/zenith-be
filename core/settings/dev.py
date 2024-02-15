@@ -23,6 +23,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
 ]
 
+CSRF_TRUSTED_ORIGINS = ["https://84f1-114-130-188-239.ngrok-free.app"]
+
 CORS_ALLOW_CREDENTIALS = True
 
 SITE_NAME = "Zenith System"
