@@ -31,6 +31,7 @@ class Guest(BaseModel):
     class Meta:
         ordering = ["-updated_at"]
         verbose_name_plural = "Guests"
+        verbose_name = "Guest"
 
 
 class Floor(models.Model):
@@ -52,6 +53,7 @@ class Floor(models.Model):
 
     class Meta:
         verbose_name_plural = "Floors"
+        verbose_name = "Floor"
         ordering = ["level"]
 
 
@@ -76,6 +78,8 @@ class RoomType(models.Model):
 
     class Meta:
         verbose_name_plural = "Room Types"
+        verbose_name = "Room Type"
+        ordering = ["room_type"]
 
 
 class Room(models.Model):
@@ -117,6 +121,7 @@ class Room(models.Model):
 
     class Meta:
         verbose_name_plural = "Rooms"
+        verbose_name = "Room"
         ordering = ["floor", "room_label"]
 
 
@@ -145,6 +150,8 @@ class Amenity(models.Model):
         return self.title
 
     class Meta:
+        ordering = ["room", "title"]
+        verbose_name = "Amenity"
         verbose_name_plural = "Amenities"
 
 
@@ -167,6 +174,7 @@ class Review(BaseModel):
     class Meta:
         ordering = ["-created_at"]
         verbose_name_plural = "Reviews"
+        verbose_name = "Review"
 
 
 class Reservation(models.Model):
@@ -200,6 +208,7 @@ class Reservation(models.Model):
 
     class Meta:
         verbose_name_plural = "Reservations"
+        verbose_name = "Reservation"
         ordering = ["-created_at"]
         get_latest_by = "start_date"
 
@@ -225,6 +234,7 @@ class Installment(BaseModel):
 
     class Meta:
         verbose_name_plural = "Installments"
+        verbose_name = "Installment"
         ordering = ["-created_at"]
 
     def __str__(self):
@@ -247,6 +257,7 @@ class Payment(BaseModel):
 
     class Meta:
         verbose_name_plural = "Payments"
+        verbose_name = "Payment"
         ordering = ["-created_at"]
 
     def __str__(self):
@@ -260,6 +271,7 @@ class Refund(BaseModel):
 
     class Meta:
         verbose_name_plural = "Refunds"
+        verbose_name = "Refund"
         ordering = ["-created_at"]
 
     def __str__(self):

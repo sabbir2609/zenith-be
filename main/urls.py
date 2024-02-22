@@ -22,7 +22,7 @@ router = routers.DefaultRouter()
 router.register("guests", GuestViewSet)
 
 # room_types
-router.register("room_types", RoomTypeViewSet)
+router.register("room-types", RoomTypeViewSet)
 
 # floors/<id>/rooms/<id>
 router.register("floors", FloorViewSet)

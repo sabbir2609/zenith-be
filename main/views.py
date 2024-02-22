@@ -1,6 +1,13 @@
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
-from .models import (
+from rest_framework.permissions import IsAdminUser
+
+from main.permissions import (
+    IsAdminUserOrReadOnly,
+    IsAdminOrStaffUserOrReadOnly,
+    IsReservationOwnerOrAdmin,
+)
+
+from main.models import (
     Guest,
     Floor,
     RoomType,
@@ -12,7 +19,7 @@ from .models import (
     Refund,
     Review,
 )
-from .serializers import (
+from main.serializers import (
     GuestSerializer,
     FloorSerializer,
     RoomTypeSerializer,
@@ -35,27 +42,31 @@ class GuestViewSet(viewsets.ModelViewSet):
 class FloorViewSet(viewsets.ModelViewSet):
     queryset = Floor.objects.all()
     serializer_class = FloorSerializer
+    permission_classes = [IsAdminUserOrReadOnly]
 
 
 class RoomTypeViewSet(viewsets.ModelViewSet):
     queryset = RoomType.objects.all()
     serializer_class = RoomTypeSerializer
+    permission_class = [IsAdminUserOrReadOnly]
 
 
 class RoomViewSet(viewsets.ModelViewSet):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
+    permission_classes = [IsAdminUserOrReadOnly]
 
 
 class AmenityViewSet(viewsets.ModelViewSet):
     queryset = Amenity.objects.all()
     serializer_class = AmenitySerializer
+    permission_classes = [IsAdminOrStaffUserOrReadOnly]
 
 
 class ReservationViewSet(viewsets.ModelViewSet):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsReservationOwnerOrAdmin]
 
     def get_serializer_context(self):
         return {"user": self.request.user}
@@ -64,19 +75,16 @@ class ReservationViewSet(viewsets.ModelViewSet):
 class InstallmentViewSet(viewsets.ModelViewSet):
     queryset = Installment.objects.all()
     serializer_class = InstallmentSerializer
-    permission_classes = [IsAuthenticated]
 
 
 class PaymentViewSet(viewsets.ModelViewSet):
     queryset = Payment.objects.all()
     serializer_class = PaymentSerializer
-    permission_classes = [IsAuthenticated]
 
 
 class RefundViewSet(viewsets.ModelViewSet):
     queryset = Refund.objects.all()
     serializer_class = RefundSerializer
-    permission_classes = [IsAuthenticated]
 
 
 class ReviewViewSet(viewsets.ModelViewSet):

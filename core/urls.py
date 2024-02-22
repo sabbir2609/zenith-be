@@ -15,7 +15,6 @@ admin.site.index_title = "Welcome to Zenith System Administrations"
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api-auth/", include("rest_framework.urls")),
     path("auth/", include("user.urls"), name="user"),
     path("api/main/", include("main.urls"), name="main"),
     path("api/management/", include("management.urls"), name="management"),

@@ -1,3 +1,9 @@
+"""
+mqtt_client_task: Connects to an MQTT broker and subscribes to messages for a device.
+
+publish_to_mqtt: Publishes a message to the MQTT broker for a device.
+"""
+
 # iot/task.py
 
 import json

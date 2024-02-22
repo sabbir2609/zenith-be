@@ -81,7 +81,6 @@ class InstallmentSerializer(serializers.ModelSerializer):
             "id",
             "installment_type",
             "reservation",
-            "installment_date",
             "installment_amount",
         ]
 
