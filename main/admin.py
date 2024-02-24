@@ -1,11 +1,12 @@
 from django.contrib import admin
+from django.utils.html import format_html
 from .models import (
     Guest,
     Floor,
     RoomType,
     Room,
     RoomImage,
-    Amenity,
+    RoomAmenity,
     Reservation,
     Installment,
     Payment,
@@ -30,14 +31,22 @@ class RoomTypeAdmin(admin.ModelAdmin):
     search_fields = ("room_type",)
 
 
-class AmenityInline(admin.TabularInline):
-    model = Amenity
+class RoomAmenityInline(admin.TabularInline):
+    model = RoomAmenity
     extra = 1
 
 
 class RoomImageInline(admin.TabularInline):
     model = RoomImage
     extra = 1
+    readonly_fields = ["thumbnail"]
+
+    def thumbnail(self, instance):
+        if instance.image.name != "":
+            return format_html(
+                f'<img src="{instance.image.url}" style=" width: 100px; height: 100px; object-fit: cover;"/>'
+            )
+        return ""
 
 
 @admin.register(Room)
@@ -45,7 +54,7 @@ class RoomAdmin(admin.ModelAdmin):
     list_display = ("room_label", "floor", "room_type", "capacity", "availability")
     search_fields = ["room_type__room_type"]
     list_filter = ("availability", "capacity")
-    inlines = [AmenityInline, RoomImageInline]
+    inlines = [RoomAmenityInline, RoomImageInline]
 
     class Meta:
         verbose_name_plural = "Rooms"

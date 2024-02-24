@@ -15,7 +15,7 @@ from main.models import (
     RoomType,
     Room,
     RoomImage,
-    Amenity,
+    RoomAmenity,
     Reservation,
     Installment,
     Payment,
@@ -28,7 +28,7 @@ from main.serializers import (
     RoomTypeSerializer,
     RoomSerializer,
     RoomImageSerializer,
-    AmenitySerializer,
+    RoomAmenitySerializer,
     ReservationSerializer,
     InstallmentSerializer,
     PaymentSerializer,
@@ -73,10 +73,16 @@ class RoomImageViewSet(ModelViewSet):
         return {"room_id": self.kwargs.get("room_pk")}
 
 
-class AmenityViewSet(ModelViewSet):
-    queryset = Amenity.objects.all()
-    serializer_class = AmenitySerializer
+class RoomAmenityViewSet(ModelViewSet):
+    queryset = RoomAmenity.objects.all()
+    serializer_class = RoomAmenitySerializer
     permission_classes = [IsAdminOrStaffUserOrReadOnly]
+
+    def get_queryset(self):
+        return RoomAmenity.objects.filter(room_id=self.kwargs["room_pk"])
+
+    def get_serializer_context(self):
+        return {"room_id": self.kwargs.get("room_pk")}
 
 
 class ReservationViewSet(ModelViewSet):
@@ -85,13 +91,13 @@ class ReservationViewSet(ModelViewSet):
 
     def get_permissions(self):
         if self.action in ["update", "partial_update", "destroy"]:
-            return [IsAdminOrOwner()]
+            return [IsAuthenticated(), IsAdminOrOwner()]
         elif self.action == "create":
             return [IsAuthenticated()]
         elif self.action in ["retrieve", "list"]:
-            return [IsAdminOrOwner()]
+            return [IsAuthenticated(), IsAdminOrOwner()]
         else:
-            return [IsAdminUser()]
+            return [IsAuthenticated(), IsAdminUser()]
 
     def get_queryset(self):
         user = self.request.user
@@ -115,11 +121,11 @@ class InstallmentViewSet(ModelViewSet):
 
     def get_permissions(self):
         if self.action in ["update", "partial_update", "destroy"]:
-            return [IsAdminOrReservationOwner()]
+            return [IsAuthenticated(), IsAdminOrReservationOwner()]
         elif self.action == "create":
-            return [IsAuthenticated()]
+            return [IsAuthenticated(), IsAdminOrReservationOwner()]
         elif self.action in ["retrieve", "list"]:
-            return [IsAdminOrReservationOwner()]
+            return [IsAuthenticated(), IsAdminOrReservationOwner()]
         else:
             return [IsAdminUser()]
 
@@ -145,11 +151,11 @@ class PaymentViewSet(ModelViewSet):
 
     def get_permissions(self):
         if self.action in ["update", "partial_update", "destroy"]:
-            return [IsAdminOrInstallmentOwner()]
+            return [IsAuthenticated(), IsAdminOrInstallmentOwner()]
         elif self.action == "create":
-            return [IsAuthenticated()]
+            return [IsAuthenticated(), IsAuthenticated()]
         elif self.action in ["retrieve", "list"]:
-            return [IsAdminOrInstallmentOwner()]
+            return [IsAuthenticated(), IsAdminOrInstallmentOwner()]
         else:
             return [IsAdminUser()]
 

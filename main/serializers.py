@@ -6,7 +6,7 @@ from .models import (
     RoomType,
     Room,
     RoomImage,
-    Amenity,
+    RoomAmenity,
     Reservation,
     Installment,
     Payment,
@@ -48,9 +48,27 @@ class RoomImageSerializer(ModelSerializer):
         fields = ["id", "room", "image", "alt_text"]
 
 
+class RoomAmenitySerializer(ModelSerializer):
+
+    def create(self, validated_data):
+        room_id = self.context["room_id"]
+        return RoomAmenity.objects.create(room_id=room_id, **validated_data)
+
+    class Meta:
+        model = RoomAmenity
+        fields = [
+            "id",
+            "room",
+            "title",
+            "description",
+            "availability",
+        ]
+
+
 class RoomSerializer(ModelSerializer):
     room_type = RoomTypeSerializer(read_only=True, required=False)
     images = RoomImageSerializer(many=True, read_only=True)
+    amenities = RoomAmenitySerializer(many=True, read_only=True)
 
     class Meta:
         model = Room
@@ -63,18 +81,7 @@ class RoomSerializer(ModelSerializer):
             "description",
             "availability",
             "images",
-        ]
-
-
-class AmenitySerializer(ModelSerializer):
-    class Meta:
-        model = Amenity
-        fields = [
-            "id",
-            "room",
-            "title",
-            "description",
-            "availability",
+            "amenities",
         ]
 
 
@@ -89,6 +96,17 @@ class ReservationSerializer(ModelSerializer):
             "end_date",
             "reservation_status",
         ]
+
+    def get_fields(self):
+        fields = super().get_fields()
+        request = self.context.get("request")
+        if (
+            request
+            and request.user.is_authenticated
+            and not (request.user.is_staff or request.user.is_superuser)
+        ):
+            fields["user"].read_only = True
+        return fields
 
 
 class InstallmentSerializer(ModelSerializer):
@@ -120,7 +138,6 @@ class PaymentSerializer(ModelSerializer):
         model = Payment
         fields = [
             "id",
-            "payment_id",
             "installment",
             "payment_amount",
             "payment_method",
@@ -141,7 +158,6 @@ class RefundSerializer(ModelSerializer):
             "id",
             "payment",
             "refund_amount",
-            "refund_date",
             "refund_method",
         ]
 

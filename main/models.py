@@ -135,10 +135,11 @@ class RoomImage(models.Model):
         ordering = ["room"]
 
 
-class Amenity(models.Model):
+class RoomAmenity(models.Model):
     room = models.ForeignKey(
         Room,
         on_delete=models.CASCADE,
+        related_name="amenities",
         help_text=_("The room to which this amenity is associated."),
     )
     title = models.CharField(
