@@ -88,6 +88,7 @@ class Room(models.Model):
     floor = models.ForeignKey(
         Floor,
         on_delete=models.CASCADE,
+        related_name="rooms",
         help_text=_("The floor to which this room belongs."),
     )
     room_label = models.CharField(
@@ -167,8 +168,8 @@ class RoomAmenity(models.Model):
 
 
 class Review(BaseModel):
-    room = models.ForeignKey(Room, on_delete=models.CASCADE)
-    guest = models.ForeignKey(Guest, on_delete=models.CASCADE)
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name="reviews")
+    guest = models.ForeignKey(Guest, on_delete=models.CASCADE, related_name="reviews")
     rating = models.IntegerField(
         validators=[
             MinValueValidator(1, message="Rating must be at least 1."),
@@ -206,7 +207,9 @@ class Reservation(models.Model):
     )
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     guest = models.ForeignKey(Guest, on_delete=models.PROTECT, null=True, blank=True)
-    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    room = models.ForeignKey(
+        Room, on_delete=models.CASCADE, related_name="reservations"
+    )
     start_date = models.DateField()
     end_date = models.DateField()
     reservation_status = models.CharField(
@@ -260,7 +263,9 @@ class Installment(BaseModel):
         choices=InstallmentChoices.choices,
         default=InstallmentChoices.FIRST,
     )
-    reservation = models.ForeignKey(Reservation, on_delete=models.CASCADE)
+    reservation = models.ForeignKey(
+        Reservation, on_delete=models.CASCADE, related_name="installments"
+    )
     installment_amount = models.DecimalField(max_digits=10, decimal_places=2)
     installment_status = models.CharField(max_length=20, default="Pending")
 
@@ -285,7 +290,9 @@ class Payment(BaseModel):
     id = models.UUIDField(
         default=uuid.uuid4, primary_key=True, editable=False, unique=True
     )
-    installment = models.OneToOneField(Installment, on_delete=models.CASCADE)
+    installment = models.OneToOneField(
+        Installment, on_delete=models.CASCADE, related_name="payment"
+    )
     payment_amount = models.DecimalField(max_digits=10, decimal_places=2)
     payment_method = models.CharField(
         max_length=20,
@@ -309,9 +316,20 @@ class Payment(BaseModel):
 
 
 class Refund(BaseModel):
-    payment = models.OneToOneField(Payment, on_delete=models.CASCADE)
+    class RefundMethodChoices(models.TextChoices):
+        CASH = "Cash", "Cash"
+        CARD = "Card", "Card"
+        MOBILE_BANKING = "Mobile Banking", "Mobile Banking"
+
+    payment = models.OneToOneField(
+        Payment, on_delete=models.CASCADE, related_name="refund"
+    )
     refund_amount = models.DecimalField(max_digits=10, decimal_places=2)
-    refund_method = models.CharField(max_length=100)
+    refund_method = models.CharField(
+        max_length=20,
+        choices=RefundMethodChoices.choices,
+        default=RefundMethodChoices.CASH,
+    )
 
     class Meta:
         verbose_name_plural = "Refunds"
