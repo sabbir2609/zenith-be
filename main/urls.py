@@ -28,6 +28,7 @@ router.register("room-types", RoomTypeViewSet)
 # floors/<id>/rooms/<id>
 router.register("floors", FloorViewSet)
 floor_router = routers.NestedSimpleRouter(router, "floors", lookup="floor")
+# floors/<id>/rooms
 floor_router.register("rooms", RoomViewSet, basename="floor-rooms")
 
 

@@ -60,6 +60,13 @@ class RoomViewSet(ModelViewSet):
     serializer_class = RoomSerializer
     permission_classes = [IsAdminUserOrReadOnly]
 
+    def get_queryset(self):
+        floor_id = self.kwargs.get("floor_pk", None)
+        if floor_id is not None:
+            return Room.objects.filter(floor__id=floor_id)
+        else:
+            return Room.objects.all()
+
 
 class RoomImageViewSet(ModelViewSet):
     queryset = RoomImage.objects.all()
