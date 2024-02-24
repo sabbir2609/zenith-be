@@ -121,6 +121,21 @@ To get started with the project, follow these steps:
 
 Now, you should be able to access the application at `http://localhost:8000/`.
 
+
+## Technology Stack
+
+![Python](https://img.shields.io/badge/-Python-333333?style=flat&logo=python)
+![Django](https://img.shields.io/badge/-Django-333333?style=flat&logo=django)
+![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-333333?style=flat&logo=postgresql)
+![Docker](https://img.shields.io/badge/-Docker-333333?style=flat&logo=docker)
+![GitHub](https://img.shields.io/badge/-GitHub-333333?style=flat&logo=github)
+![Redis](https://img.shields.io/badge/-Redis-333333?style=flat&logo=redis)
+![MQTT](https://img.shields.io/badge/-MQTT-333333?style=flat&logo=mqtt)
+![Django Rest Framework](https://img.shields.io/badge/-Django%20Rest%20Framework-333333?style=flat)
+![Celery](https://img.shields.io/badge/-Celery-333333?style=flat&logo=celery)
+
+
+
 ## Resources
 
 For more information, see the [Instruction Manual](resource/Instruction.md).
