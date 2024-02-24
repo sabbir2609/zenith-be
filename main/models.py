@@ -102,12 +102,6 @@ class Room(models.Model):
     capacity = models.PositiveIntegerField(
         help_text=_("Maximum number of occupants the room can accommodate."),
     )
-    images = models.ImageField(
-        upload_to="room/",
-        blank=True,
-        null=True,
-        help_text=_("Images showcasing the room's interior or features."),
-    )
     description = models.TextField(
         blank=True,
         null=True,
@@ -125,6 +119,20 @@ class Room(models.Model):
         verbose_name_plural = "Rooms"
         verbose_name = "Room"
         ordering = ["floor", "room_label"]
+
+
+class RoomImage(models.Model):
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name="images")
+    image = models.ImageField(upload_to="room/images/", blank=True, null=True)
+    alt_text = models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return str(self.room)
+
+    class Meta:
+        verbose_name_plural = "Room Images"
+        verbose_name = "Room Image"
+        ordering = ["room"]
 
 
 class Amenity(models.Model):

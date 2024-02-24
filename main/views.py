@@ -14,6 +14,7 @@ from main.models import (
     Floor,
     RoomType,
     Room,
+    RoomImage,
     Amenity,
     Reservation,
     Installment,
@@ -26,6 +27,7 @@ from main.serializers import (
     FloorSerializer,
     RoomTypeSerializer,
     RoomSerializer,
+    RoomImageSerializer,
     AmenitySerializer,
     ReservationSerializer,
     InstallmentSerializer,
@@ -57,6 +59,18 @@ class RoomViewSet(ModelViewSet):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
     permission_classes = [IsAdminUserOrReadOnly]
+
+
+class RoomImageViewSet(ModelViewSet):
+    queryset = RoomImage.objects.all()
+    serializer_class = RoomImageSerializer
+    permission_classes = [IsAdminOrStaffUserOrReadOnly]
+
+    def get_queryset(self):
+        return RoomImage.objects.filter(room_id=self.kwargs["room_pk"])
+
+    def get_serializer_context(self):
+        return {"room_id": self.kwargs.get("room_pk")}
 
 
 class AmenityViewSet(ModelViewSet):

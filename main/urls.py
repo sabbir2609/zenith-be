@@ -5,6 +5,7 @@ from .views import (
     FloorViewSet,
     RoomTypeViewSet,
     RoomViewSet,
+    RoomImageViewSet,
     AmenityViewSet,
     ReservationViewSet,
     InstallmentViewSet,
@@ -26,15 +27,18 @@ router.register("room-types", RoomTypeViewSet)
 
 # floors/<id>/rooms/<id>
 router.register("floors", FloorViewSet)
-floor_router = routers.NestedDefaultRouter(router, "floors", lookup="floor")
+floor_router = routers.NestedSimpleRouter(router, "floors", lookup="floor")
 floor_router.register("rooms", RoomViewSet, basename="floor-rooms")
 
-# room/reviews
-# room/amenities
+
 router.register("room", RoomViewSet)
 room_router = routers.NestedDefaultRouter(router, "room", lookup="room")
+# room/<id>/reviews
 room_router.register("reviews", ReviewViewSet, basename="room-reviews")
+# room/<id>/amenities
 room_router.register("amenities", AmenityViewSet, basename="room-amenities")
+# room/<id>/images
+room_router.register("images", RoomImageViewSet, basename="room-images")
 
 # reservations
 router.register("reservations", ReservationViewSet)

@@ -5,6 +5,7 @@ from .models import (
     Floor,
     RoomType,
     Room,
+    RoomImage,
     Amenity,
     Reservation,
     Installment,
@@ -36,7 +37,21 @@ class RoomTypeSerializer(ModelSerializer):
         fields = ["id", "room_type", "price", "description"]
 
 
+class RoomImageSerializer(ModelSerializer):
+
+    def create(self, validated_data):
+        room_id = self.context["room_id"]
+        return RoomImage.objects.create(room_id=room_id, **validated_data)
+
+    class Meta:
+        model = RoomImage
+        fields = ["id", "room", "image", "alt_text"]
+
+
 class RoomSerializer(ModelSerializer):
+    room_type = RoomTypeSerializer(read_only=True, required=False)
+    images = RoomImageSerializer(many=True, read_only=True)
+
     class Meta:
         model = Room
         fields = [
@@ -45,9 +60,9 @@ class RoomSerializer(ModelSerializer):
             "room_label",
             "room_type",
             "capacity",
-            "images",
             "description",
             "availability",
+            "images",
         ]
 
 

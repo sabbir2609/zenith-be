@@ -4,6 +4,7 @@ from .models import (
     Floor,
     RoomType,
     Room,
+    RoomImage,
     Amenity,
     Reservation,
     Installment,
@@ -34,12 +35,17 @@ class AmenityInline(admin.TabularInline):
     extra = 1
 
 
+class RoomImageInline(admin.TabularInline):
+    model = RoomImage
+    extra = 1
+
+
 @admin.register(Room)
 class RoomAdmin(admin.ModelAdmin):
     list_display = ("room_label", "floor", "room_type", "capacity", "availability")
     search_fields = ["room_type__room_type"]
     list_filter = ("availability", "capacity")
-    inlines = [AmenityInline]
+    inlines = [AmenityInline, RoomImageInline]
 
     class Meta:
         verbose_name_plural = "Rooms"
