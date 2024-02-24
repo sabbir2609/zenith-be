@@ -1,5 +1,12 @@
+from django.db.models import Q
+from rest_framework.decorators import action
+from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from django_filters.rest_framework import DjangoFilterBackend
+
+from main.filters import RoomFilter
 
 from main.permissions import (
     IsAdminOrInstallmentOwner,
@@ -59,6 +66,36 @@ class RoomViewSet(ModelViewSet):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
     permission_classes = [IsAdminUserOrReadOnly]
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    filterset_class = RoomFilter
+
+    search_fields = [
+        "description",
+        "floor__level",
+        "room_type__room_type",
+        "room_type__description",
+        "room_type__price",
+    ]
+
+    @action(detail=False, methods=["get"])
+    def available(self, request):
+        start_date = request.query_params.get("start_date", None)
+        end_date = request.query_params.get("end_date", None)
+
+        if start_date is None or end_date is None:
+            return Response(
+                {"error": "Both start_date and end_date are required"}, status=400
+            )
+
+        rooms = Room.objects.filter(
+            ~Q(
+                reservations__start_date__lt=end_date,
+                reservations__end_date__gt=start_date,
+            )
+        )
+
+        serializer = self.get_serializer(rooms, many=True)
+        return Response(serializer.data)
 
     def get_queryset(self):
         floor_id = self.kwargs.get("floor_pk", None)

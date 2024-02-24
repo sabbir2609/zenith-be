@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "social_django",
     "channels",
+    "django_filters",
     "django_celery_results",
     "django_celery_beat",
     "ckeditor",

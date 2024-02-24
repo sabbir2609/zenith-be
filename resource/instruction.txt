@@ -1,6 +1,0 @@
-if you use the postgres and redis inside docker change .env config
-
-
-upgrade to django 5
-
-django-celery-beat 2.5.0 requires Django<5.0,>=2.2, but you have django 5.0.1 which is incompatible.

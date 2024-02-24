@@ -6,6 +6,7 @@
         "deregistration",
         "DJOSER",
         "dotenv",
+        "filterset",
         "KEEPALIVE",
         "levelname",
         "mosquitto",
