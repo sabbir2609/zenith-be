@@ -51,9 +51,9 @@ class RoomImageInline(admin.TabularInline):
 
 @admin.register(Room)
 class RoomAdmin(admin.ModelAdmin):
-    list_display = ("room_label", "floor", "room_type", "capacity", "availability")
+    list_display = ("room_label", "floor", "room_type", "capacity", "is_available")
     search_fields = ["room_type__room_type"]
-    list_filter = ("availability", "capacity")
+    list_filter = ("is_available", "capacity")
     inlines = [RoomAmenityInline, RoomImageInline]
 
     class Meta:

@@ -108,7 +108,7 @@ class Room(models.Model):
         null=True,
         help_text=_("Additional information or features of the room."),
     )
-    availability = models.BooleanField(
+    is_available = models.BooleanField(
         default=True,
         help_text=_("Indicates whether the room is currently available for booking."),
     )
@@ -153,7 +153,7 @@ class RoomAmenity(models.Model):
         null=True,
         help_text=_("Detailed description of the amenity."),
     )
-    availability = models.BooleanField(
+    is_available = models.BooleanField(
         default=True,
         help_text=_("Indicates whether the amenity is currently available."),
     )

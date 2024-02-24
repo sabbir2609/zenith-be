@@ -61,7 +61,7 @@ class RoomAmenitySerializer(ModelSerializer):
             "room",
             "title",
             "description",
-            "availability",
+            "is_available",
         ]
 
 
@@ -79,7 +79,7 @@ class RoomSerializer(ModelSerializer):
             "room_type",
             "capacity",
             "description",
-            "availability",
+            "is_available",
             "images",
             "amenities",
         ]
