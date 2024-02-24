@@ -31,15 +31,16 @@ class IsAdminOrStaffUserOrReadOnly(permissions.BasePermission):
         )
 
 
-class IsReservationOwnerOrAdmin(permissions.BasePermission):
-    """
-    Custom permission to allow access to reservation owners and admins only.
-    """
-
+class IsAdminOrOwner(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
-        # Allow access to admins
-        if request.user and request.user.is_superuser:
-            return True
+        return request.user.is_staff or obj.user == request.user
 
-        # Allow access to reservation owner
-        return obj.user == request.user
+
+class IsAdminOrReservationOwner(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        return request.user.is_staff or obj.reservation.user == request.user
+
+
+class IsAdminOrInstallmentOwner(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        return request.user.is_staff or obj.installment.reservation.user == request.user

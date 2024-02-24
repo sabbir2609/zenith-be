@@ -38,12 +38,12 @@ room_router.register("amenities", AmenityViewSet, basename="room-amenities")
 
 # reservations
 router.register("reservations", ReservationViewSet)
+
 # installments
 router.register("installments", InstallmentViewSet)
+
 # payments
 router.register("payments", PaymentViewSet)
-# refunds
-router.register("refunds", RefundViewSet)
 
 # reservations/<id>/installments/<id>/payments/<id>
 # http://127.0.0.1:8000/api/reservations/66/installments/32/payments/7/
@@ -56,12 +56,18 @@ installment_router.register(
     "installments", InstallmentViewSet, basename="reservation-installments"
 )
 
+
 # Create a nested router for payments
 payment_router = routers.NestedDefaultRouter(
     installment_router, "installments", lookup="installment"
 )
+
+
 payment_router.register("payments", PaymentViewSet, basename="installment-payments")
 
+
+# refunds
+router.register("refunds", RefundViewSet)
 
 urlpatterns = (
     router.urls

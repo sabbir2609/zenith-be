@@ -124,13 +124,12 @@ class InstallmentAdmin(admin.ModelAdmin):
 class PaymentAdmin(admin.ModelAdmin):
     list_display = ("installment", "payment_amount", "payment_method")
     search_fields = ["installment"]
-    readonly_fields = ["payment_id", "payment_amount", "is_refunded"]
+    readonly_fields = ["payment_amount", "is_refunded"]
     fieldsets = (
         (
             None,
             {
                 "fields": (
-                    "payment_id",
                     "installment",
                     "payment_amount",
                     "payment_method",

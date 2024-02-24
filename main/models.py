@@ -5,6 +5,8 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.conf import settings
 from django.forms import ValidationError
 from django.utils.translation import gettext_lazy as _
+from django.utils.crypto import get_random_string
+from datetime import datetime
 
 
 class BaseModel(models.Model):
@@ -178,15 +180,23 @@ class Review(BaseModel):
 
 
 class Reservation(models.Model):
+
+    def generate_unique_id():
+        date_str = datetime.now().strftime("%Y%m%d%H%M%S")
+        random_str = get_random_string(6, "0123456789")
+        return f"res-{date_str}-{random_str}"
+
     class ReservationStatusChoices(models.TextChoices):
         RESERVED = "Reserved", "Reserved"
         CHECKED_IN = "Checked-In", "Checked-In"
         CHECKED_OUT = "Checked-Out", "Checked-Out"
         CANCELED = "Canceled", "Canceled"
 
+    id = models.CharField(
+        primary_key=True, default=generate_unique_id, editable=False, max_length=50
+    )
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     guest = models.ForeignKey(Guest, on_delete=models.PROTECT, null=True, blank=True)
-
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     start_date = models.DateField()
     end_date = models.DateField()
@@ -217,12 +227,25 @@ class Reservation(models.Model):
 
 
 class Installment(BaseModel):
+
+    def generate_unique_id():
+        date_str = datetime.now().strftime("%Y%m%d%H%M%S")
+        random_str = get_random_string(6, "0123456789")
+        return f"ins-{date_str}-{random_str}"
+
     class InstallmentChoices(models.TextChoices):
         FIRST = "First", "First"
         SECOND = "Second", "Second"
         THIRD = "Third", "Third"
         FULL = "Full", "Full"
 
+    id = models.CharField(
+        default=generate_unique_id,
+        primary_key=True,
+        editable=False,
+        max_length=50,
+        unique=True,
+    )
     installment_type = models.CharField(
         max_length=20,
         choices=InstallmentChoices.choices,
@@ -244,10 +267,22 @@ class Installment(BaseModel):
 
 
 class Payment(BaseModel):
-    payment_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+
+    class PaymentMethodChoices(models.TextChoices):
+        CASH = "Cash", "Cash"
+        CARD = "Card", "Card"
+        MOBILE_BANKING = "Mobile Banking", "Mobile Banking"
+
+    id = models.UUIDField(
+        default=uuid.uuid4, primary_key=True, editable=False, unique=True
+    )
     installment = models.OneToOneField(Installment, on_delete=models.CASCADE)
     payment_amount = models.DecimalField(max_digits=10, decimal_places=2)
-    payment_method = models.CharField(max_length=100)
+    payment_method = models.CharField(
+        max_length=20,
+        choices=PaymentMethodChoices.choices,
+        default=PaymentMethodChoices.CASH,
+    )
 
     is_refunded = models.BooleanField(default=False)
 

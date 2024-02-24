@@ -1,4 +1,5 @@
-from rest_framework import serializers
+from rest_framework.serializers import SerializerMethodField
+from rest_framework.serializers import ModelSerializer
 from .models import (
     Guest,
     Floor,
@@ -15,7 +16,7 @@ from .models import (
 from user.serializers import UserSerializer
 
 
-class GuestSerializer(serializers.ModelSerializer):
+class GuestSerializer(ModelSerializer):
     user = UserSerializer(read_only=True, required=False)
 
     class Meta:
@@ -23,19 +24,19 @@ class GuestSerializer(serializers.ModelSerializer):
         fields = ["id", "user", "image", "contact_info", "nid", "preferences", "status"]
 
 
-class FloorSerializer(serializers.ModelSerializer):
+class FloorSerializer(ModelSerializer):
     class Meta:
         model = Floor
         fields = ["id", "level", "description"]
 
 
-class RoomTypeSerializer(serializers.ModelSerializer):
+class RoomTypeSerializer(ModelSerializer):
     class Meta:
         model = RoomType
         fields = ["id", "room_type", "price", "description"]
 
 
-class RoomSerializer(serializers.ModelSerializer):
+class RoomSerializer(ModelSerializer):
     class Meta:
         model = Room
         fields = [
@@ -50,7 +51,7 @@ class RoomSerializer(serializers.ModelSerializer):
         ]
 
 
-class AmenitySerializer(serializers.ModelSerializer):
+class AmenitySerializer(ModelSerializer):
     class Meta:
         model = Amenity
         fields = [
@@ -62,30 +63,44 @@ class AmenitySerializer(serializers.ModelSerializer):
         ]
 
 
-class ReservationSerializer(serializers.ModelSerializer):
+class ReservationSerializer(ModelSerializer):
     class Meta:
         model = Reservation
         fields = [
             "id",
             "room",
+            "user",
             "start_date",
             "end_date",
             "reservation_status",
         ]
 
 
-class InstallmentSerializer(serializers.ModelSerializer):
+class InstallmentSerializer(ModelSerializer):
+    reservation = SerializerMethodField(method_name="get_reservation")
+
     class Meta:
         model = Installment
         fields = [
             "id",
-            "installment_type",
             "reservation",
+            "installment_type",
             "installment_amount",
         ]
 
+    def create(self, validated_data):
+        reservation_id = self.context["reservation_id"]
+        return Installment.objects.create(
+            reservation_id=reservation_id, **validated_data
+        )
 
-class PaymentSerializer(serializers.ModelSerializer):
+    def get_reservation(self, obj):
+        return obj.reservation.id
+
+
+class PaymentSerializer(ModelSerializer):
+    installment = SerializerMethodField(method_name="get_installment")
+
     class Meta:
         model = Payment
         fields = [
@@ -93,12 +108,18 @@ class PaymentSerializer(serializers.ModelSerializer):
             "payment_id",
             "installment",
             "payment_amount",
-            "payment_date",
             "payment_method",
         ]
 
+    def create(self, validated_data):
+        installment_id = self.context["installment_id"]
+        return Payment.objects.create(installment_id=installment_id, **validated_data)
 
-class RefundSerializer(serializers.ModelSerializer):
+    def get_installment(self, obj):
+        return obj.installment.id
+
+
+class RefundSerializer(ModelSerializer):
     class Meta:
         model = Refund
         fields = [
@@ -110,8 +131,8 @@ class RefundSerializer(serializers.ModelSerializer):
         ]
 
 
-class ReviewSerializer(serializers.ModelSerializer):
-    guest = serializers.SerializerMethodField()
+class ReviewSerializer(ModelSerializer):
+    guest = SerializerMethodField()
 
     class Meta:
         model = Review

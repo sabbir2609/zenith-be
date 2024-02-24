@@ -27,6 +27,11 @@ CSRF_TRUSTED_ORIGINS = ["https://84f1-114-130-188-239.ngrok-free.app"]
 
 CORS_ALLOW_CREDENTIALS = True
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+
 SITE_NAME = "Zenith System"
 DOMAIN = os.environ["DOMAIN"]
 
