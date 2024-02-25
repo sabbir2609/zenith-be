@@ -62,7 +62,7 @@ To get started with the project, follow these steps:
    Use the following command to clone the repository:
 
    ```bash
-   git clone https://github.com/sabbir2609/zenith.git
+   git clone https://github.com/sabbir2609/zenith-fe.git
    ```
 
 2. **Navigate into the project directory**
@@ -70,7 +70,7 @@ To get started with the project, follow these steps:
    Use the following command to navigate into the project directory:
 
    ```bash
-   cd zenith
+   cd zenith-fe
    ```
 
 3. **Create a virtual environment**
