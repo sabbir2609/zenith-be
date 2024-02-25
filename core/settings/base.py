@@ -194,7 +194,7 @@ MQTT_TLS_ENABLED = False
 MQTT_TLS_CA_FILE = None
 
 
-REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
+REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379")
 
 # CHANNELS SETTINGS
 
@@ -202,7 +202,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [(f"{REDIS_HOST}", 6379)],
+            "url": f"{REDIS_URL}/0",
         },
     },
 }
@@ -211,13 +211,13 @@ CHANNEL_LAYERS = {
 
 CELERY_TIMEZONE = "Asia/Dhaka"
 
-CELERY_BROKER_URL = f"redis://{REDIS_HOST}:6379/1"
+CELERY_BROKER_URL = f"{REDIS_URL}/1"
 
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "TIMEOUT": 10 * 60,
-        "LOCATION": f"redis://{REDIS_HOST}:6379/2",
+        "LOCATION": f"{REDIS_URL}/2",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },

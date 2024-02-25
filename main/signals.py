@@ -66,10 +66,17 @@ def update_room_availability(sender, instance, **kwargs):
     ]
 
     if instance.reservation_status in not_available_status:
-        instance.room.availability = False
+        instance.room.is_available = False
     else:
-        instance.room.availability = True
+        instance.room.is_available = True
 
+    instance.room.save()
+
+
+# if reservation is deleted, change room availability
+@receiver(post_delete, sender=Reservation)
+def update_room_availability_on_delete(sender, instance, **kwargs):
+    instance.room.is_available = True
     instance.room.save()
 
 

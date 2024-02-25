@@ -117,6 +117,7 @@ class Room(models.Model):
         return f"{self.floor} - Room {self.room_label} ({self.room_type})"
 
     class Meta:
+        unique_together = ["floor", "room_label"]
         verbose_name_plural = "Rooms"
         verbose_name = "Room"
         ordering = ["floor", "room_label"]
@@ -227,6 +228,13 @@ class Reservation(models.Model):
     @property
     def total_amount(self):
         return self.room.room_type.price * (self.end_date - self.start_date).days
+
+    # not permitted to change the reservation status to checked-in if payment status is pending
+    def clean(self):
+        if self.reservation_status == "Checked-In" and self.payment_status == "Pending":
+            raise ValidationError(
+                "Reservation status cannot be checked-in if payment status is pending."
+            )
 
     class Meta:
         verbose_name_plural = "Reservations"
