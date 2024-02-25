@@ -90,3 +90,17 @@ This would return rooms that match the search term "business".
 ## Additional Functionality 
 
 To verify room availability, execute a GET request to `api/room/available/?start_date=2022-01-01&end_date=2022-01-31`. This will return a list of all rooms available within the specified date range.
+
+
+# Used Services
+
+This section provides details about the services used in the project.
+
+## PostgreSQL
+We are using the PostgreSQL service provided by `neon.tech`. PostgreSQL is a powerful, open-source object-relational database system that uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads.
+
+## Redis
+Our Redis service is hosted on `app.redislabs.com/`. Redis is an open-source, in-memory data structure store, used as a database, cache, and message broker. It supports various data structures such as Strings, Hashes, Lists, Sets, etc.
+
+## File Storage
+For file storage, we are using `cloudinary`. Cloudinary is a cloud-based service that provides an end-to-end image and video management solution including uploads, storage, manipulations, optimizations and delivery.
