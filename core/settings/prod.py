@@ -34,3 +34,14 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = "noreply@zenith.com"
+
+
+# Cloudinary settings
+
+# CLOUDINARY_STORAGE = {
+#     "CLOUD_NAME": os.environ["CLOUDINARY_CLOUD_NAME"],
+#     "API_KEY": os.environ["CLOUDINARY_API_KEY"],
+#     "API_SECRET": os.environ["CLOUDINARY_API_SECRET"],
+# }
+
+# DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
