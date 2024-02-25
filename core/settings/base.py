@@ -249,15 +249,18 @@ LOGGING = {
     "disable_existing_loggers": False,
     "handlers": {
         "console": {"class": "logging.StreamHandler"},
-        "file": {
-            "class": "logging.FileHandler",
-            "filename": "general.log",
-            "formatter": "verbose",
-        },
+        # "file": {
+        #     "class": "logging.FileHandler",
+        #     "filename": "general.log",
+        #     "formatter": "verbose",
+        # },
     },
     "loggers": {
         "": {
-            "handlers": ["console", "file"],
+            "handlers": [
+                "console",
+                # "file"
+            ],
             "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
         }
     },
