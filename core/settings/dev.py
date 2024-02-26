@@ -35,6 +35,7 @@ INTERNAL_IPS = [
 SITE_NAME = "Zenith System"
 DOMAIN = os.environ["DOMAIN"]
 
+# Postgres database settings
 
 DATABASES = {
     "default": {
@@ -48,11 +49,18 @@ DATABASES = {
     }
 }
 
+# Sqlite database settings
+
 # DATABASES = {
 #     "default": {
 #         "ENGINE": "django.db.backends.sqlite3",
 #         "NAME": "zenith",
 #     }
+# }
+
+# Production database settings: For migration and creating superuser
+# DATABASES = {
+#     "default": dj_database_url.parse(os.environ.get("DATABASE_URL"), conn_max_age=600),
 # }
 
 # Email configurations

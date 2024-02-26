@@ -5,6 +5,10 @@ from .models import Task, Staff, Role, TaskCheckList, Inventory
 @admin.register(Role)
 class RoleAdmin(admin.ModelAdmin):
     search_fields = ("name",)
+    list_display = ("name", "stuff_count")
+
+    def stuff_count(self, obj):
+        return obj.staff_set.count()
 
 
 @admin.register(Staff)
@@ -25,7 +29,6 @@ class TaskAdmin(admin.ModelAdmin):
     list_display = (
         "task_id",
         "staff",
-        "task_description",
         "assigned_room",
         "task_status",
     )

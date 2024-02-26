@@ -18,6 +18,9 @@ class BaseModel(models.Model):
 
 class Role(models.Model):
     name = models.CharField(max_length=200, help_text="Type or category of the staff")
+    description = models.TextField(
+        null=True, blank=True, help_text="Description of the role"
+    )
 
     def __str__(self):
         return self.name
@@ -25,6 +28,7 @@ class Role(models.Model):
     class Meta:
         verbose_name = "Role"
         verbose_name_plural = "Role"
+        ordering = ["id"]
 
 
 class Staff(BaseModel):
