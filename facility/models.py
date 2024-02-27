@@ -1,5 +1,17 @@
+import uuid
 from django.db import models
 from django.conf import settings
+from django.utils.crypto import get_random_string
+
+from datetime import datetime
+
+
+class BaseModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
 
 
 class Facility(models.Model):
@@ -20,7 +32,7 @@ class Facility(models.Model):
         ordering = ["name"]
 
 
-class FacilityAmenities(models.Model):
+class FacilityAmenities(BaseModel):
     facility = models.ForeignKey(
         Facility,
         on_delete=models.CASCADE,
@@ -41,7 +53,7 @@ class FacilityAmenities(models.Model):
         ordering = ["amenities"]
 
 
-class FacilityImage(models.Model):
+class FacilityImage(BaseModel):
     facility = models.ForeignKey(
         Facility,
         on_delete=models.CASCADE,
@@ -64,7 +76,7 @@ class FacilityImage(models.Model):
         ordering = ["facility", "id"]
 
 
-class FacilityReview(models.Model):
+class FacilityReview(BaseModel):
     facility = models.ForeignKey(
         Facility,
         on_delete=models.CASCADE,
@@ -90,7 +102,7 @@ class FacilityReview(models.Model):
         ordering = ["-rating"]
 
 
-class FacilityReservation(models.Model):
+class Reservation(BaseModel):
     facility = models.ForeignKey(
         Facility,
         on_delete=models.CASCADE,
@@ -117,27 +129,103 @@ class FacilityReservation(models.Model):
         ordering = ["facility", "date", "start_time"]
 
 
-class FacilityInstallment(models.Model):
-    facility = models.ForeignKey(
-        FacilityReservation,
-        on_delete=models.CASCADE,
-        related_name="installments",
-        help_text="Facility associated with the installment",
-    )
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        help_text="User who made the installment",
-    )
-    date = models.DateField(help_text="Date of the installment")
-    amount = models.DecimalField(
-        max_digits=10, decimal_places=2, help_text="Amount of the installment"
-    )
+class Installment(BaseModel):
 
-    def __str__(self):
-        return f"{self.facility.name} - {self.date} - {self.amount}"
+    def generate_unique_id():
+        date_str = datetime.now().strftime("%Y%m%d%H%M%S")
+        random_str = get_random_string(6, "0123456789")
+        return f"ins-{date_str}-{random_str}"
+
+    class InstallmentChoices(models.TextChoices):
+        FIRST = "First", "First"
+        SECOND = "Second", "Second"
+        THIRD = "Third", "Third"
+        FULL = "Full", "Full"
+
+    id = models.CharField(
+        default=generate_unique_id,
+        primary_key=True,
+        editable=False,
+        max_length=50,
+        unique=True,
+    )
+    installment_type = models.CharField(
+        max_length=20,
+        choices=InstallmentChoices.choices,
+        default=InstallmentChoices.FIRST,
+    )
+    reservation = models.ForeignKey(
+        Reservation, on_delete=models.CASCADE, related_name="installments"
+    )
+    installment_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    installment_status = models.CharField(max_length=20, default="Pending")
 
     class Meta:
-        verbose_name = "Facility Installment"
-        verbose_name_plural = "Facility Installments"
-        ordering = ["facility", "date"]
+        verbose_name_plural = "Installments"
+        verbose_name = "Installment"
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return (
+            f"{self.reservation} - {self.installment_type} - {self.installment_amount}"
+        )
+
+
+class Payment(BaseModel):
+
+    class PaymentMethodChoices(models.TextChoices):
+        CASH = "Cash", "Cash"
+        CARD = "Card", "Card"
+        MOBILE_BANKING = "Mobile Banking", "Mobile Banking"
+
+    id = models.UUIDField(
+        default=uuid.uuid4, primary_key=True, editable=False, unique=True
+    )
+    installment = models.OneToOneField(
+        Installment, on_delete=models.CASCADE, related_name="payment"
+    )
+    payment_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    payment_method = models.CharField(
+        max_length=20,
+        choices=PaymentMethodChoices.choices,
+        default=PaymentMethodChoices.CASH,
+    )
+
+    is_refunded = models.BooleanField(default=False)
+
+    def save(self, *args, **kwargs):
+        self.payment_amount = self.installment.installment_amount
+        super(Payment, self).save(*args, **kwargs)
+
+    class Meta:
+        verbose_name_plural = "Payments"
+        verbose_name = "Payment"
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"{self.installment}-{self.installment.installment_status}-{self.payment_amount}"
+
+
+class Refund(BaseModel):
+    class RefundMethodChoices(models.TextChoices):
+        CASH = "Cash", "Cash"
+        CARD = "Card", "Card"
+        MOBILE_BANKING = "Mobile Banking", "Mobile Banking"
+
+    payment = models.OneToOneField(
+        Payment, on_delete=models.CASCADE, related_name="refund"
+    )
+    refund_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    refund_method = models.CharField(
+        max_length=20,
+        choices=RefundMethodChoices.choices,
+        default=RefundMethodChoices.CASH,
+    )
+
+    class Meta:
+        verbose_name_plural = "Refunds"
+        verbose_name = "Refund"
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return str(self.payment.payment_id)
