@@ -16,30 +16,28 @@ from .serializers import (
 class RoleView(viewsets.ModelViewSet):
     queryset = Role.objects.all()
     serializer_class = RoleSerializer
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsAdminUser, IsManager]
 
 
 class TaskView(viewsets.ModelViewSet):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
-    permission_classes = [
-        IsAuthenticated,
-    ]
+    permission_classes = [IsAdminUser, IsManager, IsHousekeeping]
 
 
 class InventoryView(viewsets.ModelViewSet):
     queryset = Inventory.objects.all()
     serializer_class = InventorySerializer
-    permission_classes = [IsManager]
+    permission_classes = [IsAdminUser, IsManager]
 
 
 class StaffView(viewsets.ModelViewSet):
     queryset = Staff.objects.all()
     serializer_class = StaffSerializer
-    permission_classes = [IsHousekeeping]
+    permission_classes = [IsAdminUser, IsManager]
 
 
 class InventoryView(viewsets.ModelViewSet):
     queryset = Inventory.objects.all()
     serializer_class = InventorySerializer
-    permission_classes = [IsManager]
+    permission_classes = [IsAdminUser, IsManager]

@@ -87,7 +87,3 @@ def update_payment_refunded_status(sender, instance, created, **kwargs):
         # Set the is_refunded status of the associated Payment to True
         instance.payment.is_refunded = True
         instance.payment.save()
-
-
-# Connect the signal
-post_save.connect(update_payment_refunded_status, sender=Refund)

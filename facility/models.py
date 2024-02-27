@@ -7,6 +7,9 @@ class Facility(models.Model):
     description = models.CharField(
         max_length=255, null=True, blank=True, help_text="Description of the facility"
     )
+    is_reservable = models.BooleanField(
+        default=False, help_text="Is the facility reservable?"
+    )
 
     def __str__(self):
         return self.name
@@ -85,3 +88,56 @@ class FacilityReview(models.Model):
         verbose_name = "Facility Review"
         verbose_name_plural = "Facility Reviews"
         ordering = ["-rating"]
+
+
+class FacilityReservation(models.Model):
+    facility = models.ForeignKey(
+        Facility,
+        on_delete=models.CASCADE,
+        related_name="reservations",
+        help_text="Facility associated with the reservation",
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        help_text="User who made the reservation",
+    )
+    date = models.DateField(help_text="Date of the reservation")
+    start_time = models.TimeField(help_text="Start time of the reservation")
+    end_time = models.TimeField(help_text="End time of the reservation")
+
+    def __str__(self):
+        return (
+            f"{self.facility.name} - {self.date} - {self.start_time} to {self.end_time}"
+        )
+
+    class Meta:
+        verbose_name = "Facility Reservation"
+        verbose_name_plural = "Facility Reservations"
+        ordering = ["facility", "date", "start_time"]
+
+
+class FacilityInstallment(models.Model):
+    facility = models.ForeignKey(
+        FacilityReservation,
+        on_delete=models.CASCADE,
+        related_name="installments",
+        help_text="Facility associated with the installment",
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        help_text="User who made the installment",
+    )
+    date = models.DateField(help_text="Date of the installment")
+    amount = models.DecimalField(
+        max_digits=10, decimal_places=2, help_text="Amount of the installment"
+    )
+
+    def __str__(self):
+        return f"{self.facility.name} - {self.date} - {self.amount}"
+
+    class Meta:
+        verbose_name = "Facility Installment"
+        verbose_name_plural = "Facility Installments"
+        ordering = ["facility", "date"]

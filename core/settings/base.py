@@ -22,7 +22,6 @@ INSTALLED_APPS = [
     "facility",
     "notification",
     "iot",
-    "payment",
     "blog",
     # 3rd party apps
     "rest_framework",

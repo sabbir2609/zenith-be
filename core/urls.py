@@ -19,7 +19,6 @@ urlpatterns = [
     path("api/main/", include("main.urls"), name="main"),
     path("api/management/", include("management.urls"), name="management"),
     path("api/iot/", include("iot.urls"), name="iot"),
-    path("api/payment/", include("payment.urls"), name="payment"),
     # blog
     path("blog/", include("blog.urls"), name="blog"),
     path("ckeditor/", include("ckeditor_uploader.urls")),
