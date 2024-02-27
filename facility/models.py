@@ -91,7 +91,9 @@ class FacilityReview(BaseModel):
     description = models.CharField(
         max_length=255, null=True, blank=True, help_text="Description of the review"
     )
-    rating = models.FloatField(help_text="Rating of the facility")
+    rating = models.DecimalField(
+        max_digits=2, decimal_places=1, help_text="Rating of the facility"
+    )
 
     def __str__(self):
         return f"{self.facility.name} - Review by {self.reviewer_name}"
@@ -102,7 +104,7 @@ class FacilityReview(BaseModel):
         ordering = ["-rating"]
 
 
-class Reservation(BaseModel):
+class FacilityReservation(BaseModel):
     facility = models.ForeignKey(
         Facility,
         on_delete=models.CASCADE,
@@ -129,13 +131,13 @@ class Reservation(BaseModel):
         ordering = ["facility", "date", "start_time"]
 
 
+def generate_unique_id():
+    date_str = datetime.now().strftime("%Y%m%d%H%M%S")
+    random_str = get_random_string(6, "0123456789")
+    return f"ins-{date_str}-{random_str}"
+
+
 class Installment(BaseModel):
-
-    def generate_unique_id():
-        date_str = datetime.now().strftime("%Y%m%d%H%M%S")
-        random_str = get_random_string(6, "0123456789")
-        return f"ins-{date_str}-{random_str}"
-
     class InstallmentChoices(models.TextChoices):
         FIRST = "First", "First"
         SECOND = "Second", "Second"
@@ -155,7 +157,7 @@ class Installment(BaseModel):
         default=InstallmentChoices.FIRST,
     )
     reservation = models.ForeignKey(
-        Reservation, on_delete=models.CASCADE, related_name="installments"
+        FacilityReservation, on_delete=models.CASCADE, related_name="installments"
     )
     installment_amount = models.DecimalField(max_digits=10, decimal_places=2)
     installment_status = models.CharField(max_length=20, default="Pending")
@@ -212,6 +214,9 @@ class Refund(BaseModel):
         CARD = "Card", "Card"
         MOBILE_BANKING = "Mobile Banking", "Mobile Banking"
 
+    id = models.UUIDField(
+        default=uuid.uuid4, primary_key=True, editable=False, unique=True
+    )
     payment = models.OneToOneField(
         Payment, on_delete=models.CASCADE, related_name="refund"
     )
