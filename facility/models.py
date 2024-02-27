@@ -2,6 +2,7 @@ import uuid
 from django.db import models
 from django.conf import settings
 from django.utils.crypto import get_random_string
+from django.forms import ValidationError
 
 from datetime import datetime
 
@@ -119,6 +120,11 @@ class FacilityReservation(BaseModel):
     date = models.DateField(help_text="Date of the reservation")
     start_time = models.TimeField(help_text="Start time of the reservation")
     end_time = models.TimeField(help_text="End time of the reservation")
+
+    # only reservable facilities can be reserved
+    def clean(self):
+        if not self.facility.is_reservable:
+            raise ValidationError("This facility is not reservable")
 
     def __str__(self):
         return (
