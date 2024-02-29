@@ -49,8 +49,12 @@ DATABASES = {
     }
 }
 
-# Sqlite database settings
+# DATABASES = {
+#     "default": dj_database_url.parse(os.environ.get("DATABASE_URL"), conn_max_age=600),
+# }
 
+
+# Sqlite database settings
 # DATABASES = {
 #     "default": {
 #         "ENGINE": "django.db.backends.sqlite3",
@@ -58,11 +62,6 @@ DATABASES = {
 #     }
 # }
 
-# Production database settings: For migration and creating superuser
-
-# DATABASES = {
-#     "default": dj_database_url.parse(os.environ.get("DATABASE_URL"), conn_max_age=600),
-# }
 
 # Email configurations
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
