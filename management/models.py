@@ -37,7 +37,9 @@ class Staff(BaseModel):
         BUSY = "busy", "Busy "
         ASSIGNED = "assigned", "Assigned"
 
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="staff"
+    )
     staff_id = models.UUIDField(default=uuid.uuid4, help_text="Unique ID of the staff")
     role = models.ForeignKey(
         Role, on_delete=models.CASCADE, help_text="Role of the staff"

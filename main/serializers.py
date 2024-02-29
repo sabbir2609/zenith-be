@@ -163,7 +163,7 @@ class RefundSerializer(ModelSerializer):
 
 
 class ReviewSerializer(ModelSerializer):
-    guest = SerializerMethodField()
+    guest = SerializerMethodField(method_name="get_guest")
 
     class Meta:
         model = Review

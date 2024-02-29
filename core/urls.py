@@ -18,6 +18,7 @@ urlpatterns = [
     path("auth/", include("user.urls"), name="user"),
     path("api/main/", include("main.urls"), name="main"),
     path("api/management/", include("management.urls"), name="management"),
+    path("api/facility/", include("facility.urls"), name="facility"),
     path("api/iot/", include("iot.urls"), name="iot"),
     # blog
     path("blog/", include("blog.urls"), name="blog"),
