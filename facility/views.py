@@ -20,7 +20,8 @@ from .serializers import (
     FacilityImageSerializer,
     FacilityReviewSerializer,
     FacilityReviewListSerializer,
-    FacilityReservationSerializer,
+    FacilityReservationAdminSerializer,
+    FacilityReservationUserSerializer,
     InstallmentSerializer,
     PaymentSerializer,
     RefundSerializer,
@@ -135,9 +136,34 @@ class FacilityReviewViewSet(viewsets.ModelViewSet):
         }
 
 
-class FacilityReservationViewSet(viewsets.ModelViewSet):
-    queryset = FacilityReservation.objects.all()
-    serializer_class = FacilityReservationSerializer
+class StaffOnlyFacilityReservationViewSet(viewsets.ModelViewSet):
+    queryset = FacilityReservation.objects.filter(facility__is_reservable=True)
+    serializer_class = FacilityReservationAdminSerializer
+    permission_classes = [IsAdminUser]
+
+
+class UserFacilityReservationViewSet(viewsets.ModelViewSet):
+    queryset = FacilityReservation.objects.filter(facility__is_reservable=True)
+
+    def get_permissions(self):
+        if self.action in ["update", "partial_update", "destroy"]:
+            return [IsAuthenticated(), IsAdminUser(), IsManager()]
+        elif self.action == "create":
+            return [IsAuthenticated()]
+        elif self.action in ["retrieve", "list"]:
+            return [IsAuthenticated()]
+        else:
+            return [IsAuthenticated()]
+
+    def get_serializer_class(self):
+        if self.request.user.is_staff:
+            return FacilityReservationAdminSerializer
+        return FacilityReservationUserSerializer
+
+    def get_serializer_context(self):
+        user = self.request.user
+        facility_id = self.kwargs.get("facility_pk")
+        return {"user": user, "facility_id": facility_id}
 
 
 class InstallmentViewSet(viewsets.ModelViewSet):

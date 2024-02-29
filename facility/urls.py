@@ -5,7 +5,8 @@ from .views import (
     FacilityImageViewSet,
     FacilityReviewViewSet,
     FacilityReviewListViewSet,
-    FacilityReservationViewSet,
+    StaffOnlyFacilityReservationViewSet,
+    UserFacilityReservationViewSet,
     InstallmentViewSet,
     PaymentViewSet,
     RefundViewSet,
@@ -23,7 +24,7 @@ router.register("images", FacilityImageViewSet, basename="images")
 router.register("reviews", FacilityReviewListViewSet, basename="reviews")
 router.register(
     "reservations",
-    FacilityReservationViewSet,
+    StaffOnlyFacilityReservationViewSet,
     basename="reservations",
 )
 router.register("installments", InstallmentViewSet, basename="installment")
@@ -40,7 +41,7 @@ facilities_router.register(
     "reviews", FacilityReviewViewSet, basename="facility-reviews"
 )
 facilities_router.register(
-    "reservations", FacilityReservationViewSet, basename="facility-reservations"
+    "reservations", UserFacilityReservationViewSet, basename="facility-reservations"
 )
 
 

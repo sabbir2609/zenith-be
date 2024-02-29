@@ -28,7 +28,7 @@ class FacilityReviewInline(admin.TabularInline):
 
 @admin.register(Facility)
 class FacilityAdmin(admin.ModelAdmin):
-    list_display = ("name", "description")
+    list_display = ("name", "is_reservable", "id")
     search_fields = ("name",)
     inlines = [FacilityAmenitiesInline, FacilityImageInline, FacilityReviewInline]
 

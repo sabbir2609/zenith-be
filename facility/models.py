@@ -97,7 +97,7 @@ class FacilityReview(BaseModel):
     )
 
     def __str__(self):
-        return f"{self.facility.name} - Review by {self.reviewer_name}"
+        return f"{self.facility.name} - Review by {self.reviewer}"
 
     class Meta:
         verbose_name = "Facility Review"
