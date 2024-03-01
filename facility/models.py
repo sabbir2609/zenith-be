@@ -1,10 +1,11 @@
+from decimal import Decimal
 import uuid
 from django.db import models
 from django.conf import settings
 from django.utils.crypto import get_random_string
 from django.forms import ValidationError
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 class BaseModel(models.Model):
@@ -231,21 +232,51 @@ class FacilityReservation(BaseModel):
         # if self.number_of_people > self.facility.max_capacity:
         #     raise ValidationError("Number of people exceeds the facility capacity.")
 
+    def calculate_duration_hours(self):
+        # Convert start_time and end_time to datetime instances
+        start_datetime = datetime.combine(datetime.today(), self.start_time)
+        end_datetime = datetime.combine(datetime.today(), self.end_time)
+
+        # Calculate the duration
+        duration = end_datetime - start_datetime
+
+        # If end_time is before start_time, add 24 hours to the duration
+        if duration < timedelta(0):
+            duration += timedelta(days=1)
+
+        # Convert the duration to hours
+        duration_hours = duration.total_seconds() / 3600
+
+        return duration_hours
+
     def calculate_total_amount(self):
-        base_fee = self.facility.base_reservation_fee
+        base_fee_per_hour = self.facility.base_reservation_fee
+
         extra_person_fee = self.facility.extra_person_fee
+
         number_of_people = self.number_of_people
+
         extra_charge = sum(
             [charge.charge for charge in self.facility.extra_charges.all()]
         )
-        if extra_charge is None:
-            extra_charge = 0
-        if extra_person_fee is None:
+
+        if number_of_people <= self.facility.base_capacity:
             extra_person_fee = 0
 
+        else:
+            extra_person_fee = (
+                number_of_people - self.facility.base_capacity
+            ) * extra_person_fee
+
+        if extra_charge is None:
+            extra_charge = 0
+
+        duration_hours = Decimal(str(self.calculate_duration_hours()))
+
         total_amount = (
-            base_fee + (extra_person_fee * (number_of_people - 1)) + extra_charge
+            base_fee_per_hour * duration_hours + extra_person_fee + extra_charge
         )
+
         return total_amount
 
     def save(self, *args, **kwargs):
