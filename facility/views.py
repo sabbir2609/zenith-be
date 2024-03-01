@@ -1,14 +1,21 @@
+from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
-from management.permissions import IsManager, IsReceptionist, IsHousekeeping
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from management.permissions import (
+    IsManager,
+    IsReceptionist,
+    IsHousekeeping,
+)
 
 from .models import (
     Facility,
     FacilityAmenities,
     FacilityImage,
     FacilityReview,
+    FacilityExtraCharge,
+    FacilityReservation,
 )
 from .serializers import (
     FacilitySerializer,
@@ -16,6 +23,9 @@ from .serializers import (
     FacilityImageSerializer,
     FacilityReviewSerializer,
     FacilityReviewListSerializer,
+    FacilityExtraChargeSerializer,
+    FacilityReservationAdminSerializer,
+    FacilityReservationSerializer,
 )
 
 
@@ -25,13 +35,13 @@ class FacilityViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action in ["update", "partial_update", "destroy"]:
-            return [IsAuthenticated(), IsAdminUser(), IsManager()]
+            return [IsAuthenticated(), IsManager()]
         elif self.action == "create":
-            return [IsAdminUser(), IsManager()]
+            return [IsManager()]
         elif self.action in ["retrieve", "list", "reservable_facilities"]:
             return [AllowAny()]
         else:
-            return [IsAuthenticated(), IsAdminUser()]
+            return [IsManager()]
 
     # action to see all reservable facilities
     @action(detail=False, methods=["get"], url_path="reservable", url_name="reservable")
@@ -41,19 +51,25 @@ class FacilityViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
 
+class FacilityExtraChargeViewSet(viewsets.ModelViewSet):
+    queryset = FacilityExtraCharge.objects.all()
+    serializer_class = FacilityExtraChargeSerializer
+    permission_classes = [IsManager]
+
+
 class FacilityAmenitiesViewSet(viewsets.ModelViewSet):
     queryset = FacilityAmenities.objects.all()
     serializer_class = FacilityAmenitiesSerializer
 
     def get_permissions(self):
         if self.action in ["update", "partial_update", "destroy"]:
-            return [IsAuthenticated(), IsAdminUser(), IsManager()]
+            return [IsAuthenticated(), IsManager()]
         elif self.action == "create":
-            return [IsAdminUser(), IsManager()]
+            return [IsManager()]
         elif self.action in ["retrieve", "list"]:
             return [AllowAny()]
         else:
-            return [IsAuthenticated(), IsAdminUser()]
+            return [IsManager()]
 
 
 class FacilityImageViewSet(viewsets.ModelViewSet):
@@ -62,18 +78,18 @@ class FacilityImageViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action in ["update", "partial_update", "destroy"]:
-            return [IsAuthenticated(), IsAdminUser(), IsManager()]
+            return [IsAuthenticated(), IsManager()]
         elif self.action == "create":
-            return [IsAdminUser(), IsManager()]
+            return [IsManager()]
         elif self.action in ["retrieve", "list"]:
             return [AllowAny()]
         else:
-            return [IsAuthenticated(), IsAdminUser()]
+            return [IsManager()]
 
 
 class FacilityReviewListViewSet(viewsets.ModelViewSet):
     queryset = FacilityReview.objects.all()
-    serializer_class = FacilityReviewSerializer
+    serializer_class = FacilityReviewListSerializer
 
     def get_permissions(self):
         if self.action in ["update", "partial_update", "destroy"]:
@@ -104,6 +120,37 @@ class FacilityReviewViewSet(viewsets.ModelViewSet):
         if facility_id:
             return FacilityReview.objects.filter(facility=facility_id)
         return FacilityReview.objects.all()
+
+    def get_serializer_context(self):
+        return {
+            "facility_id": self.kwargs.get("facility_pk"),
+            "user": self.request.user,
+        }
+
+
+class FacilityReservationAdminViewSet(viewsets.ModelViewSet):
+    queryset = FacilityReservation.objects.all()
+    serializer_class = FacilityReservationAdminSerializer
+    permission_classes = [IsManager]
+
+
+class FacilityReservationViewSet(viewsets.ModelViewSet):
+    serializer_class = FacilityReservationSerializer
+
+    def get_permissions(self):
+        if self.action in ["update", "partial_update", "destroy"]:
+            return [IsManager()]
+        elif self.action == "create":
+            return [IsAuthenticated()]
+        elif self.action in ["retrieve", "list"]:
+            return [AllowAny()]
+        else:
+            return [IsAuthenticated()]
+
+    def get_queryset(self):
+        return FacilityReservation.objects.filter(
+            facility=self.kwargs.get("facility_pk")
+        )
 
     def get_serializer_context(self):
         return {

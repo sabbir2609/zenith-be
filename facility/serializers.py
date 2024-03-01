@@ -79,14 +79,35 @@ class FacilityReservationSerializer(serializers.ModelSerializer):
         model = FacilityReservation
         fields = [
             "id",
-            "facility",
-            "user",
             "date",
             "start_time",
             "end_time",
             "number_of_people",
             "total_amount",
         ]
+        read_only_fields = ["total_amount"]
+
+    def create(self, validated_data):
+        facility = self.context["facility"]
+        user = self.context["user"]
+        date = validated_data["date"]
+        start_time = validated_data["start_time"]
+        end_time = validated_data["end_time"]
+        number_of_people = validated_data["number_of_people"]
+
+        total_amount = facility.calculate_total_amount(
+            start_time, end_time, number_of_people
+        )
+
+        return FacilityReservation.objects.create(
+            facility=facility,
+            user=user,
+            date=date,
+            start_time=start_time,
+            end_time=end_time,
+            number_of_people=number_of_people,
+            total_amount=total_amount,
+        )
 
     def validate(self, data):
         errors = {}

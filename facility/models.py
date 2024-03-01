@@ -17,8 +17,8 @@ class BaseModel(models.Model):
 
 class Facility(models.Model):
     name = models.CharField(max_length=100, help_text="Name of the facility")
-    description = models.CharField(
-        max_length=255, null=True, blank=True, help_text="Description of the facility"
+    description = models.TextField(
+        null=True, blank=True, help_text="Description of the facility"
     )
 
     # if the facility is reservable, then the base reservation fee is required
@@ -26,6 +26,9 @@ class Facility(models.Model):
         default=False, help_text="Is the facility reservable?"
     )
 
+    base_capacity = models.PositiveIntegerField(
+        help_text="Base capacity of the facility", null=True, blank=True
+    )
     max_capacity = models.PositiveIntegerField(
         help_text="Maximum capacity of the facility", null=True, blank=True
     )
@@ -41,7 +44,7 @@ class Facility(models.Model):
         decimal_places=2,
         null=True,
         blank=True,
-        help_text="Base reservation fee for the facility",
+        help_text="Base reservation fee for the facility per hour and base capacity.",
     )
 
     extra_person_fee = models.DecimalField(
