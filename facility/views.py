@@ -71,24 +71,9 @@ class FacilityImageViewSet(viewsets.ModelViewSet):
             return [IsAuthenticated(), IsAdminUser()]
 
 
-class FacilityReviewViewSet(viewsets.ModelViewSet):
-    queryset = FacilityReview.objects.all()
-    serializer_class = FacilityReviewSerializer
-
-    def get_permissions(self):
-        if self.action in ["update", "partial_update", "destroy"]:
-            return [IsAuthenticated()]
-        elif self.action == "create":
-            return [IsAuthenticated()]
-        elif self.action in ["retrieve", "list"]:
-            return [AllowAny()]
-        else:
-            return [IsAuthenticated()]
-
-
 class FacilityReviewListViewSet(viewsets.ModelViewSet):
     queryset = FacilityReview.objects.all()
-    serializer_class = FacilityReviewListSerializer
+    serializer_class = FacilityReviewSerializer
 
     def get_permissions(self):
         if self.action in ["update", "partial_update", "destroy"]:
