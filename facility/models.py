@@ -68,10 +68,10 @@ class FacilityExtraCharge(BaseModel):
     facility = models.ForeignKey(
         Facility,
         on_delete=models.CASCADE,
-        related_name="fees",
+        related_name="extra_charges",
         help_text="Facility associated with the fee",
     )
-    Charge = models.DecimalField(
+    charge = models.DecimalField(
         max_digits=10, decimal_places=2, help_text="Fee for the facility"
     )
     description = models.CharField(
@@ -84,7 +84,7 @@ class FacilityExtraCharge(BaseModel):
     class Meta:
         verbose_name = "Facility Charge"
         verbose_name_plural = "Facility Charges"
-        ordering = ["facility", "Charge"]
+        ordering = ["facility", "charge"]
 
 
 class FacilityAmenities(BaseModel):
@@ -235,7 +235,17 @@ class FacilityReservation(BaseModel):
         base_fee = self.facility.base_reservation_fee
         extra_person_fee = self.facility.extra_person_fee
         number_of_people = self.number_of_people
-        total_amount = base_fee + (extra_person_fee * (number_of_people - 1))
+        extra_charge = sum(
+            [charge.charge for charge in self.facility.extra_charges.all()]
+        )
+        if extra_charge is None:
+            extra_charge = 0
+        if extra_person_fee is None:
+            extra_person_fee = 0
+
+        total_amount = (
+            base_fee + (extra_person_fee * (number_of_people - 1)) + extra_charge
+        )
         return total_amount
 
     def save(self, *args, **kwargs):

@@ -69,3 +69,11 @@ class FacilityReviewAdmin(admin.ModelAdmin):
     ordering = ("-rating",)
 
     inlines = [FacilityReviewImageInline]
+
+
+@admin.register(FacilityReservation)
+class FacilityReservationAdmin(admin.ModelAdmin):
+    list_display = ("facility", "user", "date", "start_time", "end_time")
+    list_filter = ("facility",)
+    search_fields = ("facility__name", "user__first_name", "user__last_name")
+    ordering = ("date",)
