@@ -5,6 +5,7 @@ from .views import (
     FacilityAmenitiesViewSet,
     FacilityImageViewSet,
     FacilityReviewViewSet,
+    FacilityReviewImageViewSet,
     FacilityReviewListViewSet,
     FacilityReservationAdminViewSet,
     FacilityReservationViewSet,
@@ -39,6 +40,13 @@ facilities_router.register(
 )
 facilities_router.register(
     "reservations", FacilityReservationViewSet, basename="facility-reservations"
+)
+
+facilities_review_router = routers.NestedDefaultRouter(
+    facilities_router, "reviews", lookup="review"
+)
+facilities_review_router.register(
+    "images", FacilityReviewImageViewSet, basename="review-images"
 )
 
 

@@ -159,6 +159,29 @@ class FacilityReview(BaseModel):
         ordering = ["-rating"]
 
 
+class FacilityReviewImage(BaseModel):
+    review = models.ForeignKey(
+        FacilityReview,
+        on_delete=models.CASCADE,
+        related_name="images",
+        help_text="Review associated with the image",
+    )
+    image = models.ImageField(
+        upload_to="facilities/reviews/images/", help_text="Image file for the review"
+    )
+    description = models.CharField(
+        max_length=255, null=True, blank=True, help_text="Description of the image"
+    )
+
+    def __str__(self):
+        return f"{self.review.facility.name} - Image {self.id}"
+
+    class Meta:
+        verbose_name = "Facility Review Image"
+        verbose_name_plural = "Facility Review Images"
+        ordering = ["review", "id"]
+
+
 class FacilityReservation(BaseModel):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 

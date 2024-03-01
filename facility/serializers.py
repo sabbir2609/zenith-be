@@ -6,6 +6,7 @@ from .models import (
     FacilityAmenities,
     FacilityImage,
     FacilityReview,
+    FacilityReviewImage,
     FacilityExtraCharge,
     FacilityReservation,
 )
@@ -52,10 +53,28 @@ class FacilityReviewSerializer(serializers.ModelSerializer):
         return f"{obj.user.first_name} {obj.user.last_name}"
 
 
+class FacilityReviewImageSerializer(serializers.ModelSerializer):
+    images = FacilityImageSerializer()
+
+    class Meta:
+        model = FacilityReviewImage
+        fields = "__all__"
+
+
 class FacilityReviewListSerializer(serializers.ModelSerializer):
+    images = FacilityReviewImageSerializer()
+
     class Meta:
         model = FacilityReview
-        fields = ["id", "reviewer", "facility", "description", "rating", "created_at"]
+        fields = [
+            "id",
+            "reviewer",
+            "facility",
+            "description",
+            "rating",
+            "created_at",
+            "images",
+        ]
 
 
 class FacilityReservationAdminSerializer(serializers.ModelSerializer):

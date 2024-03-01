@@ -14,6 +14,7 @@ from .models import (
     FacilityAmenities,
     FacilityImage,
     FacilityReview,
+    FacilityReviewImage,
     FacilityExtraCharge,
     FacilityReservation,
 )
@@ -22,6 +23,7 @@ from .serializers import (
     FacilityAmenitiesSerializer,
     FacilityImageSerializer,
     FacilityReviewSerializer,
+    FacilityReviewImageSerializer,
     FacilityReviewListSerializer,
     FacilityExtraChargeSerializer,
     FacilityReservationAdminSerializer,
@@ -126,6 +128,21 @@ class FacilityReviewViewSet(viewsets.ModelViewSet):
             "facility_id": self.kwargs.get("facility_pk"),
             "user": self.request.user,
         }
+
+
+class FacilityReviewImageViewSet(viewsets.ModelViewSet):
+    queryset = FacilityReviewImage.objects.all()
+    serializer_class = FacilityReviewImageSerializer
+
+    def get_permissions(self):
+        if self.action in ["update", "partial_update", "destroy"]:
+            return [IsAuthenticated()]
+        elif self.action == "create":
+            return [IsAuthenticated()]
+        elif self.action in ["retrieve", "list"]:
+            return [AllowAny()]
+        else:
+            return [IsAuthenticated()]
 
 
 class FacilityReservationAdminViewSet(viewsets.ModelViewSet):

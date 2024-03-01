@@ -126,7 +126,7 @@ class Room(models.Model):
 class RoomImage(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE, related_name="images")
     image = models.ImageField(upload_to="room/images/", blank=True, null=True)
-    alt_text = models.CharField(max_length=100, blank=True, null=True)
+    description = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return str(self.room)
@@ -178,7 +178,6 @@ class Review(BaseModel):
         ]
     )
     comment = models.TextField(blank=True, null=True)
-    images = models.ImageField(upload_to="room/review/", blank=True, null=True)
     likes = models.ManyToManyField(Guest, blank=True, related_name="review_likes")
 
     def __str__(self):
@@ -188,6 +187,20 @@ class Review(BaseModel):
         ordering = ["-created_at"]
         verbose_name_plural = "Reviews"
         verbose_name = "Review"
+
+
+class ReviewImage(models.Model):
+    review = models.ForeignKey(Review, on_delete=models.CASCADE, related_name="images")
+    image = models.ImageField(upload_to="room/review/images/", blank=True, null=True)
+    description = models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return str(self.review)
+
+    class Meta:
+        verbose_name_plural = "Review Images"
+        verbose_name = "Review Image"
+        ordering = ["review"]
 
 
 class Reservation(models.Model):

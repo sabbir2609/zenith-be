@@ -12,6 +12,7 @@ from .models import (
     Payment,
     Refund,
     Review,
+    ReviewImage,
 )
 
 from user.serializers import UserSerializer
@@ -176,3 +177,9 @@ class ReviewSerializer(ModelSerializer):
 
     def get_guest(self, obj):
         return obj.guest.user.username
+
+
+class ReviewImageSerializer(ModelSerializer):
+    class Meta:
+        model = ReviewImage
+        fields = ["id", "review", "image", "description"]

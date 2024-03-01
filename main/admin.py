@@ -12,6 +12,7 @@ from .models import (
     Payment,
     Refund,
     Review,
+    ReviewImage,
 )
 
 
@@ -58,6 +59,19 @@ class RoomAdmin(admin.ModelAdmin):
 
     class Meta:
         verbose_name_plural = "Rooms"
+
+
+class ReviewImageInline(admin.TabularInline):
+    model = ReviewImage
+    extra = 1
+    readonly_fields = ["thumbnail"]
+
+    def thumbnail(self, instance):
+        if instance.image.name != "":
+            return format_html(
+                f'<img src="{instance.image.url}" style=" width: 100px; height: 100px; object-fit: cover;"/>'
+            )
+        return ""
 
 
 @admin.register(Review)

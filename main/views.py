@@ -28,6 +28,7 @@ from main.models import (
     Payment,
     Refund,
     Review,
+    ReviewImage,
 )
 from main.serializers import (
     GuestSerializer,
@@ -40,6 +41,7 @@ from main.serializers import (
     InstallmentSerializer,
     PaymentSerializer,
     ReviewSerializer,
+    ReviewImageSerializer,
     RefundSerializer,
 )
 
@@ -233,3 +235,15 @@ class ReviewViewSet(ModelViewSet):
         guest = Guest.objects.filter(user=user).first()
 
         return {"room_id": self.kwargs.get("room_pk"), "guest": guest}
+
+
+class ReviewImageViewSet(ModelViewSet):
+    queryset = ReviewImage.objects.all()
+    serializer_class = ReviewImageSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return ReviewImage.objects.filter(review_id=self.kwargs["review_pk"])
+
+    def get_serializer_context(self):
+        return {"review_id": self.kwargs.get("review_pk")}
