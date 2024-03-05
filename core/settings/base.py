@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     # dev dependency
     "django_extensions",
     "debug_toolbar",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -128,6 +129,7 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.IsAuthenticatedOrReadOnly",
     ],
     "DEFAULT_AUTHENTICATION_CLASSES": ("user.authentication.CustomJWTAuthentication",),
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     # "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     # "PAGE_SIZE": 10,
 }
@@ -240,6 +242,16 @@ CELERY_BEAT_SCHEDULE = {
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
 STRIPE_PUBLISHABLE_KEY = os.getenv("STRIPE_PUBLISHABLE_KEY")
 
+########################
+# Spectacular Settings #
+########################
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Zenith System API",
+    "DESCRIPTION": "A cutting edge API for Hotel Management System",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
 
 #####################
 # LOGGING SETTINGS #

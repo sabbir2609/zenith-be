@@ -1,0 +1,7287 @@
+openapi: 3.0.3
+info:
+  title: Zenith System API
+  version: 1.0.0
+  description: A cutting edge API for Hotel Management System
+paths:
+  /api/facility/amenities/:
+    get:
+      operationId: api_facility_amenities_list
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FacilityAmenities'
+          description: ''
+    post:
+      operationId: api_facility_amenities_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityAmenities'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityAmenities'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityAmenities'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityAmenities'
+          description: ''
+  /api/facility/amenities/{id}/:
+    get:
+      operationId: api_facility_amenities_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Amenities.
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityAmenities'
+          description: ''
+    put:
+      operationId: api_facility_amenities_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Amenities.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityAmenities'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityAmenities'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityAmenities'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityAmenities'
+          description: ''
+    patch:
+      operationId: api_facility_amenities_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Amenities.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityAmenities'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityAmenities'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityAmenities'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityAmenities'
+          description: ''
+    delete:
+      operationId: api_facility_amenities_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Amenities.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/facility/extra-charges/:
+    get:
+      operationId: api_facility_extra_charges_list
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FacilityExtraCharge'
+          description: ''
+    post:
+      operationId: api_facility_extra_charges_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityExtraCharge'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityExtraCharge'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityExtraCharge'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityExtraCharge'
+          description: ''
+  /api/facility/extra-charges/{id}/:
+    get:
+      operationId: api_facility_extra_charges_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Charge.
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityExtraCharge'
+          description: ''
+    put:
+      operationId: api_facility_extra_charges_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Charge.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityExtraCharge'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityExtraCharge'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityExtraCharge'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityExtraCharge'
+          description: ''
+    patch:
+      operationId: api_facility_extra_charges_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Charge.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityExtraCharge'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityExtraCharge'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityExtraCharge'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityExtraCharge'
+          description: ''
+    delete:
+      operationId: api_facility_extra_charges_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Charge.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/facility/facilities/:
+    get:
+      operationId: api_facility_facilities_list
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Facility'
+          description: ''
+    post:
+      operationId: api_facility_facilities_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Facility'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Facility'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Facility'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Facility'
+          description: ''
+  /api/facility/facilities/{facility_pk}/amenities/:
+    get:
+      operationId: api_facility_facilities_amenities_list
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the amenities
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FacilityAmenities'
+          description: ''
+    post:
+      operationId: api_facility_facilities_amenities_create
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the amenities
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityAmenities'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityAmenities'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityAmenities'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityAmenities'
+          description: ''
+  /api/facility/facilities/{facility_pk}/amenities/{id}/:
+    get:
+      operationId: api_facility_facilities_amenities_retrieve
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the amenities
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Amenities.
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityAmenities'
+          description: ''
+    put:
+      operationId: api_facility_facilities_amenities_update
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the amenities
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Amenities.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityAmenities'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityAmenities'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityAmenities'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityAmenities'
+          description: ''
+    patch:
+      operationId: api_facility_facilities_amenities_partial_update
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the amenities
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Amenities.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityAmenities'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityAmenities'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityAmenities'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityAmenities'
+          description: ''
+    delete:
+      operationId: api_facility_facilities_amenities_destroy
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the amenities
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Amenities.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/facility/facilities/{facility_pk}/extra-charges/:
+    get:
+      operationId: api_facility_facilities_extra_charges_list
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the fee
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FacilityExtraCharge'
+          description: ''
+    post:
+      operationId: api_facility_facilities_extra_charges_create
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the fee
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityExtraCharge'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityExtraCharge'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityExtraCharge'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityExtraCharge'
+          description: ''
+  /api/facility/facilities/{facility_pk}/extra-charges/{id}/:
+    get:
+      operationId: api_facility_facilities_extra_charges_retrieve
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the fee
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Charge.
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityExtraCharge'
+          description: ''
+    put:
+      operationId: api_facility_facilities_extra_charges_update
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the fee
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Charge.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityExtraCharge'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityExtraCharge'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityExtraCharge'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityExtraCharge'
+          description: ''
+    patch:
+      operationId: api_facility_facilities_extra_charges_partial_update
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the fee
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Charge.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityExtraCharge'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityExtraCharge'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityExtraCharge'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityExtraCharge'
+          description: ''
+    delete:
+      operationId: api_facility_facilities_extra_charges_destroy
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the fee
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Charge.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/facility/facilities/{facility_pk}/images/:
+    get:
+      operationId: api_facility_facilities_images_list
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the image
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FacilityImage'
+          description: ''
+    post:
+      operationId: api_facility_facilities_images_create
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the image
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityImage'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityImage'
+          description: ''
+  /api/facility/facilities/{facility_pk}/images/{id}/:
+    get:
+      operationId: api_facility_facilities_images_retrieve
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the image
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Image.
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityImage'
+          description: ''
+    put:
+      operationId: api_facility_facilities_images_update
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the image
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Image.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityImage'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityImage'
+          description: ''
+    patch:
+      operationId: api_facility_facilities_images_partial_update
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the image
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Image.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityImage'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityImage'
+          description: ''
+    delete:
+      operationId: api_facility_facilities_images_destroy
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the image
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Image.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/facility/facilities/{facility_pk}/reservations/:
+    get:
+      operationId: api_facility_facilities_reservations_list
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the reservation
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FacilityReservation'
+          description: ''
+    post:
+      operationId: api_facility_facilities_reservations_create
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the reservation
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityReservation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityReservation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityReservation'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityReservation'
+          description: ''
+  /api/facility/facilities/{facility_pk}/reservations/{id}/:
+    get:
+      operationId: api_facility_facilities_reservations_retrieve
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the reservation
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Facility Reservation.
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityReservation'
+          description: ''
+    put:
+      operationId: api_facility_facilities_reservations_update
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the reservation
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Facility Reservation.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityReservation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityReservation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityReservation'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityReservation'
+          description: ''
+    patch:
+      operationId: api_facility_facilities_reservations_partial_update
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the reservation
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Facility Reservation.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityReservation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityReservation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityReservation'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityReservation'
+          description: ''
+    delete:
+      operationId: api_facility_facilities_reservations_destroy
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the reservation
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Facility Reservation.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/facility/facilities/{facility_pk}/reviews/:
+    get:
+      operationId: api_facility_facilities_reviews_list
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the review
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FacilityReview'
+          description: ''
+    post:
+      operationId: api_facility_facilities_reviews_create
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the review
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityReview'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityReview'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityReview'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityReview'
+          description: ''
+  /api/facility/facilities/{facility_pk}/reviews/{id}/:
+    get:
+      operationId: api_facility_facilities_reviews_retrieve
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the review
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Review.
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityReview'
+          description: ''
+    put:
+      operationId: api_facility_facilities_reviews_update
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the review
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Review.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityReview'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityReview'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityReview'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityReview'
+          description: ''
+    patch:
+      operationId: api_facility_facilities_reviews_partial_update
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the review
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Review.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityReview'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityReview'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityReview'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityReview'
+          description: ''
+    delete:
+      operationId: api_facility_facilities_reviews_destroy
+      parameters:
+      - in: path
+        name: facility_pk
+        schema:
+          type: integer
+          description: Facility associated with the review
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Review.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/facility/facilities/{id}/:
+    get:
+      operationId: api_facility_facilities_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility.
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Facility'
+          description: ''
+    put:
+      operationId: api_facility_facilities_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Facility'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Facility'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Facility'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Facility'
+          description: ''
+    patch:
+      operationId: api_facility_facilities_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFacility'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFacility'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFacility'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Facility'
+          description: ''
+    delete:
+      operationId: api_facility_facilities_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/facility/facilities/reservable/:
+    get:
+      operationId: api_facility_facilities_reservable_retrieve
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Facility'
+          description: ''
+  /api/facility/images/:
+    get:
+      operationId: api_facility_images_list
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FacilityImage'
+          description: ''
+    post:
+      operationId: api_facility_images_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityImage'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityImage'
+          description: ''
+  /api/facility/images/{id}/:
+    get:
+      operationId: api_facility_images_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Image.
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityImage'
+          description: ''
+    put:
+      operationId: api_facility_images_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Image.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityImage'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityImage'
+          description: ''
+    patch:
+      operationId: api_facility_images_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Image.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityImage'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityImage'
+          description: ''
+    delete:
+      operationId: api_facility_images_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Image.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/facility/reservations/:
+    get:
+      operationId: api_facility_reservations_list
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FacilityReservationAdmin'
+          description: ''
+    post:
+      operationId: api_facility_reservations_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityReservationAdmin'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityReservationAdmin'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityReservationAdmin'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityReservationAdmin'
+          description: ''
+  /api/facility/reservations/{id}/:
+    get:
+      operationId: api_facility_reservations_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Facility Reservation.
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityReservationAdmin'
+          description: ''
+    put:
+      operationId: api_facility_reservations_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Facility Reservation.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityReservationAdmin'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityReservationAdmin'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityReservationAdmin'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityReservationAdmin'
+          description: ''
+    patch:
+      operationId: api_facility_reservations_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Facility Reservation.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityReservationAdmin'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityReservationAdmin'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityReservationAdmin'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityReservationAdmin'
+          description: ''
+    delete:
+      operationId: api_facility_reservations_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Facility Reservation.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/facility/reviews/:
+    get:
+      operationId: api_facility_reviews_list
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FacilityReviewList'
+          description: ''
+    post:
+      operationId: api_facility_reviews_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityReviewList'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityReviewList'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityReviewList'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityReviewList'
+          description: ''
+  /api/facility/reviews/{id}/:
+    get:
+      operationId: api_facility_reviews_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Review.
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityReviewList'
+          description: ''
+    put:
+      operationId: api_facility_reviews_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Review.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityReviewList'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityReviewList'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityReviewList'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityReviewList'
+          description: ''
+    patch:
+      operationId: api_facility_reviews_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Review.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityReviewList'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityReviewList'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityReviewList'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityReviewList'
+          description: ''
+    delete:
+      operationId: api_facility_reviews_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Review.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/iot/device-types/:
+    get:
+      operationId: api_iot_device_types_list
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DeviceType'
+          description: ''
+    post:
+      operationId: api_iot_device_types_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceType'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DeviceType'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DeviceType'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceType'
+          description: ''
+  /api/iot/device-types/{id}/:
+    get:
+      operationId: api_iot_device_types_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Device Type.
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceType'
+          description: ''
+    put:
+      operationId: api_iot_device_types_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Device Type.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceType'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DeviceType'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DeviceType'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceType'
+          description: ''
+    patch:
+      operationId: api_iot_device_types_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Device Type.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDeviceType'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDeviceType'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDeviceType'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceType'
+          description: ''
+    delete:
+      operationId: api_iot_device_types_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Device Type.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/iot/devices/:
+    get:
+      operationId: api_iot_devices_list
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+          description: ''
+    post:
+      operationId: api_iot_devices_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Device'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Device'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Device'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+          description: ''
+  /api/iot/devices/{id}/:
+    get:
+      operationId: api_iot_devices_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Device.
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+          description: ''
+    put:
+      operationId: api_iot_devices_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Device.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Device'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Device'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Device'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+          description: ''
+    patch:
+      operationId: api_iot_devices_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Device.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDevice'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDevice'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDevice'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+          description: ''
+    delete:
+      operationId: api_iot_devices_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Device.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/iot/facilities/:
+    get:
+      operationId: api_iot_facilities_list
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FacilityDevice'
+          description: ''
+    post:
+      operationId: api_iot_facilities_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityDevice'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityDevice'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityDevice'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityDevice'
+          description: ''
+  /api/iot/facilities/{id}/:
+    get:
+      operationId: api_iot_facilities_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Device.
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityDevice'
+          description: ''
+    put:
+      operationId: api_iot_facilities_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Device.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacilityDevice'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FacilityDevice'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FacilityDevice'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityDevice'
+          description: ''
+    patch:
+      operationId: api_iot_facilities_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Device.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityDevice'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityDevice'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFacilityDevice'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityDevice'
+          description: ''
+    delete:
+      operationId: api_iot_facilities_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Facility Device.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/iot/rooms-devices/:
+    get:
+      operationId: api_iot_rooms_devices_list
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RoomDevice'
+          description: ''
+    post:
+      operationId: api_iot_rooms_devices_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoomDevice'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RoomDevice'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RoomDevice'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoomDevice'
+          description: ''
+  /api/iot/rooms-devices/{id}/:
+    get:
+      operationId: api_iot_rooms_devices_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Room Device.
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoomDevice'
+          description: ''
+    put:
+      operationId: api_iot_rooms_devices_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Room Device.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoomDevice'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RoomDevice'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RoomDevice'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoomDevice'
+          description: ''
+    patch:
+      operationId: api_iot_rooms_devices_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Room Device.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRoomDevice'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRoomDevice'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRoomDevice'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoomDevice'
+          description: ''
+    delete:
+      operationId: api_iot_rooms_devices_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Room Device.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/main/floors/:
+    get:
+      operationId: api_main_floors_list
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Floor'
+          description: ''
+    post:
+      operationId: api_main_floors_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Floor'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Floor'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Floor'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Floor'
+          description: ''
+  /api/main/floors/{floor_pk}/rooms/:
+    get:
+      operationId: api_main_floors_rooms_list
+      parameters:
+      - in: query
+        name: capacity
+        schema:
+          type: integer
+      - in: query
+        name: capacity__gt
+        schema:
+          type: integer
+      - in: query
+        name: capacity__lt
+        schema:
+          type: integer
+      - in: query
+        name: floor
+        schema:
+          type: integer
+      - in: path
+        name: floor_pk
+        schema:
+          type: integer
+          description: The floor to which this room belongs.
+        required: true
+      - in: query
+        name: is_available
+        schema:
+          type: boolean
+      - in: query
+        name: room_type
+        schema:
+          type: integer
+      - in: query
+        name: room_type__price
+        schema:
+          type: number
+      - in: query
+        name: room_type__price__gt
+        schema:
+          type: number
+      - in: query
+        name: room_type__price__lt
+        schema:
+          type: number
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Room'
+          description: ''
+    post:
+      operationId: api_main_floors_rooms_create
+      parameters:
+      - in: path
+        name: floor_pk
+        schema:
+          type: integer
+          description: The floor to which this room belongs.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Room'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Room'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Room'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: ''
+  /api/main/floors/{floor_pk}/rooms/{id}/:
+    get:
+      operationId: api_main_floors_rooms_retrieve
+      parameters:
+      - in: path
+        name: floor_pk
+        schema:
+          type: integer
+          description: The floor to which this room belongs.
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Room.
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: ''
+    put:
+      operationId: api_main_floors_rooms_update
+      parameters:
+      - in: path
+        name: floor_pk
+        schema:
+          type: integer
+          description: The floor to which this room belongs.
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Room.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Room'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Room'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Room'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: ''
+    patch:
+      operationId: api_main_floors_rooms_partial_update
+      parameters:
+      - in: path
+        name: floor_pk
+        schema:
+          type: integer
+          description: The floor to which this room belongs.
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Room.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRoom'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRoom'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRoom'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: ''
+    delete:
+      operationId: api_main_floors_rooms_destroy
+      parameters:
+      - in: path
+        name: floor_pk
+        schema:
+          type: integer
+          description: The floor to which this room belongs.
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Room.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/main/floors/{floor_pk}/rooms/available/:
+    get:
+      operationId: api_main_floors_rooms_available_retrieve
+      parameters:
+      - in: path
+        name: floor_pk
+        schema:
+          type: integer
+          description: The floor to which this room belongs.
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: ''
+  /api/main/floors/{id}/:
+    get:
+      operationId: api_main_floors_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Floor.
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Floor'
+          description: ''
+    put:
+      operationId: api_main_floors_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Floor.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Floor'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Floor'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Floor'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Floor'
+          description: ''
+    patch:
+      operationId: api_main_floors_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Floor.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFloor'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFloor'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFloor'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Floor'
+          description: ''
+    delete:
+      operationId: api_main_floors_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Floor.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/main/guests/:
+    get:
+      operationId: api_main_guests_list
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Guest'
+          description: ''
+    post:
+      operationId: api_main_guests_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Guest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Guest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Guest'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guest'
+          description: ''
+  /api/main/guests/{id}/:
+    get:
+      operationId: api_main_guests_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Guest.
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guest'
+          description: ''
+    put:
+      operationId: api_main_guests_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Guest.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Guest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Guest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Guest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guest'
+          description: ''
+    patch:
+      operationId: api_main_guests_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Guest.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedGuest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedGuest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedGuest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guest'
+          description: ''
+    delete:
+      operationId: api_main_guests_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Guest.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/main/installments/:
+    get:
+      operationId: api_main_installments_list
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Installment'
+          description: ''
+    post:
+      operationId: api_main_installments_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Installment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Installment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Installment'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Installment'
+          description: ''
+  /api/main/installments/{id}/:
+    get:
+      operationId: api_main_installments_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this Installment.
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Installment'
+          description: ''
+    put:
+      operationId: api_main_installments_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this Installment.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Installment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Installment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Installment'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Installment'
+          description: ''
+    patch:
+      operationId: api_main_installments_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this Installment.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedInstallment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedInstallment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedInstallment'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Installment'
+          description: ''
+    delete:
+      operationId: api_main_installments_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this Installment.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/main/payments/:
+    get:
+      operationId: api_main_payments_list
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Payment'
+          description: ''
+    post:
+      operationId: api_main_payments_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Payment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Payment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Payment'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+          description: ''
+  /api/main/payments/{id}/:
+    get:
+      operationId: api_main_payments_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Payment.
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+          description: ''
+    put:
+      operationId: api_main_payments_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Payment.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Payment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Payment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Payment'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+          description: ''
+    patch:
+      operationId: api_main_payments_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Payment.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPayment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPayment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPayment'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+          description: ''
+    delete:
+      operationId: api_main_payments_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Payment.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/main/refunds/:
+    get:
+      operationId: api_main_refunds_list
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Refund'
+          description: ''
+    post:
+      operationId: api_main_refunds_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Refund'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Refund'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Refund'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refund'
+          description: ''
+  /api/main/refunds/{id}/:
+    get:
+      operationId: api_main_refunds_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Refund.
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refund'
+          description: ''
+    put:
+      operationId: api_main_refunds_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Refund.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Refund'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Refund'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Refund'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refund'
+          description: ''
+    patch:
+      operationId: api_main_refunds_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Refund.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRefund'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRefund'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRefund'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refund'
+          description: ''
+    delete:
+      operationId: api_main_refunds_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Refund.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/main/reservations/:
+    get:
+      operationId: api_main_reservations_list
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Reservation'
+          description: ''
+    post:
+      operationId: api_main_reservations_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Reservation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Reservation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Reservation'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reservation'
+          description: ''
+  /api/main/reservations/{id}/:
+    get:
+      operationId: api_main_reservations_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this Reservation.
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reservation'
+          description: ''
+    put:
+      operationId: api_main_reservations_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this Reservation.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Reservation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Reservation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Reservation'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reservation'
+          description: ''
+    patch:
+      operationId: api_main_reservations_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this Reservation.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedReservation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedReservation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedReservation'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reservation'
+          description: ''
+    delete:
+      operationId: api_main_reservations_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this Reservation.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/main/reservations/{reservation_pk}/installments/:
+    get:
+      operationId: api_main_reservations_installments_list
+      parameters:
+      - in: path
+        name: reservation_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Installment'
+          description: ''
+    post:
+      operationId: api_main_reservations_installments_create
+      parameters:
+      - in: path
+        name: reservation_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Installment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Installment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Installment'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Installment'
+          description: ''
+  /api/main/reservations/{reservation_pk}/installments/{installment_pk}/payments/:
+    get:
+      operationId: api_main_reservations_installments_payments_list
+      parameters:
+      - in: path
+        name: installment_pk
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: reservation_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Payment'
+          description: ''
+    post:
+      operationId: api_main_reservations_installments_payments_create
+      parameters:
+      - in: path
+        name: installment_pk
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: reservation_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Payment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Payment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Payment'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+          description: ''
+  /api/main/reservations/{reservation_pk}/installments/{installment_pk}/payments/{id}/:
+    get:
+      operationId: api_main_reservations_installments_payments_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Payment.
+        required: true
+      - in: path
+        name: installment_pk
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: reservation_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+          description: ''
+    put:
+      operationId: api_main_reservations_installments_payments_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Payment.
+        required: true
+      - in: path
+        name: installment_pk
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: reservation_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Payment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Payment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Payment'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+          description: ''
+    patch:
+      operationId: api_main_reservations_installments_payments_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Payment.
+        required: true
+      - in: path
+        name: installment_pk
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: reservation_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPayment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPayment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPayment'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+          description: ''
+    delete:
+      operationId: api_main_reservations_installments_payments_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this Payment.
+        required: true
+      - in: path
+        name: installment_pk
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: reservation_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/main/reservations/{reservation_pk}/installments/{id}/:
+    get:
+      operationId: api_main_reservations_installments_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this Installment.
+        required: true
+      - in: path
+        name: reservation_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Installment'
+          description: ''
+    put:
+      operationId: api_main_reservations_installments_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this Installment.
+        required: true
+      - in: path
+        name: reservation_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Installment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Installment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Installment'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Installment'
+          description: ''
+    patch:
+      operationId: api_main_reservations_installments_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this Installment.
+        required: true
+      - in: path
+        name: reservation_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedInstallment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedInstallment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedInstallment'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Installment'
+          description: ''
+    delete:
+      operationId: api_main_reservations_installments_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: A unique value identifying this Installment.
+        required: true
+      - in: path
+        name: reservation_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/main/room-types/:
+    get:
+      operationId: api_main_room_types_list
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RoomType'
+          description: ''
+    post:
+      operationId: api_main_room_types_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoomType'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RoomType'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RoomType'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoomType'
+          description: ''
+  /api/main/room-types/{id}/:
+    get:
+      operationId: api_main_room_types_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Room Type.
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoomType'
+          description: ''
+    put:
+      operationId: api_main_room_types_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Room Type.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoomType'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RoomType'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RoomType'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoomType'
+          description: ''
+    patch:
+      operationId: api_main_room_types_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Room Type.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRoomType'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRoomType'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRoomType'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoomType'
+          description: ''
+    delete:
+      operationId: api_main_room_types_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Room Type.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/main/rooms/:
+    get:
+      operationId: api_main_rooms_list
+      parameters:
+      - in: query
+        name: capacity
+        schema:
+          type: integer
+      - in: query
+        name: capacity__gt
+        schema:
+          type: integer
+      - in: query
+        name: capacity__lt
+        schema:
+          type: integer
+      - in: query
+        name: floor
+        schema:
+          type: integer
+      - in: query
+        name: is_available
+        schema:
+          type: boolean
+      - in: query
+        name: room_type
+        schema:
+          type: integer
+      - in: query
+        name: room_type__price
+        schema:
+          type: number
+      - in: query
+        name: room_type__price__gt
+        schema:
+          type: number
+      - in: query
+        name: room_type__price__lt
+        schema:
+          type: number
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Room'
+          description: ''
+    post:
+      operationId: api_main_rooms_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Room'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Room'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Room'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: ''
+  /api/main/rooms/{id}/:
+    get:
+      operationId: api_main_rooms_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Room.
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: ''
+    put:
+      operationId: api_main_rooms_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Room.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Room'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Room'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Room'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: ''
+    patch:
+      operationId: api_main_rooms_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Room.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRoom'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRoom'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRoom'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: ''
+    delete:
+      operationId: api_main_rooms_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Room.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/main/rooms/{rooms_pk}/amenities/:
+    get:
+      operationId: api_main_rooms_amenities_list
+      parameters:
+      - in: path
+        name: rooms_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RoomAmenity'
+          description: ''
+    post:
+      operationId: api_main_rooms_amenities_create
+      parameters:
+      - in: path
+        name: rooms_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoomAmenity'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RoomAmenity'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RoomAmenity'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoomAmenity'
+          description: ''
+  /api/main/rooms/{rooms_pk}/amenities/{id}/:
+    get:
+      operationId: api_main_rooms_amenities_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Amenity.
+        required: true
+      - in: path
+        name: rooms_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoomAmenity'
+          description: ''
+    put:
+      operationId: api_main_rooms_amenities_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Amenity.
+        required: true
+      - in: path
+        name: rooms_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoomAmenity'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RoomAmenity'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RoomAmenity'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoomAmenity'
+          description: ''
+    patch:
+      operationId: api_main_rooms_amenities_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Amenity.
+        required: true
+      - in: path
+        name: rooms_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRoomAmenity'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRoomAmenity'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRoomAmenity'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoomAmenity'
+          description: ''
+    delete:
+      operationId: api_main_rooms_amenities_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Amenity.
+        required: true
+      - in: path
+        name: rooms_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/main/rooms/{rooms_pk}/images/:
+    get:
+      operationId: api_main_rooms_images_list
+      parameters:
+      - in: path
+        name: rooms_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RoomImage'
+          description: ''
+    post:
+      operationId: api_main_rooms_images_create
+      parameters:
+      - in: path
+        name: rooms_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoomImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RoomImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RoomImage'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoomImage'
+          description: ''
+  /api/main/rooms/{rooms_pk}/images/{id}/:
+    get:
+      operationId: api_main_rooms_images_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Room Image.
+        required: true
+      - in: path
+        name: rooms_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoomImage'
+          description: ''
+    put:
+      operationId: api_main_rooms_images_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Room Image.
+        required: true
+      - in: path
+        name: rooms_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoomImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RoomImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RoomImage'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoomImage'
+          description: ''
+    patch:
+      operationId: api_main_rooms_images_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Room Image.
+        required: true
+      - in: path
+        name: rooms_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRoomImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRoomImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRoomImage'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoomImage'
+          description: ''
+    delete:
+      operationId: api_main_rooms_images_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Room Image.
+        required: true
+      - in: path
+        name: rooms_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/main/rooms/{rooms_pk}/reviews/:
+    get:
+      operationId: api_main_rooms_reviews_list
+      parameters:
+      - in: path
+        name: rooms_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Review'
+          description: ''
+    post:
+      operationId: api_main_rooms_reviews_create
+      parameters:
+      - in: path
+        name: rooms_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Review'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Review'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Review'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+          description: ''
+  /api/main/rooms/{rooms_pk}/reviews/{id}/:
+    get:
+      operationId: api_main_rooms_reviews_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: rooms_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+          description: ''
+    put:
+      operationId: api_main_rooms_reviews_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: rooms_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Review'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Review'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Review'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+          description: ''
+    patch:
+      operationId: api_main_rooms_reviews_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: rooms_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedReview'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedReview'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedReview'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+          description: ''
+    delete:
+      operationId: api_main_rooms_reviews_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: rooms_pk
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/main/rooms/available/:
+    get:
+      operationId: api_main_rooms_available_retrieve
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: ''
+  /api/management/inventory/:
+    get:
+      operationId: api_management_inventory_list
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Inventory'
+          description: ''
+    post:
+      operationId: api_management_inventory_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Inventory'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Inventory'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Inventory'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+          description: ''
+  /api/management/inventory/{id}/:
+    get:
+      operationId: api_management_inventory_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Inventory Item.
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+          description: ''
+    put:
+      operationId: api_management_inventory_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Inventory Item.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Inventory'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Inventory'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Inventory'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+          description: ''
+    patch:
+      operationId: api_management_inventory_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Inventory Item.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedInventory'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedInventory'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedInventory'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+          description: ''
+    delete:
+      operationId: api_management_inventory_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Inventory Item.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/management/roles/:
+    get:
+      operationId: api_management_roles_list
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Role'
+          description: ''
+    post:
+      operationId: api_management_roles_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Role'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Role'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Role'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+          description: ''
+  /api/management/roles/{id}/:
+    get:
+      operationId: api_management_roles_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Role.
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+          description: ''
+    put:
+      operationId: api_management_roles_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Role.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Role'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Role'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Role'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+          description: ''
+    patch:
+      operationId: api_management_roles_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Role.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRole'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRole'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRole'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+          description: ''
+    delete:
+      operationId: api_management_roles_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Role.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/management/staff/:
+    get:
+      operationId: api_management_staff_list
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Staff'
+          description: ''
+    post:
+      operationId: api_management_staff_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Staff'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Staff'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Staff'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Staff'
+          description: ''
+  /api/management/staff/{id}/:
+    get:
+      operationId: api_management_staff_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this staff.
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Staff'
+          description: ''
+    put:
+      operationId: api_management_staff_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this staff.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Staff'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Staff'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Staff'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Staff'
+          description: ''
+    patch:
+      operationId: api_management_staff_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this staff.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedStaff'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedStaff'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedStaff'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Staff'
+          description: ''
+    delete:
+      operationId: api_management_staff_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this staff.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /api/management/tasks/:
+    get:
+      operationId: api_management_tasks_list
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+          description: ''
+    post:
+      operationId: api_management_tasks_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Task'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Task'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: ''
+  /api/management/tasks/{id}/:
+    get:
+      operationId: api_management_tasks_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Task.
+        required: true
+      tags:
+      - api
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: ''
+    put:
+      operationId: api_management_tasks_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Task.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Task'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Task'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: ''
+    patch:
+      operationId: api_management_tasks_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Task.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTask'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTask'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTask'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: ''
+    delete:
+      operationId: api_management_tasks_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Task.
+        required: true
+      tags:
+      - api
+      responses:
+        '204':
+          description: No response body
+  /auth/jwt/create/:
+    post:
+      operationId: auth_jwt_create_create
+      description: |-
+        Takes a set of user credentials and returns an access and refresh JSON web
+        token pair to prove the authentication of those credentials.
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenObtainPair'
+          description: ''
+  /auth/jwt/refresh/:
+    post:
+      operationId: auth_jwt_refresh_create
+      description: |-
+        Takes a refresh type JSON web token and returns an access type JSON web
+        token if the refresh token is valid.
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRefresh'
+          description: ''
+  /auth/jwt/verify/:
+    post:
+      operationId: auth_jwt_verify_create
+      description: |-
+        Takes a token and indicates if it is valid.  This view provides no
+        information about a token's fitness for a particular use.
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenVerify'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenVerify'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenVerify'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenVerify'
+          description: ''
+  /auth/logout/:
+    post:
+      operationId: auth_logout_create
+      tags:
+      - auth
+      responses:
+        '200':
+          description: No response body
+  /auth/o/{provider}/:
+    get:
+      operationId: auth_o_retrieve
+      parameters:
+      - in: path
+        name: provider
+        schema:
+          type: string
+          pattern: ^\S+$
+        required: true
+      tags:
+      - auth
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderAuth'
+          description: ''
+    post:
+      operationId: auth_o_create
+      parameters:
+      - in: path
+        name: provider
+        schema:
+          type: string
+          pattern: ^\S+$
+        required: true
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProviderAuth'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProviderAuth'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProviderAuth'
+      security:
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderAuth'
+          description: ''
+  /auth/o/{var}/:
+    get:
+      operationId: auth_o_retrieve_2
+      parameters:
+      - in: path
+        name: var
+        schema:
+          type: string
+        required: true
+      tags:
+      - auth
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderAuth'
+          description: ''
+    post:
+      operationId: auth_o_create_2
+      parameters:
+      - in: path
+        name: var
+        schema:
+          type: string
+        required: true
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProviderAuth'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProviderAuth'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProviderAuth'
+      security:
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderAuth'
+          description: ''
+  /auth/users/:
+    get:
+      operationId: auth_users_list
+      tags:
+      - auth
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserCreate'
+          description: ''
+    post:
+      operationId: auth_users_create
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreatePasswordRetype'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserCreatePasswordRetype'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserCreatePasswordRetype'
+        required: true
+      security:
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCreatePasswordRetype'
+          description: ''
+  /auth/users/{id}/:
+    get:
+      operationId: auth_users_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - auth
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCreate'
+          description: ''
+    put:
+      operationId: auth_users_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCreate'
+          description: ''
+    patch:
+      operationId: auth_users_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUserCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUserCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUserCreate'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCreate'
+          description: ''
+    delete:
+      operationId: auth_users_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - auth
+      responses:
+        '204':
+          description: No response body
+  /auth/users/activation/:
+    post:
+      operationId: auth_users_activation_create
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Activation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Activation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Activation'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activation'
+          description: ''
+  /auth/users/me/:
+    get:
+      operationId: auth_users_me_retrieve
+      tags:
+      - auth
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: auth_users_me_update
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: auth_users_me_partial_update
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    delete:
+      operationId: auth_users_me_destroy
+      tags:
+      - auth
+      responses:
+        '204':
+          description: No response body
+  /auth/users/resend_activation/:
+    post:
+      operationId: auth_users_resend_activation_create
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendEmailReset'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SendEmailReset'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SendEmailReset'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendEmailReset'
+          description: ''
+  /auth/users/reset_email/:
+    post:
+      operationId: auth_users_reset_email_create
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendEmailReset'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SendEmailReset'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SendEmailReset'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendEmailReset'
+          description: ''
+  /auth/users/reset_email_confirm/:
+    post:
+      operationId: auth_users_reset_email_confirm_create
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsernameResetConfirm'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UsernameResetConfirm'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UsernameResetConfirm'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsernameResetConfirm'
+          description: ''
+  /auth/users/reset_password/:
+    post:
+      operationId: auth_users_reset_password_create
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendEmailReset'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SendEmailReset'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SendEmailReset'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendEmailReset'
+          description: ''
+  /auth/users/reset_password_confirm/:
+    post:
+      operationId: auth_users_reset_password_confirm_create
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordResetConfirm'
+          description: ''
+  /auth/users/set_email/:
+    post:
+      operationId: auth_users_set_email_create
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetUsername'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SetUsername'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SetUsername'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetUsername'
+          description: ''
+  /auth/users/set_password/:
+    post:
+      operationId: auth_users_set_password_create
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetPasswordRetype'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SetPasswordRetype'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SetPasswordRetype'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetPasswordRetype'
+          description: ''
+components:
+  schemas:
+    Activation:
+      type: object
+      properties:
+        uid:
+          type: string
+        token:
+          type: string
+      required:
+      - token
+      - uid
+    Device:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+          description: Name of the device
+          maxLength: 100
+        client_id:
+          type: string
+          description: Unique identifier for the device
+          maxLength: 100
+        topic:
+          type: string
+          nullable: true
+          description: MQTT topic for the device
+          maxLength: 100
+        qos:
+          allOf:
+          - $ref: '#/components/schemas/QosEnum'
+          description: |-
+            Quality of Service for the device
+
+            * `0` - QoS 0
+            * `1` - QoS 1
+            * `2` - QoS 2
+            * `3` - QoS Auto
+          minimum: -2147483648
+          maximum: 2147483647
+        status:
+          type: boolean
+          description: Status of the device (active/inactive)
+        description:
+          type: string
+          nullable: true
+          description: Description of the device
+        installation_date:
+          type: string
+          format: date
+          description: Date when the device was installed
+        device_type:
+          type: integer
+          description: Type of the device
+      required:
+      - client_id
+      - created_at
+      - device_type
+      - id
+      - installation_date
+      - name
+      - updated_at
+    DeviceType:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          description: Name of the device type
+          maxLength: 100
+        description:
+          type: string
+          nullable: true
+          description: Description of the device type
+      required:
+      - id
+      - name
+    Facility:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          description: Name of the facility
+          maxLength: 100
+        description:
+          type: string
+          nullable: true
+          description: Description of the facility
+        is_reservable:
+          type: boolean
+          description: Is the facility reservable?
+        base_capacity:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          nullable: true
+          description: Base capacity of the facility
+        max_capacity:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          nullable: true
+          description: Maximum capacity of the facility
+        opening_time:
+          type: string
+          format: time
+          nullable: true
+          description: Opening time of the facility
+        closing_time:
+          type: string
+          format: time
+          nullable: true
+          description: Closing time of the facility
+        base_reservation_fee:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          nullable: true
+          description: Base reservation fee for the facility per hour and base capacity.
+        extra_person_fee:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          nullable: true
+          description: Extra person fee for the facility
+      required:
+      - id
+      - name
+    FacilityAmenities:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        amenities:
+          type: string
+          description: Type of amenities
+          maxLength: 100
+        description:
+          type: string
+          nullable: true
+          description: Description of the amenities
+          maxLength: 255
+        facility:
+          type: integer
+          description: Facility associated with the amenities
+      required:
+      - amenities
+      - created_at
+      - facility
+      - id
+      - updated_at
+    FacilityDevice:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        facility:
+          type: integer
+          description: Facility where the device is installed
+        device:
+          type: integer
+          description: Device installed in the facility
+      required:
+      - device
+      - facility
+      - id
+    FacilityExtraCharge:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        charge:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          description: Fee for the facility
+        description:
+          type: string
+          nullable: true
+          description: Description of the fee
+          maxLength: 255
+        facility:
+          type: integer
+          description: Facility associated with the fee
+      required:
+      - charge
+      - created_at
+      - facility
+      - id
+      - updated_at
+    FacilityImage:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        image:
+          type: string
+          format: uri
+          description: Image file for the facility
+        description:
+          type: string
+          nullable: true
+          description: Description of the image
+          maxLength: 255
+        facility:
+          type: integer
+          description: Facility associated with the image
+      required:
+      - created_at
+      - facility
+      - id
+      - image
+      - updated_at
+    FacilityReservation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        date:
+          type: string
+          format: date
+          description: Date of the reservation
+        start_time:
+          type: string
+          format: time
+          description: Time of the reservation
+        end_time:
+          type: string
+          format: time
+          description: End time of the reservation
+        number_of_people:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          description: Number of people for the reservation
+        total_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          readOnly: true
+          nullable: true
+          description: Total amount for the reservation
+      required:
+      - date
+      - end_time
+      - id
+      - number_of_people
+      - start_time
+      - total_amount
+    FacilityReservationAdmin:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        facility:
+          type: integer
+          description: Facility associated with the reservation
+        user:
+          type: integer
+          description: User who reserved
+        date:
+          type: string
+          format: date
+          description: Date of the reservation
+        start_time:
+          type: string
+          format: time
+          description: Time of the reservation
+        end_time:
+          type: string
+          format: time
+          description: End time of the reservation
+        number_of_people:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          description: Number of people for the reservation
+        total_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          readOnly: true
+          nullable: true
+          description: Total amount for the reservation
+      required:
+      - date
+      - end_time
+      - facility
+      - id
+      - number_of_people
+      - start_time
+      - total_amount
+      - user
+    FacilityReview:
+      type: object
+      properties:
+        description:
+          type: string
+          nullable: true
+          description: Description of the review
+          maxLength: 255
+        rating:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,1}(?:\.\d{0,1})?$
+          description: Rating of the facility
+      required:
+      - rating
+    FacilityReviewImage:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        images:
+          $ref: '#/components/schemas/FacilityImage'
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        image:
+          type: string
+          format: uri
+          description: Image file for the review
+        description:
+          type: string
+          nullable: true
+          description: Description of the image
+          maxLength: 255
+        review:
+          type: integer
+          description: Review associated with the image
+      required:
+      - created_at
+      - id
+      - image
+      - images
+      - review
+      - updated_at
+    FacilityReviewList:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        reviewer:
+          type: integer
+          description: User who wrote the review
+        facility:
+          type: integer
+          description: Facility associated with the review
+        description:
+          type: string
+          nullable: true
+          description: Description of the review
+          maxLength: 255
+        rating:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,1}(?:\.\d{0,1})?$
+          description: Rating of the facility
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        images:
+          $ref: '#/components/schemas/FacilityReviewImage'
+      required:
+      - created_at
+      - facility
+      - id
+      - images
+      - rating
+      - reviewer
+    Floor:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        level:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          description: Floor level, indicating the position of the floor in the building.
+        description:
+          type: string
+          nullable: true
+          description: Description of the floor, providing additional information.
+      required:
+      - id
+    Guest:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
+        image:
+          type: string
+          format: uri
+          nullable: true
+        contact_info:
+          type: string
+          nullable: true
+          maxLength: 100
+        nid:
+          type: string
+          nullable: true
+          maxLength: 100
+        preferences:
+          type: string
+          nullable: true
+          maxLength: 100
+        status:
+          type: boolean
+      required:
+      - id
+      - user
+    Installment:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        reservation:
+          type: string
+          readOnly: true
+        installment_type:
+          $ref: '#/components/schemas/InstallmentTypeEnum'
+        installment_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+      required:
+      - id
+      - installment_amount
+      - reservation
+    InstallmentTypeEnum:
+      enum:
+      - First
+      - Second
+      - Third
+      - Full
+      type: string
+      description: |-
+        * `First` - First
+        * `Second` - Second
+        * `Third` - Third
+        * `Full` - Full
+    Inventory:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        item_name:
+          type: string
+          description: Name of the inventory item
+          maxLength: 200
+        item_quantity:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          description: Quantity of the inventory item
+        for_room:
+          type: integer
+          nullable: true
+          description: Room for the inventory item
+        for_facility:
+          type: integer
+          nullable: true
+          description: Facility for the inventory item
+        for_staff:
+          type: integer
+          nullable: true
+          description: Staff for the inventory item
+      required:
+      - created_at
+      - id
+      - item_name
+      - item_quantity
+      - updated_at
+    PasswordResetConfirm:
+      type: object
+      properties:
+        uid:
+          type: string
+        token:
+          type: string
+        new_password:
+          type: string
+      required:
+      - new_password
+      - token
+      - uid
+    PatchedDevice:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+          description: Name of the device
+          maxLength: 100
+        client_id:
+          type: string
+          description: Unique identifier for the device
+          maxLength: 100
+        topic:
+          type: string
+          nullable: true
+          description: MQTT topic for the device
+          maxLength: 100
+        qos:
+          allOf:
+          - $ref: '#/components/schemas/QosEnum'
+          description: |-
+            Quality of Service for the device
+
+            * `0` - QoS 0
+            * `1` - QoS 1
+            * `2` - QoS 2
+            * `3` - QoS Auto
+          minimum: -2147483648
+          maximum: 2147483647
+        status:
+          type: boolean
+          description: Status of the device (active/inactive)
+        description:
+          type: string
+          nullable: true
+          description: Description of the device
+        installation_date:
+          type: string
+          format: date
+          description: Date when the device was installed
+        device_type:
+          type: integer
+          description: Type of the device
+    PatchedDeviceType:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          description: Name of the device type
+          maxLength: 100
+        description:
+          type: string
+          nullable: true
+          description: Description of the device type
+    PatchedFacility:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          description: Name of the facility
+          maxLength: 100
+        description:
+          type: string
+          nullable: true
+          description: Description of the facility
+        is_reservable:
+          type: boolean
+          description: Is the facility reservable?
+        base_capacity:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          nullable: true
+          description: Base capacity of the facility
+        max_capacity:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          nullable: true
+          description: Maximum capacity of the facility
+        opening_time:
+          type: string
+          format: time
+          nullable: true
+          description: Opening time of the facility
+        closing_time:
+          type: string
+          format: time
+          nullable: true
+          description: Closing time of the facility
+        base_reservation_fee:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          nullable: true
+          description: Base reservation fee for the facility per hour and base capacity.
+        extra_person_fee:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          nullable: true
+          description: Extra person fee for the facility
+    PatchedFacilityAmenities:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        amenities:
+          type: string
+          description: Type of amenities
+          maxLength: 100
+        description:
+          type: string
+          nullable: true
+          description: Description of the amenities
+          maxLength: 255
+        facility:
+          type: integer
+          description: Facility associated with the amenities
+    PatchedFacilityDevice:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        facility:
+          type: integer
+          description: Facility where the device is installed
+        device:
+          type: integer
+          description: Device installed in the facility
+    PatchedFacilityExtraCharge:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        charge:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          description: Fee for the facility
+        description:
+          type: string
+          nullable: true
+          description: Description of the fee
+          maxLength: 255
+        facility:
+          type: integer
+          description: Facility associated with the fee
+    PatchedFacilityImage:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        image:
+          type: string
+          format: uri
+          description: Image file for the facility
+        description:
+          type: string
+          nullable: true
+          description: Description of the image
+          maxLength: 255
+        facility:
+          type: integer
+          description: Facility associated with the image
+    PatchedFacilityReservation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        date:
+          type: string
+          format: date
+          description: Date of the reservation
+        start_time:
+          type: string
+          format: time
+          description: Time of the reservation
+        end_time:
+          type: string
+          format: time
+          description: End time of the reservation
+        number_of_people:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          description: Number of people for the reservation
+        total_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          readOnly: true
+          nullable: true
+          description: Total amount for the reservation
+    PatchedFacilityReservationAdmin:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        facility:
+          type: integer
+          description: Facility associated with the reservation
+        user:
+          type: integer
+          description: User who reserved
+        date:
+          type: string
+          format: date
+          description: Date of the reservation
+        start_time:
+          type: string
+          format: time
+          description: Time of the reservation
+        end_time:
+          type: string
+          format: time
+          description: End time of the reservation
+        number_of_people:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          description: Number of people for the reservation
+        total_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          readOnly: true
+          nullable: true
+          description: Total amount for the reservation
+    PatchedFacilityReview:
+      type: object
+      properties:
+        description:
+          type: string
+          nullable: true
+          description: Description of the review
+          maxLength: 255
+        rating:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,1}(?:\.\d{0,1})?$
+          description: Rating of the facility
+    PatchedFacilityReviewList:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        reviewer:
+          type: integer
+          description: User who wrote the review
+        facility:
+          type: integer
+          description: Facility associated with the review
+        description:
+          type: string
+          nullable: true
+          description: Description of the review
+          maxLength: 255
+        rating:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,1}(?:\.\d{0,1})?$
+          description: Rating of the facility
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        images:
+          $ref: '#/components/schemas/FacilityReviewImage'
+    PatchedFloor:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        level:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          description: Floor level, indicating the position of the floor in the building.
+        description:
+          type: string
+          nullable: true
+          description: Description of the floor, providing additional information.
+    PatchedGuest:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user:
+          allOf:
+          - $ref: '#/components/schemas/User'
+          readOnly: true
+        image:
+          type: string
+          format: uri
+          nullable: true
+        contact_info:
+          type: string
+          nullable: true
+          maxLength: 100
+        nid:
+          type: string
+          nullable: true
+          maxLength: 100
+        preferences:
+          type: string
+          nullable: true
+          maxLength: 100
+        status:
+          type: boolean
+    PatchedInstallment:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        reservation:
+          type: string
+          readOnly: true
+        installment_type:
+          $ref: '#/components/schemas/InstallmentTypeEnum'
+        installment_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+    PatchedInventory:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        item_name:
+          type: string
+          description: Name of the inventory item
+          maxLength: 200
+        item_quantity:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          description: Quantity of the inventory item
+        for_room:
+          type: integer
+          nullable: true
+          description: Room for the inventory item
+        for_facility:
+          type: integer
+          nullable: true
+          description: Facility for the inventory item
+        for_staff:
+          type: integer
+          nullable: true
+          description: Staff for the inventory item
+    PatchedPayment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        installment:
+          type: string
+          readOnly: true
+        payment_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        payment_method:
+          $ref: '#/components/schemas/PaymentMethodEnum'
+    PatchedRefund:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        payment:
+          type: string
+          format: uuid
+        refund_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        refund_method:
+          $ref: '#/components/schemas/RefundMethodEnum'
+    PatchedReservation:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        room:
+          type: integer
+        user:
+          type: integer
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        reservation_status:
+          $ref: '#/components/schemas/ReservationStatusEnum'
+    PatchedReview:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        guest:
+          type: string
+          readOnly: true
+        rating:
+          type: integer
+          maximum: 10
+          minimum: 1
+        comment:
+          type: string
+          nullable: true
+        images:
+          type: array
+          items:
+            type: integer
+        likes:
+          type: array
+          items:
+            type: integer
+    PatchedRole:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          description: Type or category of the staff
+          maxLength: 200
+        description:
+          type: string
+          nullable: true
+          description: Description of the role
+    PatchedRoom:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        floor:
+          type: integer
+          description: The floor to which this room belongs.
+        room_label:
+          type: string
+          description: A label uniquely identifying the room on its floor.
+          maxLength: 1
+        room_type:
+          allOf:
+          - $ref: '#/components/schemas/RoomType'
+          readOnly: true
+        capacity:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          description: Maximum number of occupants the room can accommodate.
+        description:
+          type: string
+          nullable: true
+          description: Additional information or features of the room.
+        is_available:
+          type: boolean
+          description: Indicates whether the room is currently available for booking.
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoomImage'
+          readOnly: true
+        amenities:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoomAmenity'
+          readOnly: true
+    PatchedRoomAmenity:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        room:
+          type: integer
+          description: The room to which this amenity is associated.
+        title:
+          type: string
+          description: Title of the amenity, providing a brief name or description.
+          maxLength: 100
+        description:
+          type: string
+          nullable: true
+          description: Detailed description of the amenity.
+          maxLength: 250
+        is_available:
+          type: boolean
+          description: Indicates whether the amenity is currently available.
+    PatchedRoomDevice:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        room:
+          type: integer
+          description: Room in which the device is installed
+        device:
+          type: integer
+          description: Device installed in the room
+    PatchedRoomImage:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        room:
+          type: integer
+        image:
+          type: string
+          format: uri
+          nullable: true
+        description:
+          type: string
+          nullable: true
+          maxLength: 100
+    PatchedRoomType:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        room_type:
+          type: string
+          description: Type of the room, describing its category or purpose.
+          maxLength: 100
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          description: Price per night for this room type.
+        description:
+          type: string
+          nullable: true
+          description: Additional details about the room type.
+    PatchedStaff:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        staff_id:
+          type: string
+          format: uuid
+          description: Unique ID of the staff
+        staff_status:
+          allOf:
+          - $ref: '#/components/schemas/StaffStatusEnum'
+          description: "Current status of the staff\n\n* `available` - Available\n\
+            * `busy` - Busy \n* `assigned` - Assigned"
+        user:
+          type: integer
+        role:
+          type: integer
+          description: Role of the staff
+    PatchedTask:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        task_id:
+          type: string
+          readOnly: true
+          description: 6-digit unique identifier for the task
+        task_description:
+          type: string
+          description: Description of the task
+          maxLength: 200
+        task_status:
+          allOf:
+          - $ref: '#/components/schemas/TaskStatusEnum'
+          description: |-
+            Current status of the task
+
+            * `pending` - Pending
+            * `in_progress` - In Progress
+            * `completed` - Completed
+        assigned_room:
+          type: integer
+          description: Assigned room for the task
+        staff:
+          type: integer
+          nullable: true
+          description: Assigned staff for the task
+    PatchedUser:
+      type: object
+      properties:
+        first_name:
+          type: string
+          maxLength: 255
+        last_name:
+          type: string
+          maxLength: 255
+        id:
+          type: integer
+          readOnly: true
+        email:
+          type: string
+          format: email
+          readOnly: true
+    PatchedUserCreate:
+      type: object
+      properties:
+        first_name:
+          type: string
+          maxLength: 255
+        last_name:
+          type: string
+          maxLength: 255
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        id:
+          type: integer
+          readOnly: true
+        password:
+          type: string
+          writeOnly: true
+    Payment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        installment:
+          type: string
+          readOnly: true
+        payment_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        payment_method:
+          $ref: '#/components/schemas/PaymentMethodEnum'
+      required:
+      - id
+      - installment
+      - payment_amount
+    PaymentMethodEnum:
+      enum:
+      - Cash
+      - Card
+      - Mobile Banking
+      type: string
+      description: |-
+        * `Cash` - Cash
+        * `Card` - Card
+        * `Mobile Banking` - Mobile Banking
+    ProviderAuth:
+      type: object
+      properties:
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          readOnly: true
+        user:
+          type: string
+          readOnly: true
+      required:
+      - access
+      - refresh
+      - user
+    QosEnum:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      type: integer
+      description: |-
+        * `0` - QoS 0
+        * `1` - QoS 1
+        * `2` - QoS 2
+        * `3` - QoS Auto
+    Refund:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        payment:
+          type: string
+          format: uuid
+        refund_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        refund_method:
+          $ref: '#/components/schemas/RefundMethodEnum'
+      required:
+      - id
+      - payment
+      - refund_amount
+    RefundMethodEnum:
+      enum:
+      - Cash
+      - Card
+      - Mobile Banking
+      type: string
+      description: |-
+        * `Cash` - Cash
+        * `Card` - Card
+        * `Mobile Banking` - Mobile Banking
+    Reservation:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        room:
+          type: integer
+        user:
+          type: integer
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        reservation_status:
+          $ref: '#/components/schemas/ReservationStatusEnum'
+      required:
+      - end_date
+      - id
+      - room
+      - start_date
+      - user
+    ReservationStatusEnum:
+      enum:
+      - Reserved
+      - Checked-In
+      - Checked-Out
+      - Canceled
+      type: string
+      description: |-
+        * `Reserved` - Reserved
+        * `Checked-In` - Checked-In
+        * `Checked-Out` - Checked-Out
+        * `Canceled` - Canceled
+    Review:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        guest:
+          type: string
+          readOnly: true
+        rating:
+          type: integer
+          maximum: 10
+          minimum: 1
+        comment:
+          type: string
+          nullable: true
+        images:
+          type: array
+          items:
+            type: integer
+        likes:
+          type: array
+          items:
+            type: integer
+      required:
+      - guest
+      - id
+      - images
+      - rating
+    Role:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          description: Type or category of the staff
+          maxLength: 200
+        description:
+          type: string
+          nullable: true
+          description: Description of the role
+      required:
+      - id
+      - name
+    Room:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        floor:
+          type: integer
+          description: The floor to which this room belongs.
+        room_label:
+          type: string
+          description: A label uniquely identifying the room on its floor.
+          maxLength: 1
+        room_type:
+          allOf:
+          - $ref: '#/components/schemas/RoomType'
+          readOnly: true
+        capacity:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          description: Maximum number of occupants the room can accommodate.
+        description:
+          type: string
+          nullable: true
+          description: Additional information or features of the room.
+        is_available:
+          type: boolean
+          description: Indicates whether the room is currently available for booking.
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoomImage'
+          readOnly: true
+        amenities:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoomAmenity'
+          readOnly: true
+      required:
+      - amenities
+      - capacity
+      - floor
+      - id
+      - images
+      - room_label
+      - room_type
+    RoomAmenity:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        room:
+          type: integer
+          description: The room to which this amenity is associated.
+        title:
+          type: string
+          description: Title of the amenity, providing a brief name or description.
+          maxLength: 100
+        description:
+          type: string
+          nullable: true
+          description: Detailed description of the amenity.
+          maxLength: 250
+        is_available:
+          type: boolean
+          description: Indicates whether the amenity is currently available.
+      required:
+      - id
+      - room
+      - title
+    RoomDevice:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        room:
+          type: integer
+          description: Room in which the device is installed
+        device:
+          type: integer
+          description: Device installed in the room
+      required:
+      - device
+      - id
+      - room
+    RoomImage:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        room:
+          type: integer
+        image:
+          type: string
+          format: uri
+          nullable: true
+        description:
+          type: string
+          nullable: true
+          maxLength: 100
+      required:
+      - id
+      - room
+    RoomType:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        room_type:
+          type: string
+          description: Type of the room, describing its category or purpose.
+          maxLength: 100
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          description: Price per night for this room type.
+        description:
+          type: string
+          nullable: true
+          description: Additional details about the room type.
+      required:
+      - id
+      - price
+      - room_type
+    SendEmailReset:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+      required:
+      - email
+    SetPasswordRetype:
+      type: object
+      properties:
+        new_password:
+          type: string
+        re_new_password:
+          type: string
+        current_password:
+          type: string
+      required:
+      - current_password
+      - new_password
+      - re_new_password
+    SetUsername:
+      type: object
+      properties:
+        current_password:
+          type: string
+        new_email:
+          type: string
+          format: email
+          title: Email
+          maxLength: 254
+      required:
+      - current_password
+      - new_email
+    Staff:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        staff_id:
+          type: string
+          format: uuid
+          description: Unique ID of the staff
+        staff_status:
+          allOf:
+          - $ref: '#/components/schemas/StaffStatusEnum'
+          description: "Current status of the staff\n\n* `available` - Available\n\
+            * `busy` - Busy \n* `assigned` - Assigned"
+        user:
+          type: integer
+        role:
+          type: integer
+          description: Role of the staff
+      required:
+      - created_at
+      - id
+      - role
+      - updated_at
+      - user
+    StaffStatusEnum:
+      enum:
+      - available
+      - busy
+      - assigned
+      type: string
+      description: "* `available` - Available\n* `busy` - Busy \n* `assigned` - Assigned"
+    Task:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        task_id:
+          type: string
+          readOnly: true
+          description: 6-digit unique identifier for the task
+        task_description:
+          type: string
+          description: Description of the task
+          maxLength: 200
+        task_status:
+          allOf:
+          - $ref: '#/components/schemas/TaskStatusEnum'
+          description: |-
+            Current status of the task
+
+            * `pending` - Pending
+            * `in_progress` - In Progress
+            * `completed` - Completed
+        assigned_room:
+          type: integer
+          description: Assigned room for the task
+        staff:
+          type: integer
+          nullable: true
+          description: Assigned staff for the task
+      required:
+      - assigned_room
+      - created_at
+      - id
+      - task_id
+      - updated_at
+    TaskStatusEnum:
+      enum:
+      - pending
+      - in_progress
+      - completed
+      type: string
+      description: |-
+        * `pending` - Pending
+        * `in_progress` - In Progress
+        * `completed` - Completed
+    TokenObtainPair:
+      type: object
+      properties:
+        email:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          readOnly: true
+      required:
+      - access
+      - email
+      - password
+      - refresh
+    TokenRefresh:
+      type: object
+      properties:
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+      required:
+      - access
+      - refresh
+    TokenVerify:
+      type: object
+      properties:
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - token
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 255
+        last_name:
+          type: string
+          maxLength: 255
+        username:
+          type: string
+          nullable: true
+          maxLength: 255
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        password:
+          type: string
+          writeOnly: true
+      required:
+      - email
+      - id
+      - password
+    UserCreate:
+      type: object
+      properties:
+        first_name:
+          type: string
+          maxLength: 255
+        last_name:
+          type: string
+          maxLength: 255
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        id:
+          type: integer
+          readOnly: true
+        password:
+          type: string
+          writeOnly: true
+      required:
+      - email
+      - id
+      - password
+    UserCreatePasswordRetype:
+      type: object
+      properties:
+        first_name:
+          type: string
+          maxLength: 255
+        last_name:
+          type: string
+          maxLength: 255
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        id:
+          type: integer
+          readOnly: true
+        password:
+          type: string
+          writeOnly: true
+        re_password:
+          type: string
+      required:
+      - email
+      - id
+      - password
+      - re_password
+    UsernameResetConfirm:
+      type: object
+      properties:
+        new_email:
+          type: string
+          format: email
+          title: Email
+          maxLength: 254
+      required:
+      - new_email

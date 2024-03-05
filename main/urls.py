@@ -32,8 +32,8 @@ floor_router = routers.NestedSimpleRouter(router, "floors", lookup="floor")
 floor_router.register("rooms", RoomViewSet, basename="floor-rooms")
 
 
-router.register("room", RoomViewSet)
-room_router = routers.NestedDefaultRouter(router, "room", lookup="room")
+router.register("rooms", RoomViewSet)
+room_router = routers.NestedDefaultRouter(router, "rooms", lookup="rooms")
 # room/<id>/reviews
 room_router.register("reviews", ReviewViewSet, basename="room-reviews")
 # room/<id>/amenities

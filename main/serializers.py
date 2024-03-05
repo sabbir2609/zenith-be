@@ -46,7 +46,7 @@ class RoomImageSerializer(ModelSerializer):
 
     class Meta:
         model = RoomImage
-        fields = ["id", "room", "image", "alt_text"]
+        fields = ["id", "room", "image", "description"]
 
 
 class RoomAmenitySerializer(ModelSerializer):
