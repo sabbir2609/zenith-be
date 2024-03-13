@@ -79,7 +79,8 @@ tornado==6.4
 typing_extensions==4.8.0
 tzdata==2023.4
 uritemplate==4.1.1
-urllib3==2.1.0
+# urllib3==2.1.0
+urllib3 <=1.26.15 # vercel issue
 uv==0.1.2
 uvloop==0.19.0
 vine==5.1.0
