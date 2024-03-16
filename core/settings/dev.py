@@ -1,7 +1,7 @@
 import os
-from .base import *
+from .base import *  # noqa: F403
 
-import dj_database_url
+import dj_database_url  # noqa: F401
 
 import dotenv
 
