@@ -1,13 +1,12 @@
-from django.shortcuts import render
 from django.views.generic import TemplateView
 
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from iot.models import DeviceType, Device, RoomDevice, FacilityDevice
 from iot.serializers import (
     DeviceTypeSerializer,
-    DeviceSerializer,
+    DeviceListSerializer,
+    DeviceDetailSerializer,
     RoomDeviceSerializer,
     FacilityDeviceSerializer,
 )
@@ -20,7 +19,13 @@ class DeviceTypeViewSet(viewsets.ModelViewSet):
 
 class DeviceViewSet(viewsets.ModelViewSet):
     queryset = Device.objects.all()
-    serializer_class = DeviceSerializer
+
+    def get_serializer_class(self):
+        if self.action == "list":
+            return DeviceListSerializer
+        if self.action == "retrieve":
+            return DeviceDetailSerializer
+        return super().get_serializer_class()
 
 
 class RoomDeviceViewSet(viewsets.ModelViewSet):

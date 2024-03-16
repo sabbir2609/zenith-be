@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 from main.models import Room
 from facility.models import Facility
 from django.utils.translation import gettext_lazy as _
+import uuid
 
 
 class BaseModel(models.Model):
@@ -35,18 +36,13 @@ class Device(BaseModel):
         QOS2 = 2, _("QoS 2")
         QOS_AUTO = 3, _("QoS Auto")
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100, help_text=_("Name of the device"))
     device_type = models.ForeignKey(
         DeviceType, on_delete=models.CASCADE, help_text=_("Type of the device")
     )
     client_id = models.CharField(
         max_length=100, unique=True, help_text=_("Unique identifier for the device")
-    )
-    topic = models.CharField(
-        max_length=100,
-        null=True,
-        blank=True,
-        help_text=_("MQTT topic for the device"),
     )
     qos = models.IntegerField(
         choices=QosChoices.choices,
@@ -72,6 +68,26 @@ class Device(BaseModel):
         ordering = ["-created_at"]
 
 
+class Topic(models.Model):
+    device = models.ForeignKey(
+        Device, on_delete=models.CASCADE, related_name="topics", help_text=_("Device")
+    )
+    name = models.CharField(
+        max_length=100, help_text=_("Topic: ie. /device/temperature")
+    )
+    description = models.CharField(
+        max_length=255, null=True, blank=True, help_text=_("Description of the topic")
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = _("Topic")
+        verbose_name_plural = _("Topics")
+        ordering = ["id"]
+
+
 class RoomDevice(models.Model):
     room = models.ForeignKey(
         Room,
@@ -81,6 +97,9 @@ class RoomDevice(models.Model):
     )
     device = models.ForeignKey(
         Device, on_delete=models.CASCADE, help_text=_("Device installed in the room")
+    )
+    location = models.CharField(
+        max_length=100, help_text=_("Location of the device in the room")
     )
 
     def clean(self):
@@ -112,6 +131,9 @@ class FacilityDevice(models.Model):
         Device,
         on_delete=models.CASCADE,
         help_text=_("Device installed in the facility"),
+    )
+    location = models.CharField(
+        max_length=100, help_text=_("Location of the device in the facility")
     )
 
     def clean(self):

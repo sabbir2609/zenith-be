@@ -1,4 +1,4 @@
-from iot.models import DeviceType, Device, RoomDevice, FacilityDevice
+from iot.models import DeviceType, Device, Topic, RoomDevice, FacilityDevice
 from rest_framework import serializers
 
 
@@ -8,10 +8,33 @@ class DeviceTypeSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class DeviceSerializer(serializers.ModelSerializer):
+class DeviceListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Device
-        fields = "__all__"
+        fields = ["id", "name", "device_type", "client_id", "status"]
+
+
+class TopicSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Topic
+        fields = ["id", "name", "description"]
+
+
+class DeviceDetailSerializer(serializers.ModelSerializer):
+    topics = TopicSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Device
+        fields = [
+            "id",
+            "name",
+            "device_type",
+            "client_id",
+            "status",
+            "qos",
+            "description",
+            "topics",
+        ]
 
 
 class RoomDeviceSerializer(serializers.ModelSerializer):

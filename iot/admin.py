@@ -1,25 +1,51 @@
 from django.contrib import admin
-from .models import DeviceType, Device, RoomDevice, FacilityDevice
+from .models import DeviceType, Device, Topic, RoomDevice, FacilityDevice
 
 
 @admin.register(DeviceType)
 class DeviceTypeAdmin(admin.ModelAdmin):
-    list_display = ("name", "description")
+    list_display = ("name",)
     search_fields = ("name", "description")
+
+
+class TopicInline(admin.TabularInline):
+    model = Topic
+    extra = 1
 
 
 @admin.register(Device)
 class DeviceAdmin(admin.ModelAdmin):
     list_display = (
         "client_id",
+        "name",
         "device_type",
-        "topic",
         "qos",
         "status",
     )
+    fieldsets = (
+        (
+            None,
+            {
+                "fields": (
+                    "id",
+                    "name",
+                    "device_type",
+                    "client_id",
+                    "qos",
+                    "status",
+                    "description",
+                    "installation_date",
+                )
+            },
+        ),
+    )
+    readonly_fields = ("id",)
     search_fields = ("name", "client_id", "description")
     list_filter = ("device_type", "status")
     ordering = ["-created_at"]
+    list_per_page = 10
+
+    inlines = [TopicInline]
 
 
 @admin.register(RoomDevice)
