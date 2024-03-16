@@ -226,7 +226,7 @@ class FacilityReservation(BaseModel):
             raise ValidationError(
                 "Reservation end time cannot be after facility closing time."
             )
-        if self.facility.is_reservable == False:
+        if self.facility.is_reservable is False:
             raise ValidationError("Facility is not reservable.")
 
         # if self.number_of_people > self.facility.max_capacity:

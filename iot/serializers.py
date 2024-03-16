@@ -9,9 +9,19 @@ class DeviceTypeSerializer(serializers.ModelSerializer):
 
 
 class DeviceListSerializer(serializers.ModelSerializer):
+    location = serializers.SerializerMethodField()
+
     class Meta:
         model = Device
-        fields = ["id", "name", "device_type", "client_id", "status"]
+        fields = ["id", "name", "device_type", "client_id", "status", "location"]
+
+    def get_location(self, obj):
+        if obj.roomdevice_set.exists():
+            return f"{obj.roomdevice_set.first().room.floor} - {obj.roomdevice_set.first().room.room_label} - {obj.roomdevice_set.first().location}"
+        elif obj.facilitydevice_set.exists():
+            return f"{obj.facilitydevice_set.first().facility.name} - {obj.facilitydevice_set.first().location}"
+        else:
+            return None
 
 
 class TopicSerializer(serializers.ModelSerializer):
