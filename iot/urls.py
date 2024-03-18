@@ -18,10 +18,10 @@ router.register("device-types", DeviceTypeViewSet, basename="device-types")
 router.register("devices", DeviceViewSet, basename="devices")
 
 # room device router
-router.register("rooms-devices", RoomDeviceViewSet, basename="rooms")
+router.register("room-devices", RoomDeviceViewSet, basename="rooms")
 
 # facility device router
-router.register("facilities", FacilityDeviceViewSet, basename="facilities")
+router.register("facility-devices", FacilityDeviceViewSet, basename="facilities")
 
 urlpatterns = [
     path("ws/<str:device_id>/", IoTChannel.as_view(), name="channels"),
