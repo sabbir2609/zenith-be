@@ -10,10 +10,14 @@ class DeviceTypeSerializer(serializers.ModelSerializer):
 
 class DeviceListSerializer(serializers.ModelSerializer):
     location = serializers.SerializerMethodField()
+    device_type = serializers.SerializerMethodField()
 
     class Meta:
         model = Device
         fields = ["id", "name", "device_type", "client_id", "status", "location"]
+
+    def get_device_type(self, obj):
+        return obj.device_type.name
 
     def get_location(self, obj):
         if obj.roomdevice_set.exists():
@@ -32,6 +36,7 @@ class TopicSerializer(serializers.ModelSerializer):
 
 class DeviceDetailSerializer(serializers.ModelSerializer):
     topics = TopicSerializer(many=True, read_only=True)
+    device_type = serializers.SerializerMethodField()
 
     class Meta:
         model = Device
@@ -45,6 +50,9 @@ class DeviceDetailSerializer(serializers.ModelSerializer):
             "description",
             "topics",
         ]
+
+    def get_device_type(self, obj):
+        return obj.device_type.name
 
 
 class RoomDeviceSerializer(serializers.ModelSerializer):
