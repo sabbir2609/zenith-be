@@ -120,7 +120,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTHENTICATION_BACKENDS = [
-    "user.backends.EmailAndUsernameBackend",
+    "user.backends.EmailAndUsernameBackend",  # custom backend for email and username login
     "social_core.backends.facebook.FacebookOAuth2",
     "social_core.backends.google.GoogleOAuth2",
     "django.contrib.auth.backends.ModelBackend",
