@@ -6,6 +6,8 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 
+from main.pagination import DefaultPagination
+
 from main.filters import RoomFilter
 
 from main.permissions import (
@@ -70,6 +72,7 @@ class RoomViewSet(ModelViewSet):
     permission_classes = [IsAdminUserOrReadOnly]
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_class = RoomFilter
+    pagination_class = DefaultPagination
 
     search_fields = [
         "description",

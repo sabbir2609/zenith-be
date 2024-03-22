@@ -56,6 +56,7 @@ class RoomAdmin(admin.ModelAdmin):
     search_fields = ["room_type__room_type"]
     list_filter = ("is_available", "capacity")
     inlines = [RoomAmenityInline, RoomImageInline]
+    list_per_page = 10
 
     class Meta:
         verbose_name_plural = "Rooms"
