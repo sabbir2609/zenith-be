@@ -1,9 +1,8 @@
 from django.core.management.base import BaseCommand
 from django.utils.crypto import get_random_string
-from django.db import transaction
 from faker import Faker
 from main.models import Floor, RoomType, Room
-from django.db import IntegrityError
+from django.db import IntegrityError, transaction
 
 
 class Command(BaseCommand):
@@ -21,7 +20,6 @@ class Command(BaseCommand):
         def generate_room_name():
             return get_random_string(length=1, allowed_chars="ABCDEFGHIJ")
 
-        @transaction.atomic
         def create_fake_data(n):
             self.stdout.write("Starting to generate data...")
             for _ in range(n):
@@ -34,15 +32,16 @@ class Command(BaseCommand):
                 room_created = False
                 while not room_created:
                     try:
-                        room_label = generate_room_name()
-                        room = Room.objects.create(
-                            floor=floor,
-                            room_label=room_label,
-                            room_type=room_type,
-                            capacity=capacity,
-                            description=description,
-                            is_available=is_available,
-                        )
+                        with transaction.atomic():
+                            room_label = generate_room_name()
+                            room = Room.objects.create(
+                                floor=floor,
+                                room_label=room_label,
+                                room_type=room_type,
+                                capacity=capacity,
+                                description=description,
+                                is_available=is_available,
+                            )
                         room_created = True
                     except IntegrityError:
                         continue
