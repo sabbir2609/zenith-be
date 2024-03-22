@@ -28,7 +28,7 @@ class FloorAdmin(admin.ModelAdmin):
 
 @admin.register(RoomType)
 class RoomTypeAdmin(admin.ModelAdmin):
-    list_display = ("room_type", "price", "description")
+    list_display = ("room_type", "price")
     search_fields = ("room_type",)
 
 

@@ -1,6 +1,5 @@
 import uuid
 from django.db import models
-from django.db.models import Sum
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.conf import settings
 from django.forms import ValidationError
@@ -204,7 +203,6 @@ class ReviewImage(models.Model):
 
 
 class Reservation(models.Model):
-
     def generate_unique_id():
         date_str = datetime.now().strftime("%Y%m%d%H%M%S")
         random_str = get_random_string(6, "0123456789")
@@ -260,7 +258,6 @@ class Reservation(models.Model):
 
 
 class Installment(BaseModel):
-
     def generate_unique_id():
         date_str = datetime.now().strftime("%Y%m%d%H%M%S")
         random_str = get_random_string(6, "0123456789")
@@ -302,7 +299,6 @@ class Installment(BaseModel):
 
 
 class Payment(BaseModel):
-
     class PaymentMethodChoices(models.TextChoices):
         CASH = "Cash", "Cash"
         CARD = "Card", "Card"
