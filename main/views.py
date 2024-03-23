@@ -2,7 +2,7 @@ from django.db.models import Q
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.filters import SearchFilter
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -108,6 +108,14 @@ class RoomViewSet(ModelViewSet):
             return Room.objects.filter(floor__id=floor_id)
         else:
             return Room.objects.all()
+
+    def list(self, request, *args, **kwargs):
+        response = super().list(request, *args, **kwargs)
+        response.data["available_rooms_count"] = Room.objects.filter(
+            is_available=True
+        ).count()
+
+        return response
 
 
 class RoomImageViewSet(ModelViewSet):

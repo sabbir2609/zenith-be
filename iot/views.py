@@ -31,6 +31,13 @@ class DeviceViewSet(viewsets.ModelViewSet):
             return DeviceDetailSerializer
         return super().get_serializer_class()
 
+    def list(self, request, *args, **kwargs):
+        response = super().list(request, *args, **kwargs)
+        response.data["active_devices_count"] = Device.objects.filter(
+            status=True
+        ).count()
+        return response
+
 
 class RoomDeviceViewSet(viewsets.ModelViewSet):
     queryset = RoomDevice.objects.all()
