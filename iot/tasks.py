@@ -24,7 +24,7 @@ def mqtt_client_task(self, device_client_id):
     from iot.models import Device
 
     device = Device.objects.get(client_id=device_client_id)
-    topic = device.topic
+    topic = device.topics.all()[0].name
 
     def on_connect(client, userdata, flags, rc):
         if rc == 0:
