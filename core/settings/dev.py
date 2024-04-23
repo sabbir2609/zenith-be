@@ -5,7 +5,7 @@ import dj_database_url  # noqa: F401
 
 import dotenv
 
-dotenv_file = dotenv.find_dotenv()
+dotenv_file = dotenv.find_dotenv(".env.dev")
 dotenv.load_dotenv(dotenv_file, override=True)
 
 

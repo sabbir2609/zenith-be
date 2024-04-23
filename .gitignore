@@ -7,3 +7,5 @@ media
 *.log
 general.log
 general.log
+
+.env.dev
