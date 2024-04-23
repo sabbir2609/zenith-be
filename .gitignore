@@ -9,3 +9,5 @@ general.log
 general.log
 
 .env.dev
+
+*.pyc
