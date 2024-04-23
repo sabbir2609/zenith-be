@@ -73,6 +73,7 @@ class RoomViewSet(ModelViewSet):
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_class = RoomFilter
     pagination_class = DefaultPagination
+    ordering_fields = ["id"]
 
     search_fields = [
         "description",

@@ -119,7 +119,7 @@ class Room(models.Model):
         unique_together = ["floor", "room_label"]
         verbose_name_plural = "Rooms"
         verbose_name = "Room"
-        ordering = ["floor", "room_label"]
+        ordering = ["id", "floor", "room_label"]
 
 
 class RoomImage(models.Model):
