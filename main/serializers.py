@@ -39,7 +39,6 @@ class RoomTypeSerializer(ModelSerializer):
 
 
 class RoomImageSerializer(ModelSerializer):
-
     def create(self, validated_data):
         room_id = self.context["room_id"]
         return RoomImage.objects.create(room_id=room_id, **validated_data)
@@ -50,7 +49,6 @@ class RoomImageSerializer(ModelSerializer):
 
 
 class RoomAmenitySerializer(ModelSerializer):
-
     def create(self, validated_data):
         room_id = self.context["room_id"]
         return RoomAmenity.objects.create(room_id=room_id, **validated_data)
@@ -67,7 +65,6 @@ class RoomAmenitySerializer(ModelSerializer):
 
 
 class RoomSerializer(ModelSerializer):
-    room_type = RoomTypeSerializer(read_only=True, required=False)
     images = RoomImageSerializer(many=True, read_only=True)
     amenities = RoomAmenitySerializer(many=True, read_only=True)
 

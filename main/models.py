@@ -96,7 +96,7 @@ class Room(models.Model):
     )
     room_type = models.ForeignKey(
         RoomType,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         help_text=_("The type or category of the room."),
     )
     capacity = models.PositiveIntegerField(
