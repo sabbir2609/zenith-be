@@ -37,6 +37,8 @@ from main.serializers import (
     FloorSerializer,
     RoomTypeSerializer,
     RoomSerializer,
+    RoomListSerializer,
+    RoomDetailSerializer,
     RoomImageSerializer,
     RoomAmenitySerializer,
     ReservationSerializer,
@@ -57,7 +59,7 @@ class GuestViewSet(ModelViewSet):
 class FloorViewSet(ModelViewSet):
     queryset = Floor.objects.all()
     serializer_class = FloorSerializer
-    permission_classes = [IsAdminUserOrReadOnly]
+    permission_classes = [IsAuthenticated]
 
 
 class RoomTypeViewSet(ModelViewSet):
@@ -68,7 +70,6 @@ class RoomTypeViewSet(ModelViewSet):
 
 class RoomViewSet(ModelViewSet):
     queryset = Room.objects.all()
-    serializer_class = RoomSerializer
     permission_classes = [IsAdminUserOrReadOnly]
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_class = RoomFilter
@@ -82,6 +83,16 @@ class RoomViewSet(ModelViewSet):
         "room_type__description",
         "room_type__price",
     ]
+
+    def get_serializer_class(self):
+        if self.request.method == "GET":
+            return RoomListSerializer
+        elif self.request.method == "POST":
+            return RoomSerializer
+        elif self.action in ["retrieve", "update", "partial_update"]:
+            return RoomDetailSerializer
+        else:
+            return RoomSerializer
 
     @action(detail=False, methods=["get"])
     def available(self, request):

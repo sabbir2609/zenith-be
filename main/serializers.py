@@ -65,6 +65,39 @@ class RoomAmenitySerializer(ModelSerializer):
 
 
 class RoomSerializer(ModelSerializer):
+    class Meta:
+        model = Room
+        fields = [
+            "id",
+            "floor",
+            "room_label",
+            "room_type",
+            "capacity",
+            "description",
+            "is_available",
+        ]
+
+
+class RoomListSerializer(ModelSerializer):
+    room_type = RoomTypeSerializer(read_only=True)
+    floor = FloorSerializer(read_only=True)
+
+    class Meta:
+        model = Room
+        fields = [
+            "id",
+            "floor",
+            "room_label",
+            "room_type",
+            "capacity",
+            "description",
+            "is_available",
+        ]
+
+
+class RoomDetailSerializer(ModelSerializer):
+    room_type = RoomTypeSerializer(read_only=True)
+    floor = FloorSerializer(read_only=True)
     images = RoomImageSerializer(many=True, read_only=True)
     amenities = RoomAmenitySerializer(many=True, read_only=True)
 
