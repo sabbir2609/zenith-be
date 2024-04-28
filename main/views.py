@@ -35,8 +35,8 @@ from main.models import (
 from main.serializers import (
     GuestSerializer,
     FloorSerializer,
-    RoomTypeSerializer,
     RoomSerializer,
+    RoomTypeSerializer,
     RoomListSerializer,
     RoomDetailSerializer,
     RoomImageSerializer,
@@ -85,11 +85,9 @@ class RoomViewSet(ModelViewSet):
     ]
 
     def get_serializer_class(self):
-        if self.request.method == "GET":
+        if self.action == "list":
             return RoomListSerializer
-        elif self.request.method == "POST":
-            return RoomSerializer
-        elif self.action in ["retrieve", "update", "partial_update"]:
+        elif self.action == "retrieve":
             return RoomDetailSerializer
         else:
             return RoomSerializer

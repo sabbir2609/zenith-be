@@ -90,7 +90,6 @@ class RoomListSerializer(ModelSerializer):
             "room_label",
             "room_type",
             "capacity",
-            "description",
             "is_available",
         ]
 

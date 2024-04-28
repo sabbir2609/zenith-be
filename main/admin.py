@@ -52,9 +52,16 @@ class RoomImageInline(admin.TabularInline):
 
 @admin.register(Room)
 class RoomAdmin(admin.ModelAdmin):
-    list_display = ("room_label", "floor", "room_type", "capacity", "is_available")
+    list_display = (
+        "room_label",
+        "id",
+        "floor",
+        "room_type",
+        "capacity",
+        "is_available",
+    )
     search_fields = ["room_type__room_type"]
-    list_filter = ("is_available", "capacity")
+    list_filter = ("is_available", "capacity", "room_type")
     inlines = [RoomAmenityInline, RoomImageInline]
     list_per_page = 10
 

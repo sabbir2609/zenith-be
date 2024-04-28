@@ -15,7 +15,7 @@ DEBUG = os.getenv("DEBUG")
 
 ALLOWED_HOSTS = os.getenv(
     "WEBSITE_HOSTNAME",
-    "127.0.0.1,localhost,192.168.133.120,*",
+    "127.0.0.1,localhost,",
 ).split(",")
 
 CORS_ALLOWED_ORIGINS = [
