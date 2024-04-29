@@ -6,6 +6,7 @@ from iot.pagination import DefaultPagination
 from iot.models import DeviceType, Device, RoomDevice, FacilityDevice
 from iot.serializers import (
     DeviceTypeSerializer,
+    DeviceSerializer,
     DeviceListSerializer,
     DeviceDetailSerializer,
     RoomDeviceSerializer,
@@ -20,6 +21,7 @@ class DeviceTypeViewSet(viewsets.ModelViewSet):
 
 class DeviceViewSet(viewsets.ModelViewSet):
     queryset = Device.objects.all()
+    serializer_class = DeviceSerializer
     pagination_class = DefaultPagination
     search_fields = ["name", "client_id", "topic"]
     ordering_fields = ["installation_date", "status", "qos", "created_at"]

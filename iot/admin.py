@@ -59,6 +59,7 @@ class RoomDeviceAdmin(admin.ModelAdmin):
         "device__name",
     )
     search_fields = ("room__room_label", "device__name")
+    autocomplete_fields = ["room", "device"]
 
 
 @admin.register(FacilityDevice)

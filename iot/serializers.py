@@ -8,6 +8,12 @@ class DeviceTypeSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class DeviceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Device
+        fields = "__all__"
+
+
 class DeviceListSerializer(serializers.ModelSerializer):
     location = serializers.SerializerMethodField()
     device_type = serializers.SerializerMethodField()

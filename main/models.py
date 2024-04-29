@@ -48,6 +48,10 @@ class Floor(models.Model):
         null=True,
         help_text=_("Description of the floor, providing additional information."),
     )
+    is_elevator_accessible = models.BooleanField(
+        default=True,
+        help_text=_("Indicates whether the floor is accessible by elevator."),
+    )
 
     def __str__(self):
         return f"Level {self.level}"
