@@ -11,7 +11,16 @@ class DeviceTypeSerializer(serializers.ModelSerializer):
 class DeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Device
-        fields = "__all__"
+        fields = [
+            "id",
+            "name",
+            "device_type",
+            "client_id",
+            "qos",
+            "status",
+            "description",
+            "installation_date",
+        ]
 
 
 class DeviceListSerializer(serializers.ModelSerializer):

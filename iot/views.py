@@ -1,6 +1,8 @@
 from django.views.generic import TemplateView
 
 from rest_framework import viewsets
+from rest_framework.decorators import action
+from rest_framework.response import Response
 
 from iot.pagination import DefaultPagination
 from iot.models import DeviceType, Device, RoomDevice, FacilityDevice
@@ -39,6 +41,12 @@ class DeviceViewSet(viewsets.ModelViewSet):
             status=True
         ).count()
         return response
+
+    @action(detail=False, methods=["get"])
+    def qos_choices(self, request):
+        qos_choices = Device.QosChoices.choices
+        qos_choices = [{"id": id, "name": name} for id, name in qos_choices]
+        return Response(qos_choices)
 
 
 class RoomDeviceViewSet(viewsets.ModelViewSet):
