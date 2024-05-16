@@ -87,3 +87,19 @@ class MembershipTierMapping(models.Model):
 
     def __str__(self):
         return f"{self.plan.name} - {self.tier.name}"
+
+class Payment(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    date = models.DateTimeField(auto_now_add=True)
+    membership = models.ForeignKey(Membership, on_delete=models.CASCADE)
+    payment_method = models.CharField(max_length=100)
+    transaction_id = models.CharField(max_length=100)
+
+    def __str__(self):
+# Suggested code may be subject to a license. Learn more: ~LicenseLog:3205654014.
+        return f"{self.user.username} - {self.amount}"
+
+    class Meta:
+        verbose_name = "Payment"
+        verbose_name_plural = "Payments"
