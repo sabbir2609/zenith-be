@@ -11,7 +11,7 @@ dotenv.load_dotenv(dotenv_file, override=True)
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 
-DEBUG = os.getenv("DEBUG")
+DEBUG = True
 
 ALLOWED_HOSTS = os.getenv(
     "WEBSITE_HOSTNAME",
