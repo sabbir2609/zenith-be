@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.utils.html import format_html
 from .models import (
     Guest,
     Floor,
@@ -14,20 +13,27 @@ from .models import (
     Review,
     ReviewImage,
 )
+from import_export.admin import ImportExportModelAdmin
+from unfold.admin import ModelAdmin, TabularInline
+from unfold.contrib.filters.admin import RangeDateFilter, RangeDateTimeFilter
+from unfold.contrib.forms.widgets import ArrayWidget, WysiwygWidget
+from unfold.contrib.import_export.forms import ExportForm, ImportForm
 
 
 @admin.register(Guest)
-class GuestAdmin(admin.ModelAdmin):
+class GuestAdmin(ModelAdmin):
     list_display = ("user", "status", "contact_info")
 
 
 @admin.register(Floor)
-class FloorAdmin(admin.ModelAdmin):
-    list_display = ("level", "description")
+class FloorAdmin(ModelAdmin):
+    list_display = ("level", "is_elevator_accessible")
+    list_editable = ("is_elevator_accessible",)
+    list_filter = ("is_elevator_accessible",)
 
 
 @admin.register(RoomType)
-class RoomTypeAdmin(admin.ModelAdmin):
+class RoomTypeAdmin(ModelAdmin):
     list_display = ("room_type", "price")
     search_fields = ("room_type",)
 
@@ -35,23 +41,19 @@ class RoomTypeAdmin(admin.ModelAdmin):
 class RoomAmenityInline(admin.TabularInline):
     model = RoomAmenity
     extra = 1
+    tab = True
+    hide_title = True
 
 
 class RoomImageInline(admin.TabularInline):
     model = RoomImage
     extra = 1
-    readonly_fields = ["thumbnail"]
-
-    def thumbnail(self, instance):
-        if instance.image.name != "":
-            return format_html(
-                f'<img src="{instance.image.url}" style=" width: 100px; height: 100px; object-fit: cover;"/>'
-            )
-        return ""
+    tab = True
+    hide_title = True
 
 
 @admin.register(Room)
-class RoomAdmin(admin.ModelAdmin):
+class RoomAdmin(ModelAdmin):
     list_display = (
         "room_label",
         "id",
@@ -65,25 +67,16 @@ class RoomAdmin(admin.ModelAdmin):
     inlines = [RoomAmenityInline, RoomImageInline]
     list_per_page = 10
 
-    class Meta:
-        verbose_name_plural = "Rooms"
-
 
 class ReviewImageInline(admin.TabularInline):
     model = ReviewImage
     extra = 1
-    readonly_fields = ["thumbnail"]
-
-    def thumbnail(self, instance):
-        if instance.image.name != "":
-            return format_html(
-                f'<img src="{instance.image.url}" style=" width: 100px; height: 100px; object-fit: cover;"/>'
-            )
-        return ""
+    tab = True
+    hide_title = True
 
 
 @admin.register(Review)
-class ReviewAdmin(admin.ModelAdmin):
+class ReviewAdmin(ModelAdmin):
     list_display = ("room", "guest", "rating", "comment", "created_at")
     search_fields = ["room__room_id"]
     readonly_fields = ["created_at"]
@@ -109,7 +102,7 @@ class InstallmentInline(admin.TabularInline):
 
 
 @admin.register(Reservation)
-class ReservationAdmin(admin.ModelAdmin):
+class ReservationAdmin(ModelAdmin):
     def paid_amount(self, obj):
         # Calculate the total paid amount for the reservation
         payments = Payment.objects.filter(installment__reservation=obj)
@@ -146,7 +139,7 @@ class ReservationAdmin(admin.ModelAdmin):
 
 
 @admin.register(Installment)
-class InstallmentAdmin(admin.ModelAdmin):
+class InstallmentAdmin(ModelAdmin):
     list_display = (
         "reservation",
         "installment_type",
@@ -158,7 +151,7 @@ class InstallmentAdmin(admin.ModelAdmin):
 
 
 @admin.register(Payment)
-class PaymentAdmin(admin.ModelAdmin):
+class PaymentAdmin(ModelAdmin):
     list_display = ("installment", "payment_amount", "payment_method")
     search_fields = ["installment"]
     readonly_fields = ["payment_amount", "is_refunded"]
@@ -178,7 +171,7 @@ class PaymentAdmin(admin.ModelAdmin):
 
 
 @admin.register(Refund)
-class RefundAdmin(admin.ModelAdmin):
+class RefundAdmin(ModelAdmin):
     list_display = ("payment", "refund_amount", "refund_method")
     search_fields = ["payment"]
     fieldsets = (

@@ -1,9 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.db import router
-from django.urls import path, include
-
+from django.urls import include, path
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
@@ -11,7 +9,6 @@ from drf_spectacular.views import (
 )
 
 from .views import Homepage
-
 
 # Admin Site Config
 admin.site.site_header = "Zenith System"
@@ -28,7 +25,6 @@ urlpatterns = [
     path("api/iot/", include("iot.urls"), name="iot"),
     # blog
     path("blog/", include("blog.urls"), name="blog"),
-    path("ckeditor/", include("ckeditor_uploader.urls")),
     # test pages
     path("", Homepage.as_view(), name="homepage"),
     path("notifications/", include("notification.urls"), name="notification"),

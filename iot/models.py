@@ -1,9 +1,11 @@
-from django.db import models
-from django.core.exceptions import ValidationError
-from main.models import Room
-from facility.models import Facility
-from django.utils.translation import gettext_lazy as _
 import uuid
+
+from django.core.exceptions import ValidationError
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+
+from facility.models import Facility
+from main.models import Room
 
 
 class BaseModel(models.Model):
@@ -52,8 +54,8 @@ class Device(BaseModel):
     status = models.BooleanField(
         default=False, help_text=_("Status of the device (active/inactive)")
     )
-    description = models.TextField(
-        null=True, blank=True, help_text=_("Description of the device")
+    description = models.CharField(
+        max_length=255, null=True, blank=True, help_text=_("Description of the device")
     )
     installation_date = models.DateField(
         help_text=_("Date when the device was installed")

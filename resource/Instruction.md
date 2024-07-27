@@ -34,8 +34,8 @@ This section contains various management commands for different purposes.
 - `ALTER USER postgres with encrypted password 'your_password';`: Changes the password for the `postgres` user.
 
 ## Redis Command
-
-- `redis-cli shutdown`: Shuts down the Redis server.
+- `redis-server`: start the the Redis server
+- `redis-cli shutdown`: Shutsdown the Redis server.
 
 ## Mosquitto Commands
 
@@ -43,9 +43,13 @@ This section contains various management commands for different purposes.
 - `ps -ef | grep mosquitto`: Lists the processes containing the word "mosquitto".
 - `sudo kill 'pid of mosquitto'`: Kills the process with the specified PID.
 
-## Uvicorn Command
+## Server Command
 
 - `uvicorn core.asgi:application --port 8000 --workers 4 --log-level debug --reload`: Starts the Uvicorn ASGI server with specified configurations.
+
+- `gunicorn core.asgi:application -k uvicorn.workers.UvicornWorker`: Starts the Gunicorn with Uvicorn ASGI server with specified configurations.
+
+- `hypercorn --bind '0.0.0.0:8000' core.asgi:application`: Starts the Hypercorn ASGI server with specified configurations.
 
 ## Celery Commands
 

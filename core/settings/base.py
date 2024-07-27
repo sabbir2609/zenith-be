@@ -9,6 +9,12 @@ dotenv.load_dotenv(dotenv_file, override=True)
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 INSTALLED_APPS = [
+    "unfold",
+    "unfold.contrib.filters",
+    "unfold.contrib.forms",
+    "unfold.contrib.inlines",
+    "unfold.contrib.import_export",
+    # django default apps
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -34,7 +40,7 @@ INSTALLED_APPS = [
     "django_filters",
     "django_celery_results",
     "django_celery_beat",
-    "ckeditor",
+    "import_export",
     # dev dependency
     "django_extensions",
     "debug_toolbar",
@@ -93,7 +99,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Dhaka"
 
 USE_I18N = True
 
@@ -261,64 +267,32 @@ LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
     "handlers": {
-        "console": {"class": "logging.StreamHandler"},
-        # "file": {
-        #     "class": "logging.FileHandler",
-        #     "filename": "general.log",
-        #     "formatter": "verbose",
-        # },
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+        "logfile": {
+            "level": "DEBUG",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": BASE_DIR / "logs/debug.log",
+            "maxBytes": 50000,
+            "backupCount": 2,
+            "formatter": "verbose",
+        },
     },
     "loggers": {
         "": {
-            "handlers": [
-                "console",
-                # "file"
-            ],
+            "handlers": ["console", "logfile"],
             "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
-        }
+        },
     },
     "formatters": {
         "verbose": {
             "format": "{asctime} ({levelname}) - {name} - {message}",
             "style": "{",
-        }
+        },
     },
 }
 
-
-#####################
-# CKEditor Settings #
-#####################
-CKEDITOR_UPLOAD_PATH = "uploads/"
-CKEDITOR_CONFIGS = {
-    "default": {
-        "toolbar": [
-            ["Format", "Bold", "Italic", "Underline", "Strike", "SpellChecker"],
-            [
-                "NumberedList",
-                "BulletedList",
-                "Indent",
-                "Outdent",
-                "JustifyLeft",
-                "JustifyCenter",
-                "JustifyRight",
-                "JustifyBlock",
-            ],
-            [
-                "Image",
-                "Table",
-                "Link",
-                "Unlink",
-                "Anchor",
-                "SectionLink",
-                "Subscript",
-                "Superscript",
-            ],
-            ["Undo", "Redo"],
-            ["Source"],
-            ["Maximize"],
-        ],
-    },
-}
-
-SILENCED_SYSTEM_CHECKS = ["ckeditor.W001"]
+# Ensure the logs directory exists
+LOG_DIR = BASE_DIR / "logs"
+LOG_DIR.mkdir(exist_ok=True)

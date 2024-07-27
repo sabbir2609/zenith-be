@@ -1,68 +1,72 @@
 from django.contrib import admin
+from import_export.admin import ImportExportModelAdmin
+from unfold.admin import ModelAdmin, TabularInline
+from unfold.contrib.filters.admin import RangeDateFilter, RangeDateTimeFilter
+from unfold.contrib.forms.widgets import ArrayWidget, WysiwygWidget
+from unfold.contrib.import_export.forms import ExportForm, ImportForm
+
 from .models import (
     Facility,
-    FacilityExtraCharge,
     FacilityAmenities,
+    FacilityExtraCharge,
     FacilityImage,
+    FacilityReservation,
     FacilityReview,
     FacilityReviewImage,
-    FacilityReservation,
 )
 
-from django.utils.html import format_html
 
-
-class FacilityAmenitiesInline(admin.TabularInline):
+class FacilityAmenitiesInline(TabularInline):
     model = FacilityAmenities
     extra = 1
+    tab = True
+    hide_title = True
 
 
-class FacilityImageInline(admin.TabularInline):
+class FacilityImageInline(TabularInline):
     model = FacilityImage
     extra = 1
+    tab = True
+    hide_title = True
 
 
-class FacilityExtraChargeInline(admin.TabularInline):
+class FacilityExtraChargeInline(TabularInline):
     model = FacilityExtraCharge
     extra = 1
+    tab = True
+    hide_title = True
 
 
 @admin.register(Facility)
-class FacilityAdmin(admin.ModelAdmin):
+class FacilityAdmin(ModelAdmin):
     list_display = ("name", "is_reservable", "id")
     search_fields = ("name",)
     inlines = [FacilityAmenitiesInline, FacilityImageInline, FacilityExtraChargeInline]
 
 
-@admin.register(FacilityAmenities)
-class FacilityAmenitiesAdmin(admin.ModelAdmin):
-    list_display = ("facility", "amenities", "description")
-    list_filter = ("facility",)
-    search_fields = ("amenities",)
+# @admin.register(FacilityAmenities)
+# class FacilityAmenitiesAdmin(ModelAdmin):
+#     list_display = ("facility", "amenities", "description")
+#     list_filter = ("facility",)
+#     search_fields = ("amenities",)
 
 
-@admin.register(FacilityImage)
-class FacilityImageAdmin(admin.ModelAdmin):
-    list_display = ("facility", "image", "description")
-    list_filter = ("facility",)
-    search_fields = ("facility__name",)
+# @admin.register(FacilityImage)
+# class FacilityImageAdmin(ModelAdmin):
+#     list_display = ("facility", "image", "description")
+#     list_filter = ("facility",)
+#     search_fields = ("facility__name",)
 
 
-class FacilityReviewImageInline(admin.TabularInline):
+class FacilityReviewImageInline(TabularInline):
     model = FacilityReviewImage
     extra = 1
-    readonly_fields = ["thumbnail"]
-
-    def thumbnail(self, instance):
-        if instance.image.name != "":
-            return format_html(
-                f'<img src="{instance.image.url}" style=" width: 100px; height: 100px; object-fit: cover;"/>'
-            )
-        return ""
+    tab = True
+    hide_title = True
 
 
 @admin.register(FacilityReview)
-class FacilityReviewAdmin(admin.ModelAdmin):
+class FacilityReviewAdmin(ModelAdmin):
     list_display = ("facility", "reviewer", "rating")
     list_filter = ("facility",)
     search_fields = ("facility__name", "reviewer")
@@ -72,7 +76,7 @@ class FacilityReviewAdmin(admin.ModelAdmin):
 
 
 @admin.register(FacilityReservation)
-class FacilityReservationAdmin(admin.ModelAdmin):
+class FacilityReservationAdmin(ModelAdmin):
     list_display = ("facility", "user", "date", "start_time", "end_time")
     list_filter = ("facility",)
     search_fields = ("facility__name", "user__first_name", "user__last_name")

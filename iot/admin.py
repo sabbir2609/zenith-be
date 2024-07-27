@@ -1,20 +1,31 @@
 from django.contrib import admin
 from .models import DeviceType, Device, Topic, RoomDevice, FacilityDevice
+from unfold.admin import ModelAdmin, TabularInline
+from import_export.admin import ImportExportModelAdmin
+from unfold.contrib.forms.widgets import ArrayWidget, WysiwygWidget
+from unfold.contrib.filters.admin import (
+    RangeDateFilter,
+    RangeDateTimeFilter,  # noqa
+)
+from unfold.contrib.import_export.forms import ExportForm, ImportForm
 
 
 @admin.register(DeviceType)
-class DeviceTypeAdmin(admin.ModelAdmin):
+class DeviceTypeAdmin(ModelAdmin, ImportExportModelAdmin):
     list_display = ("name",)
     search_fields = ("name", "description")
 
+    export_form = ExportForm
+    import_form = ImportForm
 
-class TopicInline(admin.TabularInline):
+
+class TopicInline(TabularInline):
     model = Topic
     extra = 1
 
 
 @admin.register(Device)
-class DeviceAdmin(admin.ModelAdmin):
+class DeviceAdmin(ModelAdmin, ImportExportModelAdmin):
     list_display = (
         "client_id",
         "name",
@@ -41,15 +52,23 @@ class DeviceAdmin(admin.ModelAdmin):
     )
     readonly_fields = ("id",)
     search_fields = ("name", "client_id", "description")
-    list_filter = ("device_type", "status")
-    ordering = ["-created_at"]
+
+    list_filter = (
+        "device_type",
+        "status",
+        ("installation_date", RangeDateFilter),
+    )
+    list_filter_submit = True
     list_per_page = 10
 
     inlines = [TopicInline]
 
+    export_form = ExportForm
+    import_form = ImportForm
+
 
 @admin.register(RoomDevice)
-class RoomDeviceAdmin(admin.ModelAdmin):
+class RoomDeviceAdmin(ModelAdmin):
     list_display = (
         "room",
         "device",
@@ -63,7 +82,7 @@ class RoomDeviceAdmin(admin.ModelAdmin):
 
 
 @admin.register(FacilityDevice)
-class FacilityDeviceAdmin(admin.ModelAdmin):
+class FacilityDeviceAdmin(ModelAdmin):
     list_display = (
         "facility",
         "device",
