@@ -7,35 +7,15 @@ from django.db import models
 from .managers import UserManager
 
 
-# Permissions Model
-class Permissions(models.Model):
-    name = models.CharField(max_length=50, unique=True, help_text="Permission name.")
-    description = models.TextField(blank=True, help_text="Permission description.")
-
-    class Meta:
-        verbose_name = "Permission"
-        verbose_name_plural = "Permissions"
-
-    def __str__(self):
-        return self.name
-
-
-# User Roles
-class Roles(models.Model):
-    name = models.CharField(max_length=50, unique=True, help_text="Role name.")
-    description = models.TextField(blank=True, help_text="Role description.")
-    permissions = models.ManyToManyField(Permissions, related_name="roles", blank=True)
-
-    class Meta:
-        verbose_name = "Role"
-        verbose_name_plural = "Roles"
-
-    def __str__(self):
-        return self.name
-
-
 # User Model
 class User(AbstractBaseUser, PermissionsMixin):
+    # User Roles
+    ROLE_CHOICES = (
+        ("guest", "Guest"),
+        ("staff", "Staff"),
+        ("admin", "Admin"),
+    )
+
     first_name = models.CharField(
         max_length=255, blank=True, help_text="User's first name."
     )
@@ -49,9 +29,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         unique=True, help_text="User's email address.", db_index=True
     )
 
-    # Role-based Access Control
-    role = models.ForeignKey(
-        Roles, on_delete=models.SET_NULL, null=True, blank=True, help_text="User role."
+    # User Role
+    role = models.CharField(
+        max_length=20, choices=ROLE_CHOICES, default="guest", help_text="User role."
     )
 
     # User Status
@@ -90,7 +70,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} ({self.role})"
-    
+
     def get_full_name(self):
         return f"{self.first_name} {self.last_name}"
 

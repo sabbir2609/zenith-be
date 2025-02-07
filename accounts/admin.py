@@ -9,35 +9,10 @@ from unfold.contrib.forms.widgets import WysiwygWidget
 from unfold.decorators import display
 from unfold.forms import AdminPasswordChangeForm, UserChangeForm, UserCreationForm
 
-from .models import User, Permissions, Roles
+from .models import User
 
 
 admin.site.unregister(Group)
-
-
-# Permissions Model Admin
-@admin.register(Permissions)
-class PermissionsAdmin(ModelAdmin):
-    list_display = ["name", "description"]
-    search_fields = ["name", "description"]
-    ordering = ["name"]
-    list_filter = ["name"]
-
-
-# Roles Model Admin
-@admin.register(Roles)
-class RolesAdmin(ModelAdmin):
-    list_display = ["name", "description", "get_permissions"]
-    search_fields = ["name", "description"]
-    ordering = ["name"]
-
-    # Display permissions associated with each role
-    def get_permissions(self, obj):
-        return ", ".join([perm.name for perm in obj.permissions.all()])
-
-    get_permissions.short_description = "Permissions"
-
-    filter_horizontal = ("permissions",)
 
 
 # User Model Admin
