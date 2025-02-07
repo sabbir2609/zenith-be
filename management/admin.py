@@ -1,9 +1,11 @@
 from django.contrib import admin
-from .models import Task, Staff, Role, TaskCheckList, Inventory
+from unfold.admin import ModelAdmin, TabularInline
+
+from .models import Inventory, Role, Staff, Task, TaskCheckList
 
 
 @admin.register(Role)
-class RoleAdmin(admin.ModelAdmin):
+class RoleAdmin(ModelAdmin):
     search_fields = ("name",)
     list_display = ("name", "stuff_count")
 
@@ -12,20 +14,21 @@ class RoleAdmin(admin.ModelAdmin):
 
 
 @admin.register(Staff)
-class StuffAdmin(admin.ModelAdmin):
+class StuffAdmin(ModelAdmin):
     list_display = ("user", "staff_id", "role", "staff_status")
     autocomplete_fields = ("user", "role")
     list_filter = ("staff_status",)
     search_fields = ("user__first_name", "staff_id")
+    readonly_fields = ("staff_id",)
 
 
-class InlineTaskCheckList(admin.TabularInline):
+class InlineTaskCheckList(TabularInline):
     model = TaskCheckList
     extra = 1
 
 
 @admin.register(Task)
-class TaskAdmin(admin.ModelAdmin):
+class TaskAdmin(ModelAdmin):
     list_display = (
         "task_id",
         "staff",
@@ -39,7 +42,7 @@ class TaskAdmin(admin.ModelAdmin):
 
 
 @admin.register(Inventory)
-class InventoryAdmin(admin.ModelAdmin):
+class InventoryAdmin(ModelAdmin):
     list_display = (
         "item_name",
         "item_quantity",
