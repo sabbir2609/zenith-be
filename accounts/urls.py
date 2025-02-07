@@ -10,7 +10,7 @@ from .views import (
 )
 
 
-app_name = "user"
+app_name = "accounts"
 
 router = DefaultRouter()
 

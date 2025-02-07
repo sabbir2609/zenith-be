@@ -15,7 +15,7 @@ from .models import (
     ReviewImage,
 )
 
-from user.serializers import UserSerializer
+from accounts.serializers import UserSerializer
 
 
 class GuestSerializer(ModelSerializer):
