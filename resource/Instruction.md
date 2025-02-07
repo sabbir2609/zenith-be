@@ -49,7 +49,8 @@ This section contains various management commands for different purposes.
 
 - `gunicorn core.asgi:application -k uvicorn.workers.UvicornWorker`: Starts the Gunicorn with Uvicorn ASGI server with specified configurations.
 
-- `hypercorn --bind '0.0.0.0:8000' core.asgi:application`: Starts the Hypercorn ASGI server with specified configurations.
+- `hypercorn --bind '0.0.0.0:8000' core.asgi:application` or `hypercorn --bind "0.0.0.0:8000" --quic-bind "0.0.0.0:443" core.asgi:application `
+: Starts the Hypercorn ASGI server with specified configurations.
 
 ## Celery Commands
 

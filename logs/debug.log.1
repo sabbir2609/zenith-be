@@ -1,0 +1,534 @@
+2025-02-07 21:22:23,132 (WARNING) - hypercorn.error - ASGI Framework Lifespan error, continuing without Lifespan support
+2025-02-07 21:22:23,132 (INFO) - hypercorn.error - Running on http://0.0.0.0:8000 (CTRL + C to quit)
+2025-02-07 21:22:25,770 (ERROR) - django.request - Internal Server Error: /
+Traceback (most recent call last):
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/sessions/backends/base.py", line 187, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedTable: relation "django_session" does not exist
+LINE 1: ...ession_data", "django_session"."expire_date" FROM "django_se...
+                                                             ^
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/debug_toolbar/middleware.py", line 92, in __call__
+    panel.generate_stats(request, response)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/debug_toolbar/panels/request.py", line 64, in generate_stats
+    (k, request.session.get(k)) for k in sorted(request.session.keys())
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/sessions/backends/base.py", line 123, in keys
+    return self._session.keys()
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/sessions/backends/base.py", line 192, in _get_session
+    self._session_cache = self.load()
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/sessions/backends/db.py", line 42, in load
+    s = self._get_session_from_db()
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/sessions/backends/db.py", line 32, in _get_session_from_db
+    return self.model.objects.get(
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 645, in get
+    num = len(clone)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 382, in __len__
+    self._fetch_all()
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+django.db.utils.ProgrammingError: relation "django_session" does not exist
+LINE 1: ...ession_data", "django_session"."expire_date" FROM "django_se...
+                                                             ^
+2025-02-07 21:22:27,784 (ERROR) - django.request - Internal Server Error: /favicon.ico
+Traceback (most recent call last):
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/sessions/backends/base.py", line 187, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedTable: relation "django_session" does not exist
+LINE 1: ...ession_data", "django_session"."expire_date" FROM "django_se...
+                                                             ^
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/debug_toolbar/middleware.py", line 92, in __call__
+    panel.generate_stats(request, response)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/debug_toolbar/panels/request.py", line 64, in generate_stats
+    (k, request.session.get(k)) for k in sorted(request.session.keys())
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/sessions/backends/base.py", line 123, in keys
+    return self._session.keys()
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/sessions/backends/base.py", line 192, in _get_session
+    self._session_cache = self.load()
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/sessions/backends/db.py", line 42, in load
+    s = self._get_session_from_db()
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/sessions/backends/db.py", line 32, in _get_session_from_db
+    return self.model.objects.get(
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 645, in get
+    num = len(clone)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 382, in __len__
+    self._fetch_all()
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+django.db.utils.ProgrammingError: relation "django_session" does not exist
+LINE 1: ...ession_data", "django_session"."expire_date" FROM "django_se...
+                                                             ^
+2025-02-07 21:32:10,600 (WARNING) - hypercorn.error - ASGI Framework Lifespan error, continuing without Lifespan support
+2025-02-07 21:32:10,600 (INFO) - hypercorn.error - Running on http://0.0.0.0:8000 (CTRL + C to quit)
+2025-02-07 21:32:15,881 (ERROR) - django.request - Internal Server Error: /
+Traceback (most recent call last):
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/sessions/backends/base.py", line 187, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedTable: relation "django_session" does not exist
+LINE 1: ...ession_data", "django_session"."expire_date" FROM "django_se...
+                                                             ^
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/debug_toolbar/middleware.py", line 92, in __call__
+    panel.generate_stats(request, response)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/debug_toolbar/panels/request.py", line 64, in generate_stats
+    (k, request.session.get(k)) for k in sorted(request.session.keys())
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/sessions/backends/base.py", line 123, in keys
+    return self._session.keys()
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/sessions/backends/base.py", line 192, in _get_session
+    self._session_cache = self.load()
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/sessions/backends/db.py", line 42, in load
+    s = self._get_session_from_db()
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/sessions/backends/db.py", line 32, in _get_session_from_db
+    return self.model.objects.get(
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 645, in get
+    num = len(clone)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 382, in __len__
+    self._fetch_all()
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+django.db.utils.ProgrammingError: relation "django_session" does not exist
+LINE 1: ...ession_data", "django_session"."expire_date" FROM "django_se...
+                                                             ^
+2025-02-07 21:32:16,814 (ERROR) - django.request - Internal Server Error: /favicon.ico
+Traceback (most recent call last):
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/sessions/backends/base.py", line 187, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedTable: relation "django_session" does not exist
+LINE 1: ...ession_data", "django_session"."expire_date" FROM "django_se...
+                                                             ^
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/debug_toolbar/middleware.py", line 92, in __call__
+    panel.generate_stats(request, response)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/debug_toolbar/panels/request.py", line 64, in generate_stats
+    (k, request.session.get(k)) for k in sorted(request.session.keys())
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/sessions/backends/base.py", line 123, in keys
+    return self._session.keys()
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/sessions/backends/base.py", line 192, in _get_session
+    self._session_cache = self.load()
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/sessions/backends/db.py", line 42, in load
+    s = self._get_session_from_db()
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/sessions/backends/db.py", line 32, in _get_session_from_db
+    return self.model.objects.get(
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 645, in get
+    num = len(clone)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 382, in __len__
+    self._fetch_all()
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+django.db.utils.ProgrammingError: relation "django_session" does not exist
+LINE 1: ...ession_data", "django_session"."expire_date" FROM "django_se...
+                                                             ^
+2025-02-07 21:34:56,478 (WARNING) - django.request - Not Found: /favicon.ico
+2025-02-07 21:36:31,912 (WARNING) - hypercorn.error - ASGI Framework Lifespan error, continuing without Lifespan support
+2025-02-07 21:36:31,913 (INFO) - hypercorn.error - Running on http://0.0.0.0:8000 (CTRL + C to quit)
+2025-02-07 21:38:37,655 (WARNING) - django.request - Not Found: /favicon.ico
+2025-02-07 21:39:55,032 (WARNING) - django.request - Not Found: /static/unfold/fonts/material-symbols/styles.css
+2025-02-07 21:39:55,089 (WARNING) - django.request - Not Found: /static/unfold/css/styles.css
+2025-02-07 21:39:55,099 (WARNING) - django.request - Not Found: /static/unfold/fonts/inter/styles.css
+2025-02-07 21:39:55,311 (WARNING) - django.request - Not Found: /static/unfold/js/chart.js
+2025-02-07 21:39:55,376 (WARNING) - django.request - Not Found: /static/unfold/css/simplebar.css
+2025-02-07 21:39:55,381 (WARNING) - django.request - Not Found: /static/unfold/js/htmx.js
+2025-02-07 21:39:55,670 (WARNING) - django.request - Not Found: /static/unfold/js/app.js
+2025-02-07 21:39:55,719 (WARNING) - django.request - Not Found: /static/unfold/js/simplebar.js
+2025-02-07 21:39:55,937 (WARNING) - django.request - Not Found: /static/unfold/js/alpine.anchor.js
+2025-02-07 21:39:55,972 (WARNING) - django.request - Not Found: /static/unfold/js/alpine.persist.js
+2025-02-07 21:39:56,010 (WARNING) - django.request - Not Found: /static/unfold/js/alpine.js
+2025-02-07 21:40:00,337 (WARNING) - django.request - Not Found: /static/unfold/css/styles.css
+2025-02-07 21:40:00,404 (WARNING) - django.request - Not Found: /static/unfold/fonts/inter/styles.css
+2025-02-07 21:40:00,404 (WARNING) - django.request - Not Found: /static/unfold/fonts/material-symbols/styles.css
+2025-02-07 21:40:00,663 (WARNING) - django.request - Not Found: /static/unfold/css/simplebar.css
+2025-02-07 21:40:00,710 (WARNING) - django.request - Not Found: /static/unfold/js/chart.js
+2025-02-07 21:40:00,789 (WARNING) - django.request - Not Found: /static/unfold/js/htmx.js
+2025-02-07 21:40:00,793 (WARNING) - django.request - Not Found: /static/unfold/js/app.js
+2025-02-07 21:40:01,279 (WARNING) - django.request - Not Found: /static/unfold/js/simplebar.js
+2025-02-07 21:40:01,442 (WARNING) - django.request - Not Found: /static/unfold/js/alpine.anchor.js
+2025-02-07 21:40:01,541 (WARNING) - django.request - Not Found: /static/unfold/js/alpine.persist.js
+2025-02-07 21:40:01,553 (WARNING) - django.request - Not Found: /static/unfold/js/alpine.js
+2025-02-07 21:40:13,685 (WARNING) - django.request - Not Found: /static/unfold/fonts/inter/styles.css
+2025-02-07 21:40:13,748 (WARNING) - django.request - Not Found: /static/unfold/fonts/material-symbols/styles.css
+2025-02-07 21:40:13,849 (WARNING) - django.request - Not Found: /static/unfold/css/styles.css
+2025-02-07 21:40:13,888 (WARNING) - django.request - Not Found: /static/unfold/css/simplebar.css
+2025-02-07 21:40:14,011 (WARNING) - django.request - Not Found: /static/unfold/js/htmx.js
+2025-02-07 21:40:14,170 (WARNING) - django.request - Not Found: /static/unfold/js/simplebar.js
+2025-02-07 21:40:14,204 (WARNING) - django.request - Not Found: /static/unfold/js/app.js
+2025-02-07 21:40:14,242 (WARNING) - django.request - Not Found: /static/unfold/js/chart.js
+2025-02-07 21:40:14,420 (WARNING) - django.request - Not Found: /static/unfold/js/alpine.anchor.js
+2025-02-07 21:40:14,482 (WARNING) - django.request - Not Found: /static/unfold/js/alpine.persist.js
+2025-02-07 21:40:14,483 (WARNING) - django.request - Not Found: /static/unfold/js/alpine.js
+2025-02-07 21:44:12,643 (WARNING) - hypercorn.error - ASGI Framework Lifespan error, continuing without Lifespan support
+2025-02-07 21:44:12,644 (INFO) - hypercorn.error - Running on http://0.0.0.0:8000 (CTRL + C to quit)
+2025-02-07 22:00:50,352 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 22:01:46,888 (INFO) - django.utils.autoreload - /root/zenith-be/core/settings/base.py changed, reloading.
+2025-02-07 22:01:48,085 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 22:05:03,553 (INFO) - django.utils.autoreload - /root/zenith-be/utility/admin.py changed, reloading.
+2025-02-07 22:05:04,729 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 22:06:31,156 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 22:08:05,975 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 22:14:31,060 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 22:15:16,565 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 22:16:47,318 (INFO) - django.utils.autoreload - /root/zenith-be/accounts/admin.py changed, reloading.
+2025-02-07 22:16:48,610 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 22:16:52,237 (ERROR) - django.request - Internal Server Error: /admin/accounts/user/
+Traceback (most recent call last):
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/options.py", line 681, in get_field
+    return self.fields_map[field_name]
+KeyError: 'display_header'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/admin/utils.py", line 289, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/admin/utils.py", line 322, in _get_non_gfk_field
+    field = opts.get_field(name)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/options.py", line 683, in get_field
+    raise FieldDoesNotExist(
+django.core.exceptions.FieldDoesNotExist: User has no field named 'display_header'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/test/utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/test/utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/test/utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/test/utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/admin/templatetags/base.py", line 45, in render
+    return super().render(context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/template/library.py", line 258, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/unfold/templatetags/unfold_list.py", line 374, in result_list
+    "results": list(results(cl)),
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/unfold/templatetags/unfold_list.py", line 355, in results
+    yield UnfoldResultList(pk_value, None, items_for_result(cl, res, None))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/unfold/templatetags/unfold_list.py", line 342, in __init__
+    super().__init__(form, *items)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/admin/templatetags/admin_list.py", line 312, in __init__
+    super().__init__(*items)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/unfold/templatetags/unfold_list.py", line 215, in items_for_result
+    f, attr, value = lookup_field(field_name, result, cl.model_admin)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/admin/utils.py", line 298, in lookup_field
+    value = attr(obj)
+  File "/root/zenith-be/accounts/admin.py", line 76, in display_header
+    return instance.get_full_name()
+AttributeError: 'User' object has no attribute 'get_full_name'
+2025-02-07 22:17:53,536 (INFO) - django.utils.autoreload - /root/zenith-be/accounts/models.py changed, reloading.
+2025-02-07 22:17:54,749 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 22:24:06,337 (INFO) - django.utils.autoreload - /root/zenith-be/accounts/models.py changed, reloading.
+2025-02-07 22:24:07,392 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 22:31:07,263 (INFO) - django.utils.autoreload - /root/zenith-be/accounts/models.py changed, reloading.
+2025-02-07 22:31:08,228 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 22:35:50,707 (INFO) - django.utils.autoreload - /root/zenith-be/accounts/models.py changed, reloading.
+2025-02-07 22:35:51,939 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 22:36:38,134 (INFO) - django.utils.autoreload - /root/zenith-be/accounts/managers.py changed, reloading.
+2025-02-07 22:36:39,422 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 22:37:57,064 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 22:38:23,851 (INFO) - django.utils.autoreload - /root/zenith-be/accounts/models.py changed, reloading.
+2025-02-07 22:38:24,815 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 23:46:19,597 (INFO) - django.utils.autoreload - /root/zenith-be/accounts/models.py changed, reloading.
+2025-02-07 23:46:21,232 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 23:50:09,500 (INFO) - django.utils.autoreload - /root/zenith-be/accounts/models.py changed, reloading.
+2025-02-07 23:50:10,651 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 23:50:20,724 (INFO) - django.utils.autoreload - /root/zenith-be/accounts/models.py changed, reloading.
+2025-02-07 23:50:21,770 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 23:50:38,434 (INFO) - django.utils.autoreload - /root/zenith-be/accounts/admin.py changed, reloading.
+2025-02-07 23:50:39,567 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 23:50:52,763 (INFO) - django.utils.autoreload - /root/zenith-be/accounts/models.py changed, reloading.
+2025-02-07 23:50:54,099 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 23:51:04,171 (INFO) - django.utils.autoreload - /root/zenith-be/accounts/admin.py changed, reloading.
+2025-02-07 23:51:05,246 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 23:51:50,301 (INFO) - django.utils.autoreload - /root/zenith-be/accounts/models.py changed, reloading.
+2025-02-07 23:51:51,311 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 23:54:33,898 (INFO) - django.utils.autoreload - /root/zenith-be/accounts/models.py changed, reloading.
+2025-02-07 23:54:35,188 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-07 23:59:40,639 (INFO) - django.utils.autoreload - /root/zenith-be/accounts/admin.py changed, reloading.
+2025-02-07 23:59:41,901 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-08 00:02:46,657 (INFO) - django.utils.autoreload - /root/zenith-be/accounts/managers.py changed, reloading.
+2025-02-08 00:02:47,648 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-08 00:04:26,346 (INFO) - django.utils.autoreload - /root/zenith-be/accounts/managers.py changed, reloading.
+2025-02-08 00:04:27,801 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-08 00:06:54,384 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-08 00:07:09,577 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-08 00:07:20,796 (ERROR) - django.request - Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedColumn: column accounts_user.role_id does not exist
+LINE 1: ...counts_user"."username", "accounts_user"."email", "accounts_...
+                                                             ^
+HINT:  Perhaps you meant to reference the column "accounts_user.role".
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 259, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/utils/decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/utils/decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 228, in inner
+    if not self.has_permission(request):
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/admin/sites.py", line 201, in has_permission
+    return request.user.is_active and request.user.is_staff
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 251, in inner
+    self._setup()
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/utils/functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/auth/middleware.py", line 33, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/auth/middleware.py", line 13, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/auth/__init__.py", line 216, in get_user
+    user = backend.get_user(user_id)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/contrib/auth/backends.py", line 157, in get_user
+    user = UserModel._default_manager.get(pk=user_id)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 645, in get
+    num = len(clone)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 382, in __len__
+    self._fetch_all()
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/debug_toolbar/panels/sql/tracking.py", line 235, in execute
+    return self._record(super().execute, sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/debug_toolbar/panels/sql/tracking.py", line 160, in _record
+    return method(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/root/zenith-be/.venv/lib/python3.10/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+django.db.utils.ProgrammingError: column accounts_user.role_id does not exist
+LINE 1: ...counts_user"."username", "accounts_user"."email", "accounts_...
+                                                             ^
+HINT:  Perhaps you meant to reference the column "accounts_user.role".
+2025-02-08 00:12:39,784 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2025-02-08 00:18:43,108 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader

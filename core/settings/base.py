@@ -1,6 +1,7 @@
 import os
-from pathlib import Path
 from datetime import timedelta
+from pathlib import Path
+
 import dotenv
 
 dotenv_file = dotenv.find_dotenv()
@@ -30,6 +31,7 @@ INSTALLED_APPS = [
     "notification",
     "iot",
     "blog",
+    "utility",
     # 3rd party apps
     "rest_framework",
     "rest_framework_simplejwt",
@@ -136,7 +138,9 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticatedOrReadOnly",
     ],
-    "DEFAULT_AUTHENTICATION_CLASSES": ("accounts.authentication.CustomJWTAuthentication",),
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "accounts.authentication.CustomJWTAuthentication",
+    ),
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
@@ -296,3 +300,14 @@ LOGGING = {
 # Ensure the logs directory exists
 LOG_DIR = BASE_DIR / "logs"
 LOG_DIR.mkdir(exist_ok=True)
+
+
+###################
+# Unfold Settings #
+###################
+
+UNFOLD = {
+    "SITE_TITLE": "Zenith System",
+    "SITE_HEADER": "Zenith System",
+    "SITE_URL": "/",
+}

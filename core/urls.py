@@ -11,9 +11,9 @@ from drf_spectacular.views import (
 from .views import Homepage
 
 # Admin Site Config
-admin.site.site_header = "Zenith System"
-admin.site.site_title = "Zenith System"
-admin.site.index_title = "Welcome to Zenith System Administrations"
+# admin.site.site_header = "Zenith System"
+# admin.site.site_title = "Zenith System"
+# admin.site.index_title = "Welcome to Zenith System Administrations"
 
 
 urlpatterns = [
