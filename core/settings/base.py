@@ -23,7 +23,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # my apps
-    "accounts",
+    "users",
     "main",
     "management",
     "facility",
@@ -128,7 +128,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTHENTICATION_BACKENDS = [
-    "accounts.backends.EmailAndUsernameBackend",  # custom backend for email and username login
+    "users.backends.EmailAndUsernameBackend",  # custom backend for email and username login
     "social_core.backends.facebook.FacebookOAuth2",
     "social_core.backends.google.GoogleOAuth2",
     "django.contrib.auth.backends.ModelBackend",
@@ -139,12 +139,12 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.IsAuthenticatedOrReadOnly",
     ],
     "DEFAULT_AUTHENTICATION_CLASSES": (
-        "accounts.authentication.CustomJWTAuthentication",
+        "users.authentication.CustomJWTAuthentication",
     ),
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
-AUTH_USER_MODEL = "accounts.User"
+AUTH_USER_MODEL = "users.User"
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=3),
@@ -166,8 +166,8 @@ DJOSER = {
     "PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND": True,
     "TOKEN_MODEL": None,
     "SERIALIZERS": {
-        "user_create": "accounts.serializers.UserCreateSerializer",
-        "user": "accounts.serializers.UserCreateSerializer",
+        "user_create": "users.serializers.UserCreateSerializer",
+        "user": "users.serializers.UserCreateSerializer",
         "user_delete": "djoser.serializers.UserDeleteSerializer",
     },
     "SOCIAL_AUTH_ALLOWED_REDIRECT_URIS": os.getenv("REDIRECT_URLS", "").split(","),

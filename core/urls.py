@@ -18,7 +18,7 @@ from .views import Homepage
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("auth/", include("accounts.urls"), name="accounts"),
+    path("api/auth/", include("users.urls"), name="users"),
     path("api/main/", include("main.urls"), name="main"),
     path("api/management/", include("management.urls"), name="management"),
     path("api/facility/", include("facility.urls"), name="facility"),
