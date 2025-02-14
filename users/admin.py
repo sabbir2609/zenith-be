@@ -49,9 +49,6 @@ class UserAdmin(BaseUserAdmin, ModelAdmin):
                     "is_active",
                     "is_admin",
                     "is_superuser",
-                    # "groups",
-                    # "user_permissions",
-                    "role",  # Add the role field here
                 ),
                 "classes": ["tab"],
             },
