@@ -43,6 +43,7 @@ dependencies = [
     "drf-nested-routers==0.94.1",
     "drf-spectacular==0.27.2",
     "exceptiongroup==1.2.2",
+    "faker>=36.1.1",
     "graphviz>=0.20.3",
     "gunicorn==22.0.0",
     "h11==0.14.0",
