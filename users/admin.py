@@ -88,6 +88,8 @@ class UserAdmin(BaseUserAdmin, ModelAdmin):
     @display(description=_("Created"))
     def display_created(self, instance: User):
         return instance.created_at
+    
+    ordering = ["id"]
 
 
 # GroupAdmin remains unchanged

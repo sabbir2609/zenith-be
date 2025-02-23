@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     "import_export",
     # dev dependency
     "django_extensions",
-    "debug_toolbar",
+    # "debug_toolbar",
     "drf_spectacular",
 ]
 
@@ -59,7 +59,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "debug_toolbar.middleware.DebugToolbarMiddleware",  # debug toolbar middleware
+    # "debug_toolbar.middleware.DebugToolbarMiddleware",  # debug toolbar middleware 
 ]
 
 ROOT_URLCONF = "core.urls"
@@ -167,7 +167,8 @@ DJOSER = {
     "TOKEN_MODEL": None,
     "SERIALIZERS": {
         "user_create": "users.serializers.UserCreateSerializer",
-        "user": "users.serializers.UserCreateSerializer",
+        "user": "users.serializers.UserSerializer",
+        "current_user": "users.serializers.UserSerializer",
         "user_delete": "djoser.serializers.UserDeleteSerializer",
     },
     "SOCIAL_AUTH_ALLOWED_REDIRECT_URIS": os.getenv("REDIRECT_URLS", "").split(","),

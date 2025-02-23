@@ -64,6 +64,7 @@ dependencies = [
     "pillow==10.4.0",
     "priority==2.0.0",
     "prompt-toolkit==3.0.47",
+    "psutil>=7.0.0",
     "psycopg==3.2.1",
     "psycopg-binary==3.2.1",
     "pycparser==2.22",
