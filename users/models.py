@@ -9,6 +9,11 @@ from .managers import UserManager
 
 # User Model
 class User(AbstractBaseUser, PermissionsMixin):
+    ROLE_CHOICES = (
+        ("admin", "Admin"),
+        ("user", "User"),
+    )
+
     first_name = models.CharField(
         max_length=255, blank=True, help_text="User's first name."
     )
@@ -20,6 +25,25 @@ class User(AbstractBaseUser, PermissionsMixin):
     )
     email = models.EmailField(
         unique=True, help_text="User's email address.", db_index=True
+    )
+
+    # User Profile
+    phone_number = models.CharField(
+        max_length=255, blank=True, help_text="User's phone number."
+    )
+    avatar = models.ImageField(
+        upload_to="user/",
+        blank=True,
+        null=True,
+        help_text="User's profile picture.",
+    )
+
+    # User Role
+    role = models.CharField(
+        max_length=255,
+        choices=ROLE_CHOICES,
+        default="user",
+        help_text="User's role.",
     )
 
     # User Status

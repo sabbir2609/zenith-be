@@ -24,6 +24,7 @@ class UserAdmin(BaseUserAdmin, ModelAdmin):
     list_display = [
         "display_header",
         "email",
+        "role",
         "is_active",
         "display_admin",
         "display_superuser",
@@ -37,7 +38,7 @@ class UserAdmin(BaseUserAdmin, ModelAdmin):
             {
                 "fields": (
                     ("first_name", "last_name"),
-                    "email",
+                    "email", "role", "phone_number", "avatar",
                 ),
                 "classes": ["tab"],
             },

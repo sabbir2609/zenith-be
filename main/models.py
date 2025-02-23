@@ -1,11 +1,12 @@
 import uuid
-from django.db import models
-from django.core.validators import MaxValueValidator, MinValueValidator
-from django.conf import settings
-from django.forms import ValidationError
-from django.utils.translation import gettext_lazy as _
-from django.utils.crypto import get_random_string
 from datetime import datetime
+
+from django.conf import settings
+from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db import models
+from django.forms import ValidationError
+from django.utils.crypto import get_random_string
+from django.utils.translation import gettext_lazy as _
 
 
 class BaseModel(models.Model):
@@ -22,7 +23,6 @@ class Guest(BaseModel):
     contact_info = models.CharField(max_length=100, null=True, blank=True)
     nid = models.CharField(max_length=100, unique=True, null=True, blank=True)
     preferences = models.CharField(max_length=100, blank=True, null=True)
-    image = models.ImageField(upload_to="guests", null=True, blank=True)
 
     status = models.BooleanField(default=True)
 

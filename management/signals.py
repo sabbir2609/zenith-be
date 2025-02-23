@@ -12,14 +12,17 @@ logger = logging.getLogger(__name__)
 def create_task_on_checked_out(sender, instance, **kwargs):
     if instance.reservation_status == Reservation.ReservationStatusChoices.CHECKED_OUT:
         available_staff = Staff.objects.filter(
-            staff_status=Staff.StuffStatusChoices.AVAILABLE
+            staff_status=Staff.StuffStatusChoices.AVAILABLE,
+            role="housekeeping",  # Check if the staff role is housekeeping
         ).first()
 
         if available_staff:
             Task.objects.create(assigned_room=instance.room, staff=available_staff)
         else:
             Task.objects.create(assigned_room=instance.room)
-            logger.warning("No available staff found for reservation %s", instance)
+            logger.warning(
+                "No available housekeeping staff found for reservation %s", instance
+            )
 
 
 @receiver(post_save, sender=Task)
@@ -44,7 +47,10 @@ def update_staff_on_task_status_change(sender, instance, **kwargs):
 
 @receiver(post_save, sender=Staff)
 def assign_staff_to_pending_tasks(sender, instance, **kwargs):
-    if instance.staff_status == Staff.StuffStatusChoices.AVAILABLE:
+    if (
+        instance.staff_status == Staff.StuffStatusChoices.AVAILABLE
+        and instance.role == "housekeeping"
+    ):
         pending_tasks = Task.objects.filter(staff=None)
 
         if pending_tasks.exists():
