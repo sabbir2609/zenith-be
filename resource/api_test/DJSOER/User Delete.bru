@@ -1,0 +1,30 @@
+meta {
+  name: User Delete
+  type: http
+  seq: 12
+}
+
+delete {
+  url: http://127.0.0.1:8000/auth/users/me/
+  body: json
+  auth: none
+}
+
+headers {
+  Cache-Control: no-cache
+  Postman-Token: <calculated when request is sent>
+  Content-Type: application/json
+  Content-Length: <calculated when request is sent>
+  Host: <calculated when request is sent>
+  User-Agent: PostmanRuntime/7.32.1
+  Accept: */*
+  Accept-Encoding: gzip, deflate, br
+  Connection: keep-alive
+  Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjA1NTcxLCJpYXQiOjE3MDE1MTkxNzEsImp0aSI6IjZkZDFiZDZmOWE0MTRjMDViMzMyMzMzY2NmYTU4NjM0IiwidXNlcl9pZCI6M30.hcDv_vjNNFDOU9YhsDOg4FV6sE1xzioDzA30VabsR-I
+}
+
+body:json {
+  {
+      "current_password": "12345@root"
+  }
+}

@@ -1,0 +1,18 @@
+meta {
+  name: Login SU
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://127.0.0.1:8000/auth/jwt/create/
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "email": "sabbirhasan2999@gmail.com",
+      "password": "2609"
+  }
+}

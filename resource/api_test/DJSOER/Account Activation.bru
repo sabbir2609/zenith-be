@@ -1,0 +1,18 @@
+meta {
+  name: Account Activation
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://127.0.0.1:8000/auth/users/activation/
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "uid": "Mg",
+      "token": "byyax4-e5704e2bfcdbb538776c04e7a7f5a518"
+  }
+}

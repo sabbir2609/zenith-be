@@ -1,0 +1,17 @@
+meta {
+  name: Verify
+  type: http
+  seq: 9
+}
+
+post {
+  url: http://127.0.0.1:8000/auth/jwt/verify/
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAyMDU0MjY5LCJpYXQiOjE3MDE5Njc4NjksImp0aSI6Ijc1NzczOTNiOTYzMDRhNWM4ZjhkM2NmMDEyMjNmMTAyIiwidXNlcl9pZCI6NTZ9.xnICMvPspXqMpRKPRb4envXTeMVtcZtQMhqzHE3mOSQ"
+  }
+}

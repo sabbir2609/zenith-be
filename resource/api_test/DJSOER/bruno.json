@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "DJSOER",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

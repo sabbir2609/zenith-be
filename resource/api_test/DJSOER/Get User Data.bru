@@ -1,0 +1,16 @@
+meta {
+  name: Get User Data
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://127.0.0.1:8000/auth/users/me/
+  body: json
+  auth: none
+}
+
+headers {
+  Host: 127.0.0.1
+  ~Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAyMDU3ODkyLCJpYXQiOjE3MDE5NzE0OTIsImp0aSI6ImM2NjhkN2JhNzQxMzRiNGY5ZGE4MzUyYjUyYTYxMjI1IiwidXNlcl9pZCI6NTZ9.7Ws8h3jC_nuapXS8qtppRGCf74-CUbtq2FbbjCRC3o8
+}

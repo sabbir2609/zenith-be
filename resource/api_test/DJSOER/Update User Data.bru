@@ -1,0 +1,24 @@
+meta {
+  name: Update User Data
+  type: http
+  seq: 6
+}
+
+patch {
+  url: http://127.0.0.1:8000/auth/users/me/
+  body: json
+  auth: none
+}
+
+headers {
+  Host: 127.0.0.1
+}
+
+body:json {
+  {
+      "first_name": "Sabbir",
+      "last_name": "Hasan",
+      "id": 2,
+      "email": "0xsabbir@gmail.com"
+  }
+}

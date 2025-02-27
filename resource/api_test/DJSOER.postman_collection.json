@@ -1,0 +1,819 @@
+{
+	"info": {
+		"_postman_id": "426d45d6-bb66-4309-ac23-08cd37d95c37",
+		"name": "DJSOER",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14492795"
+	},
+	"item": [
+		{
+			"name": "Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"0xsabbir@gmail.com\",\r\n    \"password\": \"root@2609\",\r\n    \"re_password\": \"root@2609\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/users/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Account Activation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"uid\": \"Mg\",\r\n    \"token\": \"byyax4-e5704e2bfcdbb538776c04e7a7f5a518\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/users/activation/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"users",
+						"activation",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"0xsabbir@gmail.com\",\r\n    \"password\": \"Root@2609\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/jwt/create/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"jwt",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login SU",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"sabbirhasan2999@gmail.com\",\r\n    \"password\": \"2609\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/jwt/create/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"jwt",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Data",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAyMDU3ODkyLCJpYXQiOjE3MDE5NzE0OTIsImp0aSI6ImM2NjhkN2JhNzQxMzRiNGY5ZGE4MzUyYjUyYTYxMjI1IiwidXNlcl9pZCI6NTZ9.7Ws8h3jC_nuapXS8qtppRGCf74-CUbtq2FbbjCRC3o8",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Host",
+						"value": "127.0.0.1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/users/me/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"users",
+						"me",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User Data",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"host": true
+				}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Host",
+						"value": "127.0.0.1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"Sabbir\",\r\n    \"last_name\": \"Hasan\",\r\n    \"id\": 2,\r\n    \"email\": \"0xsabbir@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/users/me/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"users",
+						"me",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change User Password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cache-Control",
+						"value": "no-cache",
+						"name": "cache-control",
+						"type": "text"
+					},
+					{
+						"key": "Postman-Token",
+						"value": "<calculated when request is sent>",
+						"name": "postman-token",
+						"type": "text"
+					},
+					{
+						"key": "Content-Length",
+						"value": "0",
+						"name": "content-length",
+						"type": "text"
+					},
+					{
+						"key": "Host",
+						"value": "<calculated when request is sent>",
+						"name": "host",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "PostmanRuntime/7.32.1",
+						"name": "user-agent",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*",
+						"name": "accept",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate, br",
+						"name": "accept-encoding",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"name": "connection",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjAzNTgzLCJpYXQiOjE3MDE1MTcxODMsImp0aSI6IjQzMGQ3ODBkZmNkMDQyNTI5MmU4NDE1Zjc0Y2JmZWI2IiwidXNlcl9pZCI6M30.TlNStWKSgIXNtRf-JY_sA_QWXaxIqbm_EiPQaPlxvxU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"new_password\":\"1234@root\",\r\n    \"re_new_password\":\"1234@root\",\r\n    \"current_password\":\"root@2609\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/users/set_password/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"users",
+						"set_password",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Access Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cache-Control",
+						"value": "no-cache",
+						"name": "cache-control",
+						"type": "text"
+					},
+					{
+						"key": "Postman-Token",
+						"value": "<calculated when request is sent>",
+						"name": "postman-token",
+						"type": "text"
+					},
+					{
+						"key": "Content-Length",
+						"value": "0",
+						"name": "content-length",
+						"type": "text"
+					},
+					{
+						"key": "Host",
+						"value": "<calculated when request is sent>",
+						"name": "host",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "PostmanRuntime/7.32.1",
+						"name": "user-agent",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*",
+						"name": "accept",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate, br",
+						"name": "accept-encoding",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"name": "connection",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjAzNTgzLCJpYXQiOjE3MDE1MTcxODMsImp0aSI6IjQzMGQ3ODBkZmNkMDQyNTI5MmU4NDE1Zjc0Y2JmZWI2IiwidXNlcl9pZCI6M30.TlNStWKSgIXNtRf-JY_sA_QWXaxIqbm_EiPQaPlxvxU",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcwMjM4MTU1NiwiaWF0IjoxNzAxNTE3NTU2LCJqdGkiOiI4OTAxY2UxNmZjZGU0Y2UxYTE2ZmFmMDU3ODAzNjQ0NSIsInVzZXJfaWQiOjN9._73jRIGBdemZhgSyP5pv3RFf-t7o7oI4cLhh533uQ3w\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/jwt/refresh/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"jwt",
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAyMDU0MjY5LCJpYXQiOjE3MDE5Njc4NjksImp0aSI6Ijc1NzczOTNiOTYzMDRhNWM4ZjhkM2NmMDEyMjNmMTAyIiwidXNlcl9pZCI6NTZ9.xnICMvPspXqMpRKPRb4envXTeMVtcZtQMhqzHE3mOSQ\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/jwt/verify/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"jwt",
+						"verify",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"0xsabbir@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/users/reset_password/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"users",
+						"reset_password",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password Confirm",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"uid\": \"Mw\",\r\n    \"token\": \"bykxhs-ac3a9d7e690bc6fbbd2c9fd521dddcc5\",\r\n    \"new_password\": \"12345@root\",\r\n    \"re_new_password\": \"12345@root\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/users/reset_password_confirm/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"users",
+						"reset_password_confirm",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Cache-Control",
+						"value": "no-cache",
+						"name": "cache-control",
+						"type": "text"
+					},
+					{
+						"key": "Postman-Token",
+						"value": "<calculated when request is sent>",
+						"name": "postman-token",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"name": "content-type",
+						"type": "text"
+					},
+					{
+						"key": "Content-Length",
+						"value": "<calculated when request is sent>",
+						"name": "content-length",
+						"type": "text"
+					},
+					{
+						"key": "Host",
+						"value": "<calculated when request is sent>",
+						"name": "host",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "PostmanRuntime/7.32.1",
+						"name": "user-agent",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*",
+						"name": "accept",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate, br",
+						"name": "accept-encoding",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"name": "connection",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjA1NTcxLCJpYXQiOjE3MDE1MTkxNzEsImp0aSI6IjZkZDFiZDZmOWE0MTRjMDViMzMyMzMzY2NmYTU4NjM0IiwidXNlcl9pZCI6M30.hcDv_vjNNFDOU9YhsDOg4FV6sE1xzioDzA30VabsR-I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"current_password\": \"12345@root\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/users/me/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"users",
+						"me",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Google OAuth2 Get Authorization url",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/o/google-oauth2/?redirect_uri=http://localhost:3000/auth/google",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"o",
+						"google-oauth2",
+						""
+					],
+					"query": [
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:3000/auth/google"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Google Oauth2 Login",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"host": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Host",
+						"value": "127.0.0.1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/o/google-oauth2/?state=2dvFo9Ne94dBSsI9QW0eBI1yShpxQ57z&code=4%2F0AfJohXn57gP9z59TemS10hP--nTRIFTHnwWxIdQAbxgtJIDKtfJz3x5NLSO0bkxX-yRZPA",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"o",
+						"google-oauth2",
+						""
+					],
+					"query": [
+						{
+							"key": "state",
+							"value": "2dvFo9Ne94dBSsI9QW0eBI1yShpxQ57z"
+						},
+						{
+							"key": "code",
+							"value": "4%2F0AfJohXn57gP9z59TemS10hP--nTRIFTHnwWxIdQAbxgtJIDKtfJz3x5NLSO0bkxX-yRZPA"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Facebook Get Authorization url",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"host": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Host",
+						"value": "127.0.0.1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/o/facebook/?redirect_uri=http://localhost:3000/auth/facebook",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"o",
+						"facebook",
+						""
+					],
+					"query": [
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:3000/auth/facebook"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Facebook Login",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"host": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Host",
+						"value": "127.0.0.1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/o/facebook/?code=AQAHKDYfa_G93GVS-fq4_eTfc7k3YUq1ltElS-e-M2pstCEUET9-j_hDwC_rleDaODczz9hAEavjLLWVBbutDVINhmcYUGt7BKdKf1N3SwLdZEaKV4YfRtSJPrNd8x9IgfhZnuJmyZpbfKX0IWImr5kWVJOW3YZF5sN8E5Fn1AKBSjDZpSphBD4IcR_7DCO6J1bGSjzyJuLQIhFllfYpsf0Sv0W-wrGS2keu3K6Q1CknZ1XHYFkRX85xN2Lxul4u6PYD-Q86sv-Gn6BSHrXFPTkNmxKSAba9L1F9jUOGu-LNbHjCzBVfbRChifjJdxPZH7RkI4r0MK-Wyu1JdHIsX69OafOuKKf1KiUzQzrM0KtwbBgJJDaxnCWzCSLl6p1Icgo&state=h344IHxXaMi9cdyBy5D2BfICkiagxJaD#_=_",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"o",
+						"facebook",
+						""
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "AQAHKDYfa_G93GVS-fq4_eTfc7k3YUq1ltElS-e-M2pstCEUET9-j_hDwC_rleDaODczz9hAEavjLLWVBbutDVINhmcYUGt7BKdKf1N3SwLdZEaKV4YfRtSJPrNd8x9IgfhZnuJmyZpbfKX0IWImr5kWVJOW3YZF5sN8E5Fn1AKBSjDZpSphBD4IcR_7DCO6J1bGSjzyJuLQIhFllfYpsf0Sv0W-wrGS2keu3K6Q1CknZ1XHYFkRX85xN2Lxul4u6PYD-Q86sv-Gn6BSHrXFPTkNmxKSAba9L1F9jUOGu-LNbHjCzBVfbRChifjJdxPZH7RkI4r0MK-Wyu1JdHIsX69OafOuKKf1KiUzQzrM0KtwbBgJJDaxnCWzCSLl6p1Icgo"
+						},
+						{
+							"key": "state",
+							"value": "h344IHxXaMi9cdyBy5D2BfICkiagxJaD"
+						}
+					],
+					"hash": "_=_"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "stripe - checkout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/payment/create-checkout-session/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"payment",
+						"create-checkout-session",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

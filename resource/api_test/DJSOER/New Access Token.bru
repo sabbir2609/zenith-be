@@ -1,0 +1,29 @@
+meta {
+  name: New Access Token
+  type: http
+  seq: 8
+}
+
+post {
+  url: http://127.0.0.1:8000/auth/jwt/refresh/
+  body: json
+  auth: none
+}
+
+headers {
+  Cache-Control: no-cache
+  Postman-Token: <calculated when request is sent>
+  Content-Length: 0
+  Host: <calculated when request is sent>
+  User-Agent: PostmanRuntime/7.32.1
+  Accept: */*
+  Accept-Encoding: gzip, deflate, br
+  Connection: keep-alive
+  ~Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxNjAzNTgzLCJpYXQiOjE3MDE1MTcxODMsImp0aSI6IjQzMGQ3ODBkZmNkMDQyNTI5MmU4NDE1Zjc0Y2JmZWI2IiwidXNlcl9pZCI6M30.TlNStWKSgIXNtRf-JY_sA_QWXaxIqbm_EiPQaPlxvxU
+}
+
+body:json {
+  {
+      "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcwMjM4MTU1NiwiaWF0IjoxNzAxNTE3NTU2LCJqdGkiOiI4OTAxY2UxNmZjZGU0Y2UxYTE2ZmFmMDU3ODAzNjQ0NSIsInVzZXJfaWQiOjN9._73jRIGBdemZhgSyP5pv3RFf-t7o7oI4cLhh533uQ3w"
+  }
+}

@@ -1,0 +1,19 @@
+meta {
+  name: Facebook Get Authorization url
+  type: http
+  seq: 15
+}
+
+get {
+  url: http://127.0.0.1:8000/auth/o/facebook/?redirect_uri=http://localhost:3000/auth/facebook
+  body: none
+  auth: none
+}
+
+params:query {
+  redirect_uri: http://localhost:3000/auth/facebook
+}
+
+headers {
+  Host: 127.0.0.1
+}

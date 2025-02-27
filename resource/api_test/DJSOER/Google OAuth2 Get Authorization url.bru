@@ -1,0 +1,15 @@
+meta {
+  name: Google OAuth2 Get Authorization url
+  type: http
+  seq: 13
+}
+
+get {
+  url: http://127.0.0.1:8000/auth/o/google-oauth2/?redirect_uri=http://localhost:3000/auth/google
+  body: none
+  auth: none
+}
+
+params:query {
+  redirect_uri: http://localhost:3000/auth/google
+}
