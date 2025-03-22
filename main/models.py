@@ -37,6 +37,7 @@ class Guest(BaseModel):
 
 class Floor(models.Model):
     level = models.PositiveIntegerField(
+        primary_key=True,
         default=1,
         help_text=_(
             "Floor level, indicating the position of the floor in the building."
@@ -241,7 +242,7 @@ class Reservation(models.Model):
     )
 
     @property
-    def total_amount(self):
+    def total_amount(self):  # noqa: F811
         return self.room.room_type.price * (self.end_date - self.start_date).days
 
     # not permitted to change the reservation status to checked-in if payment status is pending

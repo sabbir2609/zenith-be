@@ -60,6 +60,7 @@ class FloorViewSet(ModelViewSet):
     queryset = Floor.objects.all()
     serializer_class = FloorSerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = DefaultPagination
 
 
 class RoomTypeViewSet(ModelViewSet):

@@ -29,7 +29,7 @@ class GuestSerializer(ModelSerializer):
 class FloorSerializer(ModelSerializer):
     class Meta:
         model = Floor
-        fields = ["id", "level", "is_elevator_accessible", "description"]
+        fields = ["level", "is_elevator_accessible", "description"]
 
 
 class RoomTypeSerializer(ModelSerializer):
