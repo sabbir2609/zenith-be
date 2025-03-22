@@ -5,13 +5,15 @@ meta {
 }
 
 post {
-  url: http://127.0.0.1:8000/auth/users/
+  url: http://127.0.0.1:8000/api/auth/users/
   body: json
   auth: none
 }
 
 body:json {
   {
+      "first_name": "Sabbir",
+      "last_name": "hasan",
       "email": "0xsabbir@gmail.com",
       "password": "root@2609",
       "re_password": "root@2609"

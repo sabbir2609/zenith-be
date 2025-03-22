@@ -4,7 +4,7 @@ meta {
   seq: 2
 }
 
-post {
+get {
   url: http://localhost:8000/api/main/floors/
   body: json
   auth: bearer
@@ -16,12 +16,4 @@ headers {
 
 auth:bearer {
   token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyOTAwMzk2LCJpYXQiOjE3NDI2NDExOTYsImp0aSI6ImE0OGMxNDIxNzY0OTQ0ZjY5NDMyYjUwZWE2OGE1NTFlIiwidXNlcl9pZCI6MX0.JG5Gk102X3IcHyHllISp-y0qFx_AaBKCnJ3ANS2R2M4
-}
-
-body:json {
-  {
-      "level": 4,
-      "is_elevator_accessible": false,
-      "description": "gfghfhfh"
-  }
 }
