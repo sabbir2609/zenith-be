@@ -38,14 +38,14 @@ class RoomTypeAdmin(ModelAdmin):
     search_fields = ("room_type",)
 
 
-class RoomAmenityInline(admin.TabularInline):
+class RoomAmenityInline(TabularInline):
     model = RoomAmenity
     extra = 1
     tab = True
     hide_title = True
 
 
-class RoomImageInline(admin.TabularInline):
+class RoomImageInline(TabularInline):
     model = RoomImage
     extra = 1
     tab = True

@@ -1,0 +1,15 @@
+meta {
+  name: users
+  type: http
+  seq: 18
+}
+
+get {
+  url: http://127.0.0.1:8000/api/auth/users/
+  body: json
+  auth: none
+}
+
+headers {
+  Host: 127.0.0.1
+}

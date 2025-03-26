@@ -1,0 +1,19 @@
+meta {
+  name: get room [id]
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:8000/api/main/rooms/1
+  body: json
+  auth: bearer
+}
+
+headers {
+  Host: 127.0.0.1
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyOTAwMzk2LCJpYXQiOjE3NDI2NDExOTYsImp0aSI6ImE0OGMxNDIxNzY0OTQ0ZjY5NDMyYjUwZWE2OGE1NTFlIiwidXNlcl9pZCI6MX0.JG5Gk102X3IcHyHllISp-y0qFx_AaBKCnJ3ANS2R2M4
+}

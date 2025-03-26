@@ -62,6 +62,13 @@ class FloorViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated]
     pagination_class = DefaultPagination
 
+    # if floors/all is appended to the URL, this function will be called
+    @action(detail=False, methods=["get"])
+    def all(self, request):
+        floors = Floor.objects.all()
+        serializer = self.get_serializer(floors, many=True)
+        return Response(serializer.data)
+
 
 class RoomTypeViewSet(ModelViewSet):
     queryset = RoomType.objects.all()
@@ -92,6 +99,14 @@ class RoomViewSet(ModelViewSet):
             return RoomDetailSerializer
         else:
             return RoomSerializer
+    
+    # if /images is appended to the URL, this function will be called
+    @action(detail=True, methods=["get"])
+    def images(self, request, pk=None):
+        room = self.get_object()
+        images = room.images.all()
+        serializer = RoomImageSerializer(images, many=True)
+        return Response(serializer.data)
 
     @action(detail=False, methods=["get"])
     def available(self, request):

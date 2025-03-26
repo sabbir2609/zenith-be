@@ -23,7 +23,7 @@ class GuestSerializer(ModelSerializer):
 
     class Meta:
         model = Guest
-        fields = ["id", "user", "image", "contact_info", "nid", "preferences", "status"]
+        fields = ["id", "user", "contact_info", "nid", "preferences", "status"]
 
 
 class FloorSerializer(ModelSerializer):
@@ -45,7 +45,7 @@ class RoomImageSerializer(ModelSerializer):
 
     class Meta:
         model = RoomImage
-        fields = ["id", "room", "image", "description"]
+        fields = ["id", "image", "description"]
 
 
 class RoomAmenitySerializer(ModelSerializer):
@@ -113,6 +113,7 @@ class RoomDetailSerializer(ModelSerializer):
             "images",
             "amenities",
         ]
+
 
 
 class ReservationSerializer(ModelSerializer):
