@@ -279,7 +279,7 @@ LOGGING = {
             "level": "DEBUG",
             "class": "logging.handlers.RotatingFileHandler",
             "filename": BASE_DIR / "logs/debug.log",
-            "maxBytes": 50000,
+            "maxBytes": 5000,
             "backupCount": 2,
             "formatter": "verbose",
         },
