@@ -4,8 +4,8 @@ meta {
   seq: 9
 }
 
-delete {
-  url: http://127.0.0.1:8000/api/main/floors/0
+get {
+  url: http://127.0.0.1:8000/api/main/room-types/1
   body: json
   auth: bearer
 }
@@ -15,5 +15,5 @@ headers {
 }
 
 auth:bearer {
-  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQzNTIzMTYyLCJpYXQiOjE3NDMyNjM5NjIsImp0aSI6IjhjYjMyZmU1NzRmMTQwOThiZjY3OGMzYmE3MmNhNmYwIiwidXNlcl9pZCI6MX0.xlt7dxT9-wYgxHBMDWAIFS0bczvC4cClPgUBAI3AElc
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0NDEzNDc5MiwiaWF0IjoxNzQzMjcwNzkyLCJqdGkiOiJlZTUwYzIxMmMwYWU0MmQwODY1MWVkMjhjZmJlZGU3ZSIsInVzZXJfaWQiOjF9.UhySkYdOmhGgJ2VMtHZj5ho_xy-aje1Rc8z_hWMt5mM
 }
