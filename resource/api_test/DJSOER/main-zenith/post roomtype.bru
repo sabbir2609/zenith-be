@@ -1,0 +1,27 @@
+meta {
+  name: post roomtype
+  type: http
+  seq: 7
+}
+
+post {
+  url: http://localhost:8000/api/main/room-types/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Host: 127.0.0.1
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQzMjgwNTE0LCJpYXQiOjE3NDMwMjEzMTQsImp0aSI6IjczNzI4NTcwNDAyOTRmM2Y4MWYwYjBkOWRmMGRhMDI2IiwidXNlcl9pZCI6MX0.tNe2j1jfkZphCUWm7Os9NgucSTbOYSMXkfOlW-EoeLg
+}
+
+body:json {
+  {
+      "room_type": "djfdfd",
+      "price": 666,
+      "description": "vsdfdfsv"
+  }
+}

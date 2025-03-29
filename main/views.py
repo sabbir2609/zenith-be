@@ -59,21 +59,13 @@ class GuestViewSet(ModelViewSet):
 class FloorViewSet(ModelViewSet):
     queryset = Floor.objects.all()
     serializer_class = FloorSerializer
-    permission_classes = [IsAuthenticated]
-    pagination_class = DefaultPagination
-
-    # if floors/all is appended to the URL, this function will be called
-    @action(detail=False, methods=["get"])
-    def all(self, request):
-        floors = Floor.objects.all()
-        serializer = self.get_serializer(floors, many=True)
-        return Response(serializer.data)
+    permission_classes = [IsAdminUser]
 
 
 class RoomTypeViewSet(ModelViewSet):
     queryset = RoomType.objects.all()
     serializer_class = RoomTypeSerializer
-    permission_class = [IsAdminUserOrReadOnly]
+    permission_classes = [IsAdminUser]
 
 
 class RoomViewSet(ModelViewSet):

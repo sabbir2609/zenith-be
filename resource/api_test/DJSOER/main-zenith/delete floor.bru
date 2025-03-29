@@ -1,0 +1,19 @@
+meta {
+  name: delete floor
+  type: http
+  seq: 8
+}
+
+delete {
+  url: http://127.0.0.1:8000/api/main/floors/0
+  body: json
+  auth: bearer
+}
+
+headers {
+  Host: 127.0.0.1
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQzNTIzMTYyLCJpYXQiOjE3NDMyNjM5NjIsImp0aSI6IjhjYjMyZmU1NzRmMTQwOThiZjY3OGMzYmE3MmNhNmYwIiwidXNlcl9pZCI6MX0.xlt7dxT9-wYgxHBMDWAIFS0bczvC4cClPgUBAI3AElc
+}

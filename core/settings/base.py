@@ -268,35 +268,35 @@ SPECTACULAR_SETTINGS = {
 # LOGGING SETTINGS #
 #####################
 
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "handlers": {
-        "console": {
-            "class": "logging.StreamHandler",
-        },
-        "logfile": {
-            "level": "DEBUG",
-            "class": "logging.handlers.RotatingFileHandler",
-            "filename": BASE_DIR / "logs/debug.log",
-            "maxBytes": 5000,
-            "backupCount": 2,
-            "formatter": "verbose",
-        },
-    },
-    "loggers": {
-        "": {
-            "handlers": ["console", "logfile"],
-            "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
-        },
-    },
-    "formatters": {
-        "verbose": {
-            "format": "{asctime} ({levelname}) - {name} - {message}",
-            "style": "{",
-        },
-    },
-}
+# LOGGING = {
+#     "version": 1,
+#     "disable_existing_loggers": False,
+#     "handlers": {
+#         "console": {
+#             "class": "logging.StreamHandler",
+#         },
+#         "logfile": {
+#             "level": "DEBUG",
+#             "class": "logging.handlers.RotatingFileHandler",
+#             "filename": BASE_DIR / "logs/debug.log",
+#             "maxBytes": 5000,
+#             "backupCount": 2,
+#             "formatter": "verbose",
+#         },
+#     },
+#     "loggers": {
+#         "": {
+#             "handlers": ["console", "logfile"],
+#             "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
+#         },
+#     },
+#     "formatters": {
+#         "verbose": {
+#             "format": "{asctime} ({levelname}) - {name} - {message}",
+#             "style": "{",
+#         },
+#     },
+# }
 
 # Ensure the logs directory exists
 LOG_DIR = BASE_DIR / "logs"
