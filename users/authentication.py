@@ -1,11 +1,15 @@
+import logging
 from django.conf import settings
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
+
+logger = logging.getLogger(__name__)
 
 
 class CustomJWTAuthentication(JWTAuthentication):
     def authenticate(self, request):
         header = self.get_header(request)
+        logger.debug(f"Header: {header}")
 
         if header is None:
             raw_token = request.COOKIES.get(settings.AUTH_COOKIE)
@@ -17,7 +21,7 @@ class CustomJWTAuthentication(JWTAuthentication):
 
         try:
             validated_token = self.get_validated_token(raw_token)
-            return self.get_user(validated_token), validated_token
+            user = self.get_user(validated_token)
+            return user, validated_token
         except (InvalidToken, TokenError) as e:
-            # Let these exceptions bubble up to trigger proper authentication failure
             raise e

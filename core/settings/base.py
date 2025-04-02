@@ -147,6 +147,7 @@ REST_FRAMEWORK = {
 AUTH_USER_MODEL = "users.User"
 
 SIMPLE_JWT = {
+    "AUTH_HEADER_TYPES": ("Bearer",),
     "ACCESS_TOKEN_LIFETIME": timedelta(days=3),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=10),
     "ROTATE_REFRESH_TOKENS": True,
@@ -176,7 +177,7 @@ DJOSER = {
 
 
 AUTH_COOKIE = "access"
-AUTH_COOKIE_MAX_AGE = 60 * 60 * 24
+AUTH_COOKIE_MAX_AGE = timedelta(days=3).total_seconds()
 AUTH_COOKIE_SECURE = os.getenv("AUTH_COOKIE_SECURE", "True") == "True"
 AUTH_COOKIE_HTTP_ONLY = True
 AUTH_COOKIE_PATH = "/"

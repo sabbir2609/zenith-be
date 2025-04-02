@@ -1,71 +1,81 @@
 from django.db.models import Q
+from django.db.models.deletion import ProtectedError
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
-from rest_framework.response import Response
-from rest_framework.viewsets import ModelViewSet
 from rest_framework.filters import SearchFilter
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
-from django_filters.rest_framework import DjangoFilterBackend
-
-from main.pagination import DefaultPagination
+from rest_framework.response import Response
+from rest_framework.viewsets import ModelViewSet
 
 from main.filters import RoomFilter
-
-from main.permissions import (
-    IsAdminOrInstallmentOwner,
-    IsAdminOrReservationOwner,
-    IsAdminUserOrReadOnly,
-    IsAdminOrStaffUserOrReadOnly,
-    IsAdminOrOwner,
-)
-
 from main.models import (
-    Guest,
     Floor,
-    RoomType,
-    Room,
-    RoomImage,
-    RoomAmenity,
-    Reservation,
+    Guest,
     Installment,
     Payment,
     Refund,
+    Reservation,
     Review,
     ReviewImage,
+    Room,
+    RoomAmenity,
+    RoomImage,
+    RoomType,
+)
+from main.pagination import DefaultPagination
+from main.permissions import (
+    IsAdminOrInstallmentOwner,
+    IsAdminOrOwner,
+    IsAdminOrReservationOwner,
+    IsAdminOrStaffUserOrReadOnly,
+    IsAdminUserOrReadOnly,
 )
 from main.serializers import (
-    GuestSerializer,
     FloorSerializer,
-    RoomSerializer,
-    RoomTypeSerializer,
-    RoomListSerializer,
-    RoomDetailSerializer,
-    RoomImageSerializer,
-    RoomAmenitySerializer,
-    ReservationSerializer,
+    GuestSerializer,
     InstallmentSerializer,
     PaymentSerializer,
-    ReviewSerializer,
-    ReviewImageSerializer,
     RefundSerializer,
+    ReservationSerializer,
+    ReviewImageSerializer,
+    ReviewSerializer,
+    RoomAmenitySerializer,
+    RoomDetailSerializer,
+    RoomImageSerializer,
+    RoomListSerializer,
+    RoomSerializer,
+    RoomTypeSerializer,
 )
 
 
 class GuestViewSet(ModelViewSet):
     queryset = Guest.objects.all()
     serializer_class = GuestSerializer
-    permission_classes = [IsAdminUser]
 
 
 class FloorViewSet(ModelViewSet):
     queryset = Floor.objects.all()
     serializer_class = FloorSerializer
-    permission_classes = [IsAdminUser]
 
 
 class RoomTypeViewSet(ModelViewSet):
     queryset = RoomType.objects.all()
     serializer_class = RoomTypeSerializer
-    permission_classes = [IsAdminUser]
+
+    @action(detail=True, methods=["delete"])
+    def delete(self, request, pk=None):
+        room_type = self.get_object()
+        try:
+            room_type.delete()
+            return Response(status=204)
+        except ProtectedError:
+            return Response(
+                {"error": "This room type cannot be deleted because it is in use."},
+                status=400,
+            )
+        except Exception as e:
+            return Response({"error": "An unexpected error occurred."}, status=500)
+        return Response(status=204)
 
 
 class RoomViewSet(ModelViewSet):
@@ -91,7 +101,7 @@ class RoomViewSet(ModelViewSet):
             return RoomDetailSerializer
         else:
             return RoomSerializer
-    
+
     # if /images is appended to the URL, this function will be called
     @action(detail=True, methods=["get"])
     def images(self, request, pk=None):
