@@ -61,21 +61,16 @@ class FloorViewSet(ModelViewSet):
 class RoomTypeViewSet(ModelViewSet):
     queryset = RoomType.objects.all()
     serializer_class = RoomTypeSerializer
+    permission_classes = [IsAdminUserOrReadOnly]
 
-    @action(detail=True, methods=["delete"])
-    def delete(self, request, pk=None):
-        room_type = self.get_object()
+    def destroy(self, request, *args, **kwargs):
         try:
-            room_type.delete()
-            return Response(status=204)
-        except ProtectedError:
-            return Response(
-                {"error": "This room type cannot be deleted because it is in use."},
-                status=400,
-            )
-        except Exception as e:
-            return Response({"error": "An unexpected error occurred."}, status=500)
-        return Response(status=204)
+            return super().destroy(request, *args, **kwargs)
+        except ProtectedError as e:
+            related_rooms = list(e.protected_objects)
+            room_names = [str(room) for room in related_rooms]
+            error_message = f"Cannot delete this room type because it is used by the following rooms: {', '.join(room_names)}"
+            return Response({"error": error_message}, status=400)
 
 
 class RoomViewSet(ModelViewSet):
