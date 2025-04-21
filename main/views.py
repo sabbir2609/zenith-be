@@ -57,6 +57,13 @@ class FloorViewSet(ModelViewSet):
     queryset = Floor.objects.all()
     serializer_class = FloorSerializer
 
+    # floors/all will return only id of floors
+    @action(detail=False, methods=["get"])
+    def all(self, request):
+        floors = Floor.objects.all()
+        serializer = FloorSerializer(floors, many=True)
+        return Response(serializer.data)
+
 
 class RoomTypeViewSet(ModelViewSet):
     queryset = RoomType.objects.all()
