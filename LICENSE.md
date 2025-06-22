@@ -23,8 +23,8 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
    To use the Software in a commercial or business environment, you must obtain a commercial license.
    Please contact the author for pricing and terms:
 
-   📧 Email: [your@email.com]  
-   🌐 Website/LinkedIn: [your website or profile]
+   📧 Email: [sabbirhasan2999@gmail.com]  
+   🌐 LinkedIn: [https://www.linkedin.com/in/sabbir2609/]
 
 ---
 
