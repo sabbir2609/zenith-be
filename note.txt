@@ -1,7 +1,32 @@
-Upgrade all package: 
+Upgrade all packages:
 
 # On macOS/Linux
 uv pip list --format freeze | cut -d'=' -f1 | xargs uv pip install --upgrade
 
 # On Windows (PowerShell)
 uv pip freeze | ForEach-Object { $_.Split('==')[0] } | ForEach-Object { uv pip install --upgrade $_ }
+
+
+  Project Setup Documentation
+ 
+  This documentation outlines the steps to set up the `zenith-be` project using a virtual environment.
+ 
+  Steps:
+  1. Create a virtual environment using the command:
+     `uv venv --python 3.12`
+     This command initializes a virtual environment with Python version 3.12.12.
+ 
+  2. Activate the virtual environment with:
+     `.venv\Scripts\activate`
+     This command activates the created virtual environment, allowing you to install packages in isolation.
+ 
+  3. Initialize the project using:
+     `uv init`
+     This command sets up the project structure for `zenith-be`.
+ 
+  4. Add required packages from the `requirements.txt` file using:
+     `uv add -r requirements.txt`
+     This command installs all the dependencies listed in the `requirements.txt` file into the virtual environment.
+ 
+ Note: Ensure that you have the necessary permissions and that the specified Python version is installed on your system.
+ 
