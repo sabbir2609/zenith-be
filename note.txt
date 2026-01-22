@@ -1,0 +1,7 @@
+Upgrade all package: 
+
+# On macOS/Linux
+uv pip list --format freeze | cut -d'=' -f1 | xargs uv pip install --upgrade
+
+# On Windows (PowerShell)
+uv pip freeze | ForEach-Object { $_.Split('==')[0] } | ForEach-Object { uv pip install --upgrade $_ }
