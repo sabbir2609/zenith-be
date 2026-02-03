@@ -30,7 +30,7 @@ django-import-export==4.4.0
 django-redis==6.0.0
 django-templated-mail==1.1.1
 django-timezone-field==7.2.1
-django-unfold==0.76.0
+django-unfold==0.78.0
 djangorestframework==3.16.1
 djangorestframework-simplejwt==5.5.1
 djoser==2.3.3
